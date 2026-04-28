@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>비교 — 빈 장바구니</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Pretendard,sans-serif; letter-spacing:-0.3px; background:#0f1115; color:#e5e7eb; padding:24px; min-height:100vh; }
+.header { max-width:1200px; margin:0 auto 24px; }
+.back { display:inline-block; color:#9ca3af; font-size:13px; text-decoration:none; margin-bottom:16px; }
+h1 { font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.sub { font-size:14px; color:#9ca3af; margin-bottom:16px; }
+.meta { display:inline-flex; gap:12px; padding:8px 12px; background:#1f2937; border-radius:8px; font-size:12px; color:#d1d5db; }
+.meta b { color:#fbbf24; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.col { background:#1f2937; border-radius:12px; overflow:hidden; border:1px solid #374151; }
+.col-head { padding:16px 20px; border-bottom:1px solid #374151; background:#111827; }
+.col-head h2 { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+.col-head p { font-size:12px; color:#9ca3af; }
+.pill { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:500; }
+.pill.with { background:#00a1ff; color:#fff; }
+.pill.without { background:#6b7280; color:#fff; }
+iframe { width:100%; height:800px; border:none; display:block; background:#f3f4f6; }
+.diff { max-width:1200px; margin:32px auto 0; background:#1f2937; border-radius:12px; padding:24px; border:1px solid #374151; }
+.diff h3 { font-size:16px; font-weight:600; margin-bottom:16px; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid #374151; }
+th { color:#9ca3af; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+td.cat { color:#9ca3af; font-weight:500; }
+td code { background:#111827; padding:2px 6px; border-radius:4px; font-size:12px; color:#fbbf24; }
+.with-cell { color:#7dd3fc; } .without-cell { color:#fca5a5; }
+</style></head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">← 시나리오 목록</a>
+  <h1>시나리오 2 — 빈 장바구니 (Empty State)</h1>
+  <p class="sub">"에러·빈 상태를 퍼스트 시민으로" 원칙. 다음 액션을 명시적으로 제시하는가.</p>
+  <div class="meta"><b>Empty 패턴</b> · 2026-04-27</div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="col-head"><h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.2</span></h2><p>Empty 컴포넌트 패턴 + 추천 상품으로 다음 액션 유도</p></div>
+    <iframe src="02-empty-cart-with.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head"><h2>WITHOUT design system <span class="pill without">baseline</span></h2><p>일반 empty state · 영문 mix · 추천 카드 보더</p></div>
+    <iframe src="02-empty-cart-without.html"></iframe>
+  </div>
+</div>
+<div class="diff">
+  <h3>핵심 차이</h3>
+  <table>
+    <thead><tr><th>항목</th><th>WITH</th><th>WITHOUT</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">Empty 일러스트</td><td class="with-cell">120px 원형 컨테이너 + ohouse cart 아이콘 (실제 ODS)</td><td class="without-cell">96px 일반 SVG 아이콘 (제너릭)</td></tr>
+      <tr><td class="cat">타이틀</td><td class="with-cell">Heading18_Semibold "장바구니가 비어있어요" (한글)</td><td class="without-cell">20px Bold "Your cart is empty" (영문)</td></tr>
+      <tr><td class="cat">설명 텍스트</td><td class="with-cell">Body14L20 fg-weak "마음에 드는 상품을 담아보세요"</td><td class="without-cell">14px gray-500 "Add items..." (영문)</td></tr>
+      <tr><td class="cat">다음 액션</td><td class="with-cell">추천 상품 그리드 + brand-solid CTA "쇼핑 계속하기"</td><td class="without-cell">"Recommended" 보더 카드 + blue CTA "Continue Shopping"</td></tr>
+      <tr><td class="cat">추천 카드 비율</td><td class="with-cell">3:4 (콘텐츠 우선 원칙)</td><td class="without-cell">1:1 (제너릭 디폴트)</td></tr>
+      <tr><td class="cat">추천 카드 스타일</td><td class="with-cell">보더 없음, 여백으로 구분</td><td class="without-cell">1px solid 보더 + radius 8</td></tr>
+      <tr><td class="cat">아이콘 소스</td><td class="with-cell"><code>bucketplace/design-assets</code> (실제 ODS)</td><td class="without-cell">손그린 SVG (제너릭)</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

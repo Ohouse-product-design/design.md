@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITH — 콘텐츠 상세 (집들이)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --bg:#fff; --bg-weak:#f5f5f5; --bg-brand:#00a1ff; --bg-brand-weak:#f0f8fc; --border:#e0e0e0; --fg:#141414; --fg-weak:#8c8c8c; --fg-inverse:#fff; --fg-brand:#00a1ff; --accent-red:#fd3d4a; --r-sm:4px; --r-md:8px; --r-full:9999px; --shadow:0 2px 5px 0 #3F474D26; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+  body { font-family:Pretendard,'Pretendard Variable',sans-serif; letter-spacing:-0.3px; background:#f5f5f5; word-break:keep-all; color:var(--fg); }
+  .frame { max-width:375px; margin:24px auto; background:var(--bg); min-height:90vh; box-shadow:var(--shadow); position:relative; padding-bottom:56px; overflow:hidden; }
+  .icon { width:24px; height:24px; fill:currentColor; display:block; }
+  .topbar { position:absolute; top:0; left:0; right:0; height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 8px; z-index:5; background:linear-gradient(180deg,rgba(0,0,0,0.4),transparent); }
+  .icon-btn { width:40px; height:40px; border:none; background:transparent; border-radius:var(--r-full); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .hero { aspect-ratio:3/4; background-size:cover; background-position:center; }
+  .body { padding:20px 16px 24px; }
+  .author-row { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+  .avatar { width:40px; height:40px; border-radius:var(--r-full); background:linear-gradient(135deg,#ffc8a8,#ff9c7a); flex-shrink:0; }
+  .author-info { flex:1; }
+  .author-name { font-size:14px; line-height:20px; font-weight:600; color:var(--fg); margin-bottom:2px; }
+  .author-meta { font-size:12px; line-height:16px; color:var(--fg-weak); }
+  .follow-btn { padding:6px 12px; background:transparent; border:1px solid var(--border); border-radius:var(--r-md); font-family:inherit; font-size:12px; line-height:16px; font-weight:500; color:var(--fg); cursor:pointer; }
+  .meta-tags { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+  .meta-tag { padding:4px 10px; background:var(--bg-weak); color:var(--fg); border-radius:var(--r-full); font-size:12px; line-height:16px; font-weight:500; }
+  .article-title { font-size:24px; line-height:32px; font-weight:700; color:var(--fg); margin-bottom:16px; }
+  .article-body { font-size:16px; line-height:28px; font-weight:400; color:var(--fg); margin-bottom:20px; }
+  .article-body p { margin-bottom:16px; }
+  .article-body p:last-child { margin-bottom:0; }
+  .inline-img { margin:20px -16px; aspect-ratio:4/3; background-size:cover; background-position:center; }
+  .stats-row { display:flex; align-items:center; gap:24px; padding:16px 0; border-top:1px solid var(--bg-weak); border-bottom:1px solid var(--bg-weak); margin-top:8px; }
+  .stat { display:flex; align-items:center; gap:6px; font-size:14px; line-height:20px; color:var(--fg); cursor:pointer; }
+  .stat .icon { width:20px; height:20px; }
+  .stat.bookmarked .icon { color:var(--fg-brand); }
+  .bottombar { position:absolute; bottom:0; left:0; right:0; height:56px; background:var(--bg); border-top:1px solid #f0f0f0; display:flex; align-items:center; padding:8px 16px; gap:8px; }
+  .action-btn { width:40px; height:40px; border:none; background:transparent; border-radius:var(--r-full); color:var(--fg); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .comment-input { flex:1; height:40px; padding:0 14px; border:1px solid var(--border); border-radius:var(--r-full); font-family:inherit; font-size:14px; line-height:20px; letter-spacing:-0.3px; color:var(--fg); background:var(--bg-weak); outline:none; }
+  .comment-input::placeholder { color:var(--fg-weak); }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#141414; color:#fff; font-size:12px; line-height:16px; border-radius:var(--r-md); }
+  .banner b { color:#ffc300; }
+</style></head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-x" viewBox="0 0 480 480"><path d="M88.687 88.687C94.935 82.439 105.066 82.439 111.314 88.687L240 217.373L368.687 88.687C374.935 82.439 385.066 82.439 391.314 88.687C397.562 94.935 397.562 105.066 391.314 111.314L262.628 240L391.314 368.687C397.562 374.935 397.562 385.066 391.314 391.314C385.066 397.562 374.935 397.562 368.687 391.314L240 262.628L111.314 391.314C105.066 397.562 94.935 397.562 88.687 391.314C82.439 385.066 82.439 374.935 88.687 368.687L217.373 240L88.687 111.314C82.439 105.066 82.439 94.935 88.687 88.687Z"/></symbol>
+  <symbol id="i-ellipsis" viewBox="0 0 480 480"><path d="M91 209C108.121 209 122 222.879 122 240C122 257.121 108.121 271 91 271C73.8792 271 60 257.121 60 240C60 222.879 73.8792 209 91 209Z"/><path d="M240 209C257.121 209 271 222.879 271 240C271 257.121 257.121 271 240 271C222.879 271 209 257.121 209 240C209 222.879 222.879 209 240 209Z"/><path d="M389 209C406.121 209 420 222.879 420 240C420 257.121 406.121 271 389 271C371.879 271 358 257.121 358 240C358 222.879 371.879 209 389 209Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M325.187 72.0088C388.138 72.7914 430.998 123.107 431 182.863V182.872C430.986 212.082 419.416 240.728 403.345 266.49C387.19 292.386 365.753 316.547 344.226 337.12C322.655 357.735 300.602 375.12 282.852 387.424C273.991 393.566 266.021 398.568 259.578 402.108C256.378 403.867 253.322 405.393 250.58 406.527C248.536 407.373 244.42 409 240 409C235.586 409 231.474 407.382 229.416 406.532C226.667 405.398 223.606 403.871 220.4 402.112C213.947 398.571 205.97 393.568 197.104 387.426C179.344 375.121 157.289 357.735 135.721 337.119C114.195 316.545 92.7642 292.383 76.6191 266.486C60.5572 240.723 49 212.075 49 182.864L49.0078 181.454C49.6833 121.849 93.0383 72 156.305 72L157.703 72.0107C187.049 72.4491 214.764 86.6197 234.599 105.432C237.111 107.814 242.889 107.814 245.401 105.432C265.551 86.3211 293.833 72.0002 323.695 72L325.187 72.0088ZM323.695 104C303.833 104 283.081 113.799 267.423 128.649C252.565 142.741 227.435 142.741 212.577 128.649C197.163 114.031 176.814 104.307 157.236 104.007L156.305 104C112.152 104 81.0018 138.307 81 182.864L81.0059 183.848C81.264 204.524 89.6337 226.875 103.774 249.557C118.057 272.466 137.514 294.568 157.831 313.987C178.104 333.365 198.845 349.702 215.328 361.122C223.584 366.842 230.591 371.203 235.795 374.059C237.472 374.979 238.868 375.691 239.988 376.222C241.105 375.691 242.497 374.982 244.168 374.063C249.367 371.207 256.37 366.844 264.622 361.124C281.099 349.703 301.839 333.365 322.116 313.986C342.437 294.566 361.902 272.463 376.194 249.553C390.568 226.512 398.988 203.813 399 182.864L398.994 181.822C398.515 138.12 367.99 104.532 324.729 104.006L323.695 104Z"/></symbol>
+  <symbol id="i-bookmark-filled" viewBox="0 0 480 480"><path d="M310 60C336.116 60 358.585 65.9572 374.313 81.6855C390.042 97.4139 396 119.883 396 146V393.889C396 404.847 390.891 414.86 382.202 420.781C373.32 426.833 361.753 427.838 351.264 422.653C351.028 422.537 350.796 422.415 350.566 422.287L240 360.687L129.434 422.287C129.204 422.415 128.972 422.537 128.736 422.653C118.247 427.838 106.68 426.833 97.7979 420.781C89.1086 414.86 84.0003 404.847 84 393.889V146C84 119.883 89.9578 97.4139 105.687 81.6855C121.415 65.9572 143.884 60 170 60H310Z"/></symbol>
+  <symbol id="i-bubble" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M281.363 52.3135C378.166 54.7828 422 101.389 422 201.288L421.992 204.832L421.966 208.314C420.483 354.962 372.178 405.342 286.862 424.019L281.479 425.19L279.408 425.631C269.676 427.678 263.888 428.505 259.788 427.069L259.37 426.912L258.89 426.705C254.44 424.65 251.457 421.25 250.031 416.611L249.898 416.158C248.584 411.476 251.158 403.922 256.615 389.914L259.128 383.505C259.488 382.588 259.828 381.685 260.146 380.796L260.455 379.912C261.434 377.072 261.923 375.65 261.343 373.286C260.925 371.584 259.23 369.222 257.751 368.28C255.697 366.973 253.737 366.984 249.817 367.006L198.637 367.293V367.236C86.3953 365.832 58 334.669 58 218.213V201.288C58 84.8319 86.3953 53.6668 198.637 52.2627V52.208H281.363V52.3135Z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 480 480"><path d="M403.2 240C412.037 240 419.2 247.163 419.2 256C419.2 313.551 412.202 355.888 385.304 382.562C358.447 409.194 315.977 416 258.475 416H220.725C163.223 415.999 120.753 409.194 93.8965 382.562C66.9979 355.888 60.0001 313.551 60 256C60.0002 247.163 67.1635 240 76 240C84.8365 240 91.9998 247.163 92 256C92.0001 313.65 99.7654 343.315 116.429 359.839C133.135 376.405 163.028 383.999 220.725 384H258.475C316.172 384 346.066 376.406 362.771 359.839C379.435 343.315 387.2 313.65 387.2 256C387.2 247.163 394.364 240 403.2 240Z"/><path d="M228.582 58.398C234.85 52.4396 244.762 52.5355 250.913 58.686L316.913 124.686C323.161 130.934 323.161 141.065 316.913 147.313C310.665 153.561 300.534 153.561 294.286 147.313L255.6 108.626V254C255.599 262.836 248.436 270 239.6 270C230.763 270 223.6 262.836 223.6 254V108.626L184.913 147.313C178.665 153.561 168.534 153.561 162.286 147.313C156.038 141.065 156.038 130.934 162.286 124.686L228.286 58.686L228.582 58.398Z"/></symbol>
+</svg>
+<div class="banner"><b>WITH OHOUSE-DESIGN.md</b> — Hero 3:4 인테리어 사진 · Pretendard Heading24 · Body16L28 (한글 가독성) · 평형/스타일 chip · ohouse contents.ohou.se 톤</div>
+<div class="frame">
+  <div class="topbar">
+    <button class="icon-btn" aria-label="닫기"><svg class="icon"><use href="#i-x"/></svg></button>
+    <button class="icon-btn" aria-label="더보기"><svg class="icon"><use href="#i-ellipsis"/></svg></button>
+  </div>
+  <div class="hero" style="background-image:url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=800&fit=crop&auto=format&q=80')"></div>
+  <div class="body">
+    <div class="author-row">
+      <div class="avatar"></div>
+      <div class="author-info">
+        <div class="author-name">새벽감성</div>
+        <div class="author-meta">팔로워 12.4K · 게시물 47</div>
+      </div>
+      <button class="follow-btn">팔로우</button>
+    </div>
+    <div class="meta-tags">
+      <span class="meta-tag">31평</span>
+      <span class="meta-tag">아파트</span>
+      <span class="meta-tag">신혼부부</span>
+      <span class="meta-tag">화이트</span>
+      <span class="meta-tag">미니멀</span>
+    </div>
+    <h1 class="article-title">31평을 1.5룸처럼, 화이트 미니멀로 꾸민 신혼집</h1>
+    <div class="article-body">
+      <p>이사 온 지 6개월. 처음엔 비어 보일까 걱정했지만, 색을 화이트로 통일하니 오히려 공간이 넓어 보였어요. 가구는 적게, 대신 좋은 것 하나씩.</p>
+      <p>거실의 주인공은 모듈 패브릭 소파. 햇볕 들어오는 시간이면 강아지가 늘 그 자리에 누워 있어요.</p>
+    </div>
+    <div class="inline-img" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=450&fit=crop&auto=format&q=80')"></div>
+    <div class="article-body">
+      <p>키친도 같은 톤으로. 상부장은 없애고 오픈 선반으로 정리했더니 매일 쓰는 그릇이 자연스레 정리됐어요.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><svg class="icon"><use href="#i-heart"/></svg> 1.2K</div>
+      <div class="stat bookmarked"><svg class="icon"><use href="#i-bookmark-filled"/></svg> 8.9K</div>
+      <div class="stat"><svg class="icon"><use href="#i-bubble"/></svg> 432</div>
+    </div>
+  </div>
+  <div class="bottombar">
+    <input class="comment-input" placeholder="궁금한 점을 댓글로 남겨보세요">
+    <button class="action-btn" aria-label="공유"><svg class="icon"><use href="#i-share"/></svg></button>
+  </div>
+</div>
+</body></html>

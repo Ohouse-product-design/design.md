@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>Changelog — OHOUSE-DESIGN.md</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.versions { display:flex; flex-direction:column; gap:24px; }
+.ver { border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; }
+.ver.current { border-color:var(--brand-blue); box-shadow:0 0 0 3px rgba(0,161,255,0.08); }
+.ver-head { padding:18px 24px; border-bottom:1px solid var(--border); background:var(--bg-soft); display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.ver-tag { display:flex; align-items:center; gap:10px; }
+.ver-tag .num { font-size:18px; font-weight:700; color:var(--fg); letter-spacing:-0.4px; font-family:'SF Mono','Monaco',ui-monospace,monospace; }
+.ver-tag .pill { padding:2px 8px; background:var(--brand-blue); color:#fff; border-radius:9999px; font-size:10px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+.ver-tag .pill.alpha { background:var(--bg-tint); color:var(--fg-muted); border:1px solid var(--border); }
+.ver-date { font-size:12px; color:var(--fg-muted); }
+.ver-summary { padding:18px 24px; border-bottom:1px solid var(--border); font-size:14px; line-height:1.6; color:var(--fg); }
+.ver-summary b { font-weight:600; }
+.ver-changes { padding:18px 24px; }
+.ver-changes h4 { font-size:11px; font-weight:600; color:var(--fg-subtle); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px; margin-top:14px; }
+.ver-changes h4:first-child { margin-top:0; }
+.ver-changes ul { list-style:none; padding:0; margin-bottom:8px; }
+.ver-changes li { font-size:13px; line-height:1.6; color:var(--fg); padding:5px 0 5px 18px; position:relative; }
+.ver-changes li::before { content:'+'; position:absolute; left:0; top:5px; color:var(--positive); font-weight:700; }
+.ver-changes li.fix::before { content:'△'; color:#d97706; }
+.ver-changes li.break::before { content:'!'; color:var(--critical); }
+.ver-changes li b { font-weight:600; }
+.ver-changes li code { font-size:11.5px; }
+</style></head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand"><img class="brand-mark" src="ohouse-3d.png" alt="OHOUSE"><span class="brand-name"><code>OHOUSE-DESIGN.md</code></span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">시나리오</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="https://github.com/bucketplace/design-assets" target="_blank" class="nav-link">아이콘</a>
+      <a href="OHOUSE-DESIGN.md" download class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap-narrow">
+  <span class="page-eyebrow">CHANGELOG</span>
+  <h1 class="page-h1">버전 이력</h1>
+  <p class="page-lead">OHOUSE-DESIGN.md의 모든 버전과 주요 변경사항. 현재 버전은 <b>v0.3.0</b>이며, 전사 공유 시작 단계입니다.</p>
+
+  <div class="versions">
+    <!-- v0.3.0 -->
+    <div class="ver current">
+      <div class="ver-head">
+        <div class="ver-tag"><span class="num">v0.3.0</span><span class="pill">CURRENT</span></div>
+        <div class="ver-date">2026-04-28 · ~42KB</div>
+      </div>
+      <div class="ver-summary">
+        <b>자족 재현 가능</b> — Icons 섹션 신규 + 컴포넌트 9종 추가 + 시나리오별 적용 가이드 7개. 본 파일 단독으로 7개 시나리오 자족 재현 가능.
+      </div>
+      <div class="ver-changes">
+        <h4>Added</h4>
+        <ul>
+          <li><b>§7 Icons 섹션 신규</b> — <code>bucketplace/design-assets</code> 245 아이콘 통합. 카테고리 12종, weight 4종, viewBox 480 spec, sprite 사용법, outlined↔filled 페어 룰</li>
+          <li><b>§8 컴포넌트 9종 추가</b> — ProductCard, BottomNav, ChipScroll, Avatar, Hero+Body, Author Row, Stats Row, Section Header, Topic-Filter Chip (트랙 분리)</li>
+          <li><b>§8.0 ODS Sourcing Rule</b> — ODS → BDS → 트랙 → Pattern 결정 트리</li>
+          <li><b>시나리오별 적용 가이드 (A~G 7개)</b> — 핵심 7 시나리오 자족 재현 레시피</li>
+          <li><b>§11.3 Figma 비ODS 마커 매핑</b> — 🟣 보라 / 🌀 회오리 ↔ <code>@non-ods:</code> 코드 마커</li>
+          <li>헤더에 "📌 버전 정보" 표 + "🆕 주요 업데이트" 블록</li>
+        </ul>
+        <h4>Changed</h4>
+        <ul class="fix"><li class="fix">섹션 번호 shift: 7→8, 8→9, 9→10, 10→11, 11→12 (Icons §7 신규 삽입)</li></ul>
+      </div>
+    </div>
+
+    <!-- v0.2.0 -->
+    <div class="ver">
+      <div class="ver-head">
+        <div class="ver-tag"><span class="num">v0.2.0</span></div>
+        <div class="ver-date">2026-04-27 · ~24KB</div>
+      </div>
+      <div class="ver-summary">
+        <b>하이브리드 포맷</b> — Google design.md alpha 스펙 호환 YAML front matter 추가. 머신 검증·export 가능.
+      </div>
+      <div class="ver-changes">
+        <h4>Added</h4>
+        <ul>
+          <li><b>YAML front matter</b> 추가 — colors 33 + typography 14 + rounded 5 + spacing 7 + components 15</li>
+          <li>토큰 참조 문법 <code>{colors.background-brand}</code> 사용</li>
+          <li><code>npx @google/design.md lint</code> 통과 가능 (broken-ref 0건)</li>
+          <li>Tailwind / DTCG export 호환</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v0.1.0 -->
+    <div class="ver">
+      <div class="ver-head">
+        <div class="ver-tag"><span class="num">v0.1.0</span><span class="pill alpha">INITIAL</span></div>
+        <div class="ver-date">2026-04-27 · ~17KB</div>
+      </div>
+      <div class="ver-summary">
+        <b>초판</b> — apps-web ODS 기준, foundations(color/typography/layout/shadow) 인라인. VoltAgent awesome-design-md 포맷.
+      </div>
+      <div class="ver-changes">
+        <h4>Added</h4>
+        <ul>
+          <li>10 섹션: Visual Theme · Color · Typography · Layout · Depth · Shapes · Components(8) · Do/Don't · Responsive · Agent Prompt Guide</li>
+          <li>핵심 컴포넌트 8개 (BoxButton, IconButton, Input, Section, Chip, BottomSheet, Snackbar, Empty)</li>
+          <li>한국 시장 특화 (Pretendard, letter-spacing -0.3px, word-break keep-all)</li>
+          <li>Light/Dark 양쪽 hex 표기</li>
+          <li>마커 컨벤션 (<code>@ods-component</code>, <code>@bds-component</code>, <code>@missing-ods</code>, <code>@use-tailwind</code>, <code>@deprecated-critical-light</code>)</li>
+        </ul>
+        <h4>Known Issues</h4>
+        <ul class="fix">
+          <li class="fix">⛔ Critical Light 토큰 4건 마이그 대기 (red 램프 이전)</li>
+          <li class="fix">Shapes (border-radius) 디자인팀 컨펌 대기</li>
+          <li class="fix">Grid column / gutter 정확값 TBD</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <strong>OHOUSE-DESIGN.md</strong> · 변경 이력은 본 파일 §12에서도 확인 가능.
+</div>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>OHOUSE-DESIGN.md A/B 비교 — 상품 상세</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Pretendard, -apple-system, sans-serif;
+    background: #0f1115;
+    color: #e5e7eb;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .header {
+    max-width: 1200px; margin: 0 auto 24px;
+  }
+  h1 {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.3px;
+    margin-bottom: 8px; color: #ffffff;
+  }
+  .sub {
+    font-size: 14px; color: #9ca3af; margin-bottom: 16px;
+  }
+  .meta {
+    display: inline-flex; gap: 12px; padding: 8px 12px;
+    background: #1f2937; border-radius: 8px;
+    font-size: 12px; color: #d1d5db;
+  }
+  .meta b { color: #fbbf24; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .col {
+    background: #1f2937;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #374151;
+  }
+  .col-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid #374151;
+    background: #111827;
+  }
+  .col-head h2 {
+    font-size: 16px; font-weight: 600; letter-spacing: -0.3px;
+    color: #ffffff; margin-bottom: 4px;
+  }
+  .col-head p { font-size: 12px; color: #9ca3af; }
+  .col-head .pill {
+    display: inline-block; margin-left: 8px;
+    padding: 2px 8px; border-radius: 9999px;
+    font-size: 11px; font-weight: 500;
+  }
+  .pill.with { background: #00a1ff; color: #fff; }
+  .pill.without { background: #6b7280; color: #fff; }
+  iframe {
+    width: 100%; height: 800px; border: none; display: block; background: #f3f4f6;
+  }
+  /* Diff table */
+  .diff {
+    max-width: 1200px; margin: 32px auto 0;
+    background: #1f2937; border-radius: 12px; padding: 24px;
+    border: 1px solid #374151;
+  }
+  .diff h3 {
+    font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #ffffff;
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid #374151;
+  }
+  th {
+    color: #9ca3af; font-weight: 500; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  td { color: #e5e7eb; }
+  td.cat { color: #9ca3af; font-weight: 500; }
+  td code {
+    background: #111827; padding: 2px 6px; border-radius: 4px;
+    font-size: 12px; color: #fbbf24;
+  }
+  td.with-cell { color: #7dd3fc; }
+  td.without-cell { color: #fca5a5; }
+  .footer {
+    max-width: 1200px; margin: 32px auto 0;
+    text-align: center; color: #6b7280; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>OHOUSE-DESIGN.md A/B 비교</h1>
+  <p class="sub">동일한 상품 상세 화면 — 디자인 시스템 입력 유무에 따른 결과 차이</p>
+  <div class="meta">
+    <b>상품 상세</b> · 2026-04-27
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col">
+    <div class="col-head">
+      <h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.2.0</span></h2>
+      <p>YAML 토큰·프로즈 가이드를 컨텍스트로 주고 생성</p>
+    </div>
+    <iframe src="01-product-detail-with.html" title="With OHOUSE-DESIGN.md"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head">
+      <h2>WITHOUT design system <span class="pill without">baseline</span></h2>
+      <p>디자인 시스템 입력 없이 일반 AI 디폴트로 생성</p>
+    </div>
+    <iframe src="01-product-detail-without.html" title="Without design system"></iframe>
+  </div>
+</div>
+
+<div class="diff">
+  <h3>토큰 레벨 차이 (눈으로 비교)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>WITH (OHOUSE-DESIGN.md)</th>
+        <th>WITHOUT (AI default)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">Font</td>
+        <td class="with-cell">Pretendard, <code>letter-spacing: -0.3px</code></td>
+        <td class="without-cell">-apple-system / system font, 표준 트래킹</td>
+      </tr>
+      <tr>
+        <td class="cat">Brand color (CTA)</td>
+        <td class="with-cell"><code>#00a1ff</code> (background-brand)</td>
+        <td class="without-cell"><code>#3b82f6</code> (Tailwind blue-500 default)</td>
+      </tr>
+      <tr>
+        <td class="cat">Accent (할인율)</td>
+        <td class="with-cell"><code>#fd3d4a</code> (accent-red)</td>
+        <td class="without-cell"><code>#ef4444</code> (Tailwind red-500)</td>
+      </tr>
+      <tr>
+        <td class="cat">Star (별점)</td>
+        <td class="with-cell"><code>#ffc300</code> (accent-yellow)</td>
+        <td class="without-cell"><code>#f59e0b</code> (Tailwind amber-500)</td>
+      </tr>
+      <tr>
+        <td class="cat">Image ratio</td>
+        <td class="with-cell">3:4 (콘텐츠 카드 원칙)</td>
+        <td class="without-cell">1:1 (제너릭 디폴트)</td>
+      </tr>
+      <tr>
+        <td class="cat">Border-radius</td>
+        <td class="with-cell"><code>md=8px</code>, <code>full</code> (chip)</td>
+        <td class="without-cell"><code>6px</code> 일괄</td>
+      </tr>
+      <tr>
+        <td class="cat">Color option UI</td>
+        <td class="with-cell">Chip (selected: brand-weak + brand fg + brand border)</td>
+        <td class="without-cell">native &lt;select&gt; 박스</td>
+      </tr>
+      <tr>
+        <td class="cat">Section divider</td>
+        <td class="with-cell">8px <code>backgroundWeak</code> 가로 띠 (한국 커머스 관습)</td>
+        <td class="without-cell">없음 / 단순 마진</td>
+      </tr>
+      <tr>
+        <td class="cat">Body 행간</td>
+        <td class="with-cell"><code>line-height: 24px</code> (Body15L24, 한글 가독성)</td>
+        <td class="without-cell"><code>1.6</code> (영문 디폴트)</td>
+      </tr>
+      <tr>
+        <td class="cat">Word break</td>
+        <td class="with-cell"><code>keep-all</code> (한글 단어 단위 줄바꿈)</td>
+        <td class="without-cell">디폴트 (영문 기준)</td>
+      </tr>
+      <tr>
+        <td class="cat">CTA height</td>
+        <td class="with-cell">48px (BoxButton large)</td>
+        <td class="without-cell">44px (Material/Bootstrap default)</td>
+      </tr>
+      <tr>
+        <td class="cat">Shadow</td>
+        <td class="with-cell"><code>0 2px 5px #3F474D26</code> (depth_20 basic)</td>
+        <td class="without-cell"><code>0 1px 3px rgba(0,0,0,0.1)</code> (Tailwind sm)</td>
+      </tr>
+      <tr>
+        <td class="cat">CTA label</td>
+        <td class="with-cell">"장바구니 담기" (한국어)</td>
+        <td class="without-cell">"Add to Cart" (다국어 혼재)</td>
+      </tr>
+      <tr>
+        <td class="cat">Brand 정체성</td>
+        <td class="with-cell"><b>오늘의집스러움 ✓</b> 따뜻함·정돈됨·콘텐츠 우선</td>
+        <td class="without-cell">Material/Tailwind 디폴트, 어떤 서비스든 가능</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  좌·우 화면 모두 동일한 콘텐츠(상품·가격·리뷰)이지만, 적용된 토큰만 다릅니다.<br>
+  실제 AI 도구 검증은 Claude Code / Cursor / Stitch에 동일 프롬프트로 돌려 결과 비교 필요.
+</div>
+</body>
+</html>

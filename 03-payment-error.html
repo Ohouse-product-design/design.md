@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>비교 — 결제 실패</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Pretendard,sans-serif; letter-spacing:-0.3px; background:#0f1115; color:#e5e7eb; padding:24px; min-height:100vh; }
+.header { max-width:1200px; margin:0 auto 24px; }
+.back { display:inline-block; color:#9ca3af; font-size:13px; text-decoration:none; margin-bottom:16px; }
+h1 { font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.sub { font-size:14px; color:#9ca3af; margin-bottom:16px; }
+.meta { display:inline-flex; gap:12px; padding:8px 12px; background:#1f2937; border-radius:8px; font-size:12px; color:#d1d5db; }
+.meta b { color:#fbbf24; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.col { background:#1f2937; border-radius:12px; overflow:hidden; border:1px solid #374151; }
+.col-head { padding:16px 20px; border-bottom:1px solid #374151; background:#111827; }
+.col-head h2 { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+.col-head p { font-size:12px; color:#9ca3af; }
+.pill { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:500; }
+.pill.with { background:#00a1ff; color:#fff; } .pill.without { background:#6b7280; color:#fff; }
+iframe { width:100%; height:800px; border:none; display:block; background:#f3f4f6; }
+.diff { max-width:1200px; margin:32px auto 0; background:#1f2937; border-radius:12px; padding:24px; border:1px solid #374151; }
+.diff h3 { font-size:16px; font-weight:600; margin-bottom:16px; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid #374151; }
+th { color:#9ca3af; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+td.cat { color:#9ca3af; font-weight:500; }
+td code { background:#111827; padding:2px 6px; border-radius:4px; font-size:12px; color:#fbbf24; }
+.with-cell { color:#7dd3fc; } .without-cell { color:#fca5a5; }
+</style></head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">← 시나리오 목록</a>
+  <h1>시나리오 3 — 결제 실패 (Error State)</h1>
+  <p class="sub">"색은 브랜드/상태에만, 위계는 사이즈·위치·여백" 원칙. 에러를 색으로만 호소하는가.</p>
+  <div class="meta"><b>Error 패턴</b> · 2026-04-27</div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="col-head"><h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.2</span></h2><p>fg-critical은 아이콘 컨테이너만 / 제목·본문은 정상 fg / 메인 액션 1개</p></div>
+    <iframe src="03-payment-error-with.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head"><h2>WITHOUT design system <span class="pill without">baseline</span></h2><p>"에러=빨강" 과잉 사용 / 메인 액션 모호 / 영문 혼재</p></div>
+    <iframe src="03-payment-error-without.html"></iframe>
+  </div>
+</div>
+<div class="diff">
+  <h3>핵심 차이</h3>
+  <table>
+    <thead><tr><th>항목</th><th>WITH</th><th>WITHOUT</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">아이콘</td><td class="with-cell">ohouse exclamation-triangle (warning, critical-weak 컨테이너)</td><td class="without-cell">제너릭 X 원 (red-500 단독)</td></tr>
+      <tr><td class="cat">타이틀 색</td><td class="with-cell"><code>foreground</code> #141414 (정상)</td><td class="without-cell"><code>red-600</code> #dc2626 (강조 과잉)</td></tr>
+      <tr><td class="cat">컨테이너 배경</td><td class="with-cell"><code>backgroundWeak</code> #f5f5f5 (정보 카드)</td><td class="without-cell"><code>red-50</code> #fef2f2 + red-200 보더 (red 박스)</td></tr>
+      <tr><td class="cat">CTA 위계</td><td class="with-cell">brand-solid "다시 시도하기" (메인) + TextButton "취소" (보조)</td><td class="without-cell">red-500 "Retry" + outline "Cancel" (둘 다 동등 무게)</td></tr>
+      <tr><td class="cat">CTA 라벨 색</td><td class="with-cell">brand 블루 (긍정 CTA)</td><td class="without-cell">red-500 (에러 = 다음 액션도 빨강 → 인지 부조화)</td></tr>
+      <tr><td class="cat">메시지</td><td class="with-cell">"카드 한도 초과/일시 오류, 다시 시도해주세요" (구체적·행동 유도)</td><td class="without-cell">"Please check your payment details" (제너릭)</td></tr>
+      <tr><td class="cat">원칙 적용</td><td class="with-cell">에러는 컨테이너만 critical 토큰, 본문은 정상 위계</td><td class="without-cell">제목·박스·CTA 모두 빨강 — 색으로 위계 표현</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

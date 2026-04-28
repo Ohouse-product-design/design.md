@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>비교 — 콘텐츠 상세 (집들이)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Pretendard,sans-serif; letter-spacing:-0.3px; background:#0f1115; color:#e5e7eb; padding:24px; min-height:100vh; }
+.header { max-width:1200px; margin:0 auto 24px; }
+.back { display:inline-block; color:#9ca3af; font-size:13px; text-decoration:none; margin-bottom:16px; }
+h1 { font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.sub { font-size:14px; color:#9ca3af; margin-bottom:16px; }
+.meta { display:inline-flex; gap:12px; padding:8px 12px; background:#1f2937; border-radius:8px; font-size:12px; color:#d1d5db; }
+.meta b { color:#fbbf24; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.col { background:#1f2937; border-radius:12px; overflow:hidden; border:1px solid #374151; }
+.col-head { padding:16px 20px; border-bottom:1px solid #374151; background:#111827; }
+.col-head h2 { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+.col-head p { font-size:12px; color:#9ca3af; }
+.pill { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:500; }
+.pill.with { background:#00a1ff; color:#fff; } .pill.without { background:#6b7280; color:#fff; }
+iframe { width:100%; height:800px; border:none; display:block; background:#f3f4f6; }
+.diff { max-width:1200px; margin:32px auto 0; background:#1f2937; border-radius:12px; padding:24px; border:1px solid #374151; }
+.diff h3 { font-size:16px; font-weight:600; margin-bottom:16px; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid #374151; }
+th { color:#9ca3af; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+td.cat { color:#9ca3af; font-weight:500; }
+td code { background:#111827; padding:2px 6px; border-radius:4px; font-size:12px; color:#fbbf24; }
+.with-cell { color:#7dd3fc; } .without-cell { color:#fca5a5; }
+</style></head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">← 시나리오 목록</a>
+  <h1>시나리오 7 — 콘텐츠 상세 (집들이)</h1>
+  <p class="sub"><a href="https://contents.ohou.se/projects" style="color:#7dd3fc">contents.ohou.se/projects</a> 톤. 큰 hero 사진이 주인공, 작성자·평형/스타일 메타, Body16L28 한글 본문, 좋아요·스크랩·댓글 카운트.</p>
+  <div class="meta"><b>Content Detail 패턴</b> · 2026-04-27</div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="col-head"><h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.3</span></h2><p>Hero 3:4 인테리어 사진 · 평형/스타일 chip · Body16L28 한글 본문 · ohouse contents 톤</p></div>
+    <iframe src="07-content-detail-with.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head"><h2>WITHOUT design system <span class="pill without">baseline</span></h2><p>Hero 1:1 (사진 임팩트 약화) · Avatar 가운데 정렬 + blue follow CTA · 영문 메타 · 메타 박스</p></div>
+    <iframe src="07-content-detail-without.html"></iframe>
+  </div>
+</div>
+<div class="diff">
+  <h3>핵심 차이</h3>
+  <table>
+    <thead><tr><th>항목</th><th>WITH</th><th>WITHOUT</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">Hero 비율</td><td class="with-cell">3:4 (콘텐츠 카드 원칙, 사진 임팩트 ↑)</td><td class="without-cell">1:1 (제너릭, 임팩트 ↓)</td></tr>
+      <tr><td class="cat">Top bar</td><td class="with-cell">투명 + 그라디언트 오버레이 (사진 위 floating)</td><td class="without-cell">흰 배경 + 보더 (사진과 단절)</td></tr>
+      <tr><td class="cat">제목 타이포</td><td class="with-cell">Heading24_Bold 32 line-height (한글 가독성)</td><td class="without-cell">22px Bold (작음)</td></tr>
+      <tr><td class="cat">본문 타이포</td><td class="with-cell">Body16L28 (한글 단락 여유)</td><td class="without-cell">14px line-height 1.6 (영문 디폴트)</td></tr>
+      <tr><td class="cat">Author 정렬</td><td class="with-cell">왼쪽 정렬 row (Avatar + 이름·메타 + 팔로우 버튼)</td><td class="without-cell">가운데 정렬 stack (Avatar 아래 이름·CTA, 인스타 톤)</td></tr>
+      <tr><td class="cat">팔로우 버튼</td><td class="with-cell">outlined + 한글 "팔로우" (절제)</td><td class="without-cell">brand-solid blue + 영문 "+ Follow" (강조)</td></tr>
+      <tr><td class="cat">메타 표기</td><td class="with-cell">평형/스타일/거주민 chip (`backgroundWeak`) — ohouse projects 관습</td><td class="without-cell">tag (보더 박스, Material 톤) + 영문</td></tr>
+      <tr><td class="cat">스크랩 카운트</td><td class="with-cell">bookmark-filled (활성) + brand 색 + 카운트</td><td class="without-cell">"⊠ 8.9K Saves" 영문 텍스트</td></tr>
+      <tr><td class="cat">하단 댓글바</td><td class="with-cell">고스트 input + 한글 placeholder "궁금한 점을 댓글로..."</td><td class="without-cell">일반 input + 영문 "Add a comment..."</td></tr>
+      <tr><td class="cat">인라인 사진</td><td class="with-cell">풀 블리드(좌우 -16 margin), border-radius X</td><td class="without-cell">컨테이너 내부 + radius 8</td></tr>
+      <tr><td class="cat">제목 한글</td><td class="with-cell">"31평을 1.5룸처럼, 화이트 미니멀로 꾸민 신혼집"</td><td class="without-cell">"31 Pyeong Newlywed Apartment with White Minimal Decor"</td></tr>
+      <tr><td class="cat">평형 표기</td><td class="with-cell">"31평" (한국 관습)</td><td class="without-cell">"31 Pyeong" (영문 전사)</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

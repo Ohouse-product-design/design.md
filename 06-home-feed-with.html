@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITH — 홈 피드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root { --bg:#fff; --bg-weak:#f5f5f5; --bg-brand:#00a1ff; --bg-brand-weak:#f0f8fc; --border:#e0e0e0; --border-brand:#00a1ff; --fg:#141414; --fg-weak:#8c8c8c; --fg-inverse:#fff; --fg-brand:#00a1ff; --accent-red:#fd3d4a; --r-sm:4px; --r-md:8px; --r-full:9999px; --shadow:0 2px 5px 0 #3F474D26; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+  body { font-family:Pretendard,'Pretendard Variable',sans-serif; letter-spacing:-0.3px; background:#f5f5f5; word-break:keep-all; color:var(--fg); }
+  .frame { max-width:375px; margin:24px auto; background:var(--bg); min-height:90vh; box-shadow:var(--shadow); position:relative; padding-bottom:56px; overflow:hidden; }
+  .icon { width:24px; height:24px; fill:currentColor; display:block; }
+  .topbar { height:48px; display:flex; align-items:center; padding:0 16px; border-bottom:1px solid #f0f0f0; }
+  .logo { flex:1; font-size:20px; font-weight:800; color:var(--bg-brand); letter-spacing:-0.5px; }
+  .icon-btn { width:40px; height:40px; border:none; background:transparent; border-radius:var(--r-full); color:var(--fg); cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative; }
+  .badge { position:absolute; top:6px; right:4px; min-width:14px; height:14px; padding:0 4px; background:var(--accent-red); color:#fff; border-radius:9999px; font-size:10px; font-weight:700; line-height:14px; text-align:center; }
+  .chips-scroll { display:flex; gap:8px; padding:12px 16px; overflow-x:auto; border-bottom:1px solid #f5f5f5; }
+  .chips-scroll::-webkit-scrollbar { display:none; }
+  .chip { height:32px; padding:0 14px; border:none; border-radius:var(--r-full); font-family:inherit; font-size:13px; line-height:18px; font-weight:500; letter-spacing:-0.3px; background:var(--bg-weak); color:var(--fg); cursor:pointer; flex-shrink:0; }
+  .chip.selected { background:var(--fg); color:var(--fg-inverse); }
+  .section { padding:20px 16px 16px; }
+  .section-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .section-title { font-size:18px; line-height:24px; font-weight:600; color:var(--fg); }
+  .section-more { display:flex; align-items:center; gap:2px; font-size:13px; color:var(--fg-weak); cursor:pointer; }
+  .section-more .icon { width:14px; height:14px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px 8px; }
+  .pcard { display:flex; flex-direction:column; cursor:pointer; }
+  .pcard-img { aspect-ratio:1/1; background-size:cover; background-position:center; border-radius:var(--r-md); position:relative; margin-bottom:8px; }
+  .pcard-fav { position:absolute; bottom:6px; right:6px; width:28px; height:28px; border-radius:9999px; background:rgba(255,255,255,0.85); display:flex; align-items:center; justify-content:center; color:var(--fg); }
+  .pcard-fav .icon { width:16px; height:16px; }
+  .pcard-brand { font-size:11px; line-height:14px; color:var(--fg-weak); margin-bottom:2px; }
+  .pcard-name { font-size:13px; line-height:18px; color:var(--fg); margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .pcard-price-row { display:flex; align-items:baseline; gap:4px; }
+  .pcard-discount { font-size:14px; font-weight:700; color:var(--accent-red); }
+  .pcard-price { font-size:14px; font-weight:700; color:var(--fg); }
+  .pcard-meta { display:flex; gap:6px; align-items:center; margin-top:4px; font-size:11px; color:var(--fg-weak); }
+  .pcard-meta .icon { width:11px; height:11px; }
+  .pcard-meta .star { color:#ffc300; }
+  .bottomnav { position:absolute; bottom:0; left:0; right:0; height:56px; background:var(--bg); border-top:1px solid #f0f0f0; display:flex; }
+  .nav-item { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; cursor:pointer; color:var(--fg-weak); border:none; background:transparent; font-family:inherit; }
+  .nav-item.active { color:var(--fg); }
+  .nav-item .icon { width:24px; height:24px; }
+  .nav-label { font-size:10px; line-height:1; font-weight:500; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#141414; color:#fff; font-size:12px; line-height:16px; border-radius:var(--r-md); }
+  .banner b { color:#ffc300; }
+</style></head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-magnifying-glass" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M99.6612 100.661C153.944 46.3785 241.954 46.3787 296.237 100.661C346.637 151.061 350.24 230.534 307.05 285.094L394.772 372.816C401.021 379.065 401.021 389.196 394.772 395.444C388.524 401.692 378.394 401.692 372.146 395.444L284.461 307.759C229.891 351.256 150.174 347.75 99.6612 297.237C45.3786 242.954 45.3785 154.944 99.6612 100.661ZM273.609 123.289C231.823 81.5033 164.074 81.5031 122.288 123.289C80.5027 165.075 80.5029 232.823 122.288 274.609C164.074 316.395 231.823 316.395 273.609 274.609C315.395 232.823 315.395 165.075 273.609 123.289Z"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 480 480"><path d="M161 386C175.912 386 188 398.088 188 413C188 427.912 175.912 440 161 440C146.088 440 134 427.912 134 413C134 398.088 146.088 386 161 386Z"/><path d="M310 386C324.912 386 337 398.088 337 413C337 427.912 324.912 440 310 440C295.088 440 283 427.912 283 413C283 398.088 295.088 386 310 386Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M90.1904 44C105.959 44.0001 119.358 55.4939 121.79 71.0566L130.584 127.162H402C416.359 127.162 428 138.803 428 153.162V208.814C428 261.228 422.28 300.239 397.769 324.732C373.261 349.222 334.251 354.913 281.898 354.913H173.244C150.589 354.913 131.308 338.418 127.8 316.036L101.212 146.42C101.109 145.924 101.03 145.42 100.975 144.908L90.1758 76.0117L90.1748 76.0049L90.1738 76H40C31.1634 76 24 68.8366 24 60C24 51.1634 31.1634 44 40 44H90.1904ZM159.413 311.081C160.481 317.893 166.349 322.913 173.244 322.913H281.898C334.905 322.913 360.947 316.289 375.149 302.097C389.349 287.908 396 261.87 396 208.814V159.162H135.601L159.413 311.081Z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 480 480"><path d="M271.644 396.501C277.45 389.84 287.556 389.146 294.218 394.952C300.879 400.758 301.572 410.865 295.766 417.526C283.447 431.659 263.669 439.999 240 439.999C216.331 439.999 196.553 431.659 184.234 417.526C178.428 410.865 179.122 400.758 185.783 394.952C192.445 389.146 202.551 389.84 208.357 396.501C213.447 402.34 223.67 407.999 240 407.999C256.331 407.999 266.554 402.341 271.644 396.501Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M240 55C300.66 55 343.478 61.8314 369.201 90.2803C382.079 104.523 389.373 122.766 393.553 144.376C397.71 165.869 399 191.862 399 222.65V339H403C411.837 339 419 346.163 419 355C419 363.837 411.837 371 403 371H77C68.1634 371 61 363.837 61 355C61 346.163 68.1634 339 77 339H81V222.65C81 191.862 82.29 165.869 86.4473 144.376C90.6271 122.766 97.9207 104.523 110.799 90.2803C136.522 61.8314 179.34 55 240 55ZM240 87C178.438 87 149.755 94.9084 134.534 111.742C126.94 120.141 121.401 132.175 117.865 150.453C114.307 168.848 113 192.354 113 222.65V339H367V222.65C367 192.354 365.693 168.848 362.135 150.453C358.599 132.175 353.06 120.141 345.466 111.742C330.245 94.9084 301.562 87 240 87Z"/></symbol>
+  <symbol id="i-house-filled" viewBox="0 0 480 480"><path d="M207.253 58.5309C227.233 45.8222 252.767 45.8222 272.747 58.5309L392.747 134.86L393.566 135.39C410.672 146.658 421 165.781 421 186.307V280.125L420.979 285.125V285.157L420.979 285.189C420.556 337.156 413.687 375.98 388.113 400.499C365.343 422.329 331.1 429.532 286 430.786V431H210C156.116 431 116.028 424.656 90.6895 399.33C65.7448 374.397 59.2032 335.174 59.0049 282.577L59 280.062V186.307C59.0003 165.456 69.6583 146.052 87.2529 134.86L207.253 58.5309Z"/></symbol>
+  <symbol id="i-house" viewBox="0 0 480 480"><path d="M207.253 58.5309C227.233 45.8222 252.767 45.8222 272.747 58.5309L392.747 134.86L393.566 135.39C410.672 146.658 421 165.781 421 186.307V280.125L420.979 285.125V285.157L420.979 285.189C420.556 337.156 413.687 375.98 388.113 400.499C365.343 422.329 331.1 429.532 286 430.786V431H210C156.116 431 116.028 424.656 90.6895 399.33C65.7448 374.397 59.2032 335.174 59.0049 282.577L59 280.062V186.307C59.0003 165.456 69.6583 146.052 87.2529 134.86L207.253 58.5309ZM255.572 85.5319C246.072 79.489 233.928 79.489 224.428 85.5319L104.428 161.861C96.0629 167.182 91.0002 176.403 91 186.307V280.062L91.0049 282.578C91.2251 335.005 98.3892 361.782 113.312 376.697C128.474 391.851 155.885 399 210 399H254V398.997H270C323.246 398.997 350.657 392.078 365.968 377.399C381.088 362.902 388.553 336.773 388.979 284.994L389 280.059V186.307C389 176.403 383.937 167.181 375.572 161.86L255.572 85.5319Z"/></symbol>
+  <symbol id="i-photo" viewBox="0 0 480 480"><path d="M188 157C205.121 157 219 170.879 219 188C219 205.121 205.121 219 188 219C170.879 219 157 205.121 157 188C157 170.879 170.879 157 188 157Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M321 62C350.887 62 376.107 68.821 393.643 86.3564C411.178 103.892 418 129.112 418 159V321C418 350.888 411.178 376.108 393.643 393.644C376.107 411.179 350.887 418 321 418H159C129.113 418 103.893 411.179 86.3574 393.644C68.8216 376.108 62 350.888 62 321V159C62 129.112 68.8216 103.892 86.3574 86.3564C103.893 68.821 129.113 62 159 62H321ZM310.47 259.098C304.899 253.528 295.833 253.648 290.412 259.364L170.326 386H321C346.656 386 361.936 380.094 371.015 371.016C378.434 363.596 383.734 352.034 385.424 334.051L310.47 259.098ZM159 94C133.344 94 118.064 99.9062 108.985 108.984C99.9069 118.063 94 133.343 94 159V321C94 346.657 99.9069 361.937 108.985 371.016C113.853 375.883 120.504 379.838 129.581 382.46L267.192 237.345C285.002 218.564 314.796 218.168 333.098 236.47L386 289.372V159C386 133.343 380.093 118.063 371.015 108.984C361.936 99.9062 346.656 94 321 94H159Z"/></symbol>
+  <symbol id="i-person" viewBox="0 0 480 480"><path d="M268.731 273.986C293.966 273.986 315.506 275.058 333.531 278.391C351.632 281.737 367.256 287.548 379.792 297.801C405.255 318.624 412.398 353.004 413.754 399.519C413.826 401.991 413.923 404.852 413.782 407.345C413.628 410.076 413.15 413.656 411.337 417.401C408.916 422.403 404.87 426.568 399.941 429.135C396.215 431.074 392.609 431.646 389.894 431.875C387.391 432.086 384.498 432.072 381.964 432.072H98.0363C95.5023 432.072 92.6091 432.086 90.1067 431.875C87.3911 431.646 83.7855 431.074 80.0598 429.135C75.1304 426.569 71.0848 422.403 68.6633 417.401C66.8501 413.656 66.3724 410.076 66.218 407.345C66.0771 404.852 66.1742 401.991 66.2463 399.519C67.6031 353.004 74.7474 318.624 100.211 297.801C112.748 287.548 128.373 281.737 146.474 278.391C164.499 275.058 186.04 273.986 211.276 273.986H268.731ZM211.276 305.986C186.602 305.986 167.396 307.065 152.292 309.857C137.264 312.636 127.375 316.925 120.469 322.572C107.083 333.519 99.6241 354.056 98.2443 400.072H381.756C380.377 354.056 372.919 333.519 359.534 322.572C352.629 316.925 342.741 312.636 327.713 309.857C312.61 307.065 293.404 305.986 268.731 305.986H211.276ZM240 47.9277C295.781 47.9279 341 93.1471 341 148.928C341 204.708 295.781 249.928 240 249.928C184.219 249.928 139 204.708 139 148.928C139 93.147 184.219 47.9277 240 47.9277ZM240 79.9277C201.893 79.9277 171 110.82 171 148.928C171 187.035 201.893 217.928 240 217.928C278.108 217.928 309 187.035 309 148.928C309 110.82 278.108 79.9279 240 79.9277Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M325.187 72.0088C388.138 72.7914 430.998 123.107 431 182.863V182.872C430.986 212.082 419.416 240.728 403.345 266.49C387.19 292.386 365.753 316.547 344.226 337.12C322.655 357.735 300.602 375.12 282.852 387.424C273.991 393.566 266.021 398.568 259.578 402.108C256.378 403.867 253.322 405.393 250.58 406.527C248.536 407.373 244.42 409 240 409C235.586 409 231.474 407.382 229.416 406.532C226.667 405.398 223.606 403.871 220.4 402.112C213.947 398.571 205.97 393.568 197.104 387.426C179.344 375.121 157.289 357.735 135.721 337.119C114.195 316.545 92.7642 292.383 76.6191 266.486C60.5572 240.723 49 212.075 49 182.864L49.0078 181.454C49.6833 121.849 93.0383 72 156.305 72L157.703 72.0107C187.049 72.4491 214.764 86.6197 234.599 105.432C237.111 107.814 242.889 107.814 245.401 105.432C265.551 86.3211 293.833 72.0002 323.695 72L325.187 72.0088ZM323.695 104C303.833 104 283.081 113.799 267.423 128.649C252.565 142.741 227.435 142.741 212.577 128.649C197.163 114.031 176.814 104.307 157.236 104.007L156.305 104C112.152 104 81.0018 138.307 81 182.864L81.0059 183.848C81.264 204.524 89.6337 226.875 103.774 249.557C118.057 272.466 137.514 294.568 157.831 313.987C178.104 333.365 198.845 349.702 215.328 361.122C223.584 366.842 230.591 371.203 235.795 374.059C237.472 374.979 238.868 375.691 239.988 376.222C241.105 375.691 242.497 374.982 244.168 374.063C249.367 371.207 256.37 366.844 264.622 361.124C281.099 349.703 301.839 333.365 322.116 313.986C342.437 294.566 361.902 272.463 376.194 249.553C390.568 226.512 398.988 203.813 399 182.864L398.994 181.822C398.515 138.12 367.99 104.532 324.729 104.006L323.695 104Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M208.244 44.2543C221.802 18.8631 258.2 18.8632 271.758 44.2543L318.523 131.842L417.573 148.735C446.017 153.586 457.481 188.254 437.536 209.106L369.072 280.68L382.79 382.592C386.599 410.891 357.524 432.148 331.714 419.935L240.001 376.535L148.288 419.935C122.478 432.148 93.403 410.891 97.2118 382.592L110.929 280.68L42.4657 209.106C22.5206 188.254 33.9842 153.586 62.4286 148.735L161.477 131.842L208.244 44.2543ZM243.529 59.3266C242.023 56.5059 237.979 56.5059 236.473 59.3266L187.167 151.67C184.109 157.398 178.572 161.388 172.172 162.48L67.8085 180.279C64.6482 180.818 63.3741 184.67 65.5898 186.987L137.712 262.387C142.126 267.002 144.201 273.376 143.35 279.705L128.926 386.861C128.503 390.005 131.733 392.367 134.601 391.01L231.018 345.384L231.554 345.139C236.936 342.774 243.066 342.774 248.448 345.139L248.983 345.384L345.401 391.01C348.269 392.367 351.499 390.005 351.076 386.861L336.652 279.705C335.8 273.375 337.876 267.002 342.29 262.387L414.412 186.987C416.628 184.67 415.354 180.818 412.194 180.279L307.83 162.48C301.43 161.388 295.893 157.398 292.835 151.67L243.529 59.3266Z"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 480 480"><path d="M144.676 64.2207C150.629 57.6907 160.749 57.223 167.279 63.1758L348.279 228.176C351.605 231.207 353.5 235.5 353.5 240C353.5 244.359 351.721 248.524 348.587 251.536L348.279 251.824L167.279 416.824C160.749 422.777 150.629 422.309 144.676 415.779C138.723 409.249 139.191 399.129 145.721 393.176L313.75 240L145.721 86.8242C139.191 80.8711 138.723 70.7509 144.676 64.2207Z"/></symbol>
+</svg>
+<div class="banner"><b>WITH OHOUSE-DESIGN.md</b> — 로고 brand · chip selected = fg(black) · 1:1 ProductCard · 4-탭 BottomNav (house/search/photo/person)</div>
+<div class="frame">
+  <div class="topbar">
+    <div class="logo">오늘의집</div>
+    <button class="icon-btn" aria-label="검색"><svg class="icon"><use href="#i-magnifying-glass"/></svg></button>
+    <button class="icon-btn" aria-label="장바구니"><svg class="icon"><use href="#i-cart"/></svg><span class="badge">3</span></button>
+    <button class="icon-btn" aria-label="알림"><svg class="icon"><use href="#i-bell"/></svg></button>
+  </div>
+  <div class="chips-scroll">
+    <button class="chip selected">홈</button>
+    <button class="chip">가구</button>
+    <button class="chip">패브릭</button>
+    <button class="chip">조명</button>
+    <button class="chip">데코</button>
+    <button class="chip">가전</button>
+    <button class="chip">생활</button>
+  </div>
+  <div class="section">
+    <div class="section-head">
+      <h2 class="section-title">오늘의 추천</h2>
+      <span class="section-more">더보기 <svg class="icon"><use href="#i-chevron-right"/></svg></span>
+    </div>
+    <div class="grid">
+      <div class="pcard">
+        <div class="pcard-img" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop&auto=format&q=80')">
+          <div class="pcard-fav"><svg class="icon"><use href="#i-heart"/></svg></div>
+        </div>
+        <div class="pcard-brand">자취살림</div>
+        <div class="pcard-name">모듈 패브릭 4인 소파</div>
+        <div class="pcard-price-row"><span class="pcard-discount">32%</span><span class="pcard-price">1,290,000원</span></div>
+        <div class="pcard-meta"><span class="star"><svg class="icon"><use href="#i-star"/></svg></span> 4.8 (1,243)</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-img" style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?w=400&h=400&fit=crop&auto=format&q=80')">
+          <div class="pcard-fav"><svg class="icon"><use href="#i-heart"/></svg></div>
+        </div>
+        <div class="pcard-brand">우드앤리빙</div>
+        <div class="pcard-name">월넛 원목 4인 식탁</div>
+        <div class="pcard-price-row"><span class="pcard-price">890,000원</span></div>
+        <div class="pcard-meta"><span class="star"><svg class="icon"><use href="#i-star"/></svg></span> 4.9 (820)</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-img" style="background-image:url('https://images.unsplash.com/photo-1540518614846-7eded433c457?w=400&h=400&fit=crop&auto=format&q=80')">
+          <div class="pcard-fav"><svg class="icon"><use href="#i-heart"/></svg></div>
+        </div>
+        <div class="pcard-brand">코지홈</div>
+        <div class="pcard-name">코튼 슈퍼싱글 침대 프레임</div>
+        <div class="pcard-price-row"><span class="pcard-discount">15%</span><span class="pcard-price">459,000원</span></div>
+        <div class="pcard-meta"><span class="star"><svg class="icon"><use href="#i-star"/></svg></span> 4.7 (512)</div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-img" style="background-image:url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&h=400&fit=crop&auto=format&q=80')">
+          <div class="pcard-fav"><svg class="icon"><use href="#i-heart"/></svg></div>
+        </div>
+        <div class="pcard-brand">데일리룸</div>
+        <div class="pcard-name">미드센추리 1인 라운지 체어</div>
+        <div class="pcard-price-row"><span class="pcard-discount">20%</span><span class="pcard-price">329,000원</span></div>
+        <div class="pcard-meta"><span class="star"><svg class="icon"><use href="#i-star"/></svg></span> 4.6 (302)</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottomnav">
+    <button class="nav-item active"><svg class="icon"><use href="#i-house-filled"/></svg><span class="nav-label">홈</span></button>
+    <button class="nav-item"><svg class="icon"><use href="#i-magnifying-glass"/></svg><span class="nav-label">검색</span></button>
+    <button class="nav-item"><svg class="icon"><use href="#i-photo"/></svg><span class="nav-label">집들이</span></button>
+    <button class="nav-item"><svg class="icon"><use href="#i-person"/></svg><span class="nav-label">마이</span></button>
+  </div>
+</div>
+</body></html>

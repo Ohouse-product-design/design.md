@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITHOUT (Dark) — 상품 상세</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,sans-serif; background:#000; color:#f3f4f6; }
+  .frame { max-width:375px; margin:24px auto; background:#1f2937; min-height:90vh; position:relative; padding-bottom:80px; overflow:hidden; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.5); /* ⛔ 다크에서 shadow 잔존 */ }
+  .topbar { height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid #374151; }
+  .icon-btn { padding:8px; border:none; background:transparent; color:#d1d5db; cursor:pointer; }
+  .icon-btn [data-lucide] { width:20px; height:20px; }
+  .gallery { aspect-ratio:1/1; background:#374151; position:relative; display:flex; align-items:center; justify-content:center; }
+  .gallery::after { content:'1/8'; position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.6); color:#fff; padding:4px 10px; border-radius:4px; font-size:12px; }
+  .sofa { width:70%; height:50%; background:#6b7280; border-radius:8px; }
+  .body { padding:16px; }
+  .brand-row { margin-bottom:8px; }
+  .brand-name { font-size:14px; color:#9ca3af; text-transform:uppercase; letter-spacing:.5px; }
+  .title { font-size:20px; font-weight:700; line-height:1.4; color:#f9fafb; margin-bottom:12px; }
+  .reviews { display:flex; align-items:center; gap:6px; font-size:14px; color:#9ca3af; margin-bottom:16px; }
+  .star { color:#fbbf24; }
+  .price-row { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
+  .discount { font-size:18px; font-weight:700; color:#f87171; }
+  .price { font-size:22px; font-weight:700; color:#f9fafb; }
+  .original { font-size:14px; color:#6b7280; text-decoration:line-through; margin-bottom:24px; }
+  .section-title { font-size:16px; font-weight:600; color:#f9fafb; margin-bottom:12px; margin-top:24px; }
+  .select { width:100%; height:44px; padding:0 12px; border:1px solid #4b5563; border-radius:6px; font-family:inherit; font-size:14px; background:#374151; color:#f9fafb; }
+  .bottombar { position:absolute; bottom:0; left:0; right:0; background:#1f2937; padding:12px 16px; display:flex; gap:12px; border-top:1px solid #374151; }
+  .heart-btn { width:44px; height:44px; border:1px solid #4b5563; border-radius:6px; background:#374151; color:#9ca3af; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .heart-btn [data-lucide] { width:20px; height:20px; }
+  .cta { flex:1; height:44px; background:#3b82f6; color:#fff; border:none; border-radius:6px; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#111827; color:#fff; font-size:12px; border-radius:6px; }
+  .banner b { color:#fbbf24; }
+  .warn { color:#fca5a5; }
+</style></head>
+<body>
+<div class="banner"><b>WITHOUT design system (Dark)</b> — gray-800 bg · blue-500 그대로 · <span class="warn">shadow 잔존(다크에서 어색)</span> · 브랜드 일관성 X</div>
+<div class="frame">
+  <div class="topbar">
+    <button class="icon-btn" aria-label="Back"><i data-lucide="chevron-left"></i></button>
+    <div style="display:flex;gap:4px;">
+      <button class="icon-btn" aria-label="Cart"><i data-lucide="shopping-bag"></i></button>
+      <button class="icon-btn" aria-label="Share"><i data-lucide="share-2"></i></button>
+    </div>
+  </div>
+  <div class="gallery"><div class="sofa"></div></div>
+  <div class="body">
+    <div class="brand-row"><span class="brand-name">자취살림</span></div>
+    <h1 class="title">모듈 패브릭 4인 소파 (3컬러 · 무료배송)</h1>
+    <div class="reviews"><span class="star">★★★★★</span> 4.8 (1,243 reviews)</div>
+    <div class="price-row"><span class="discount">-32%</span><span class="price">₩1,290,000</span></div>
+    <div class="original">₩1,890,000</div>
+    <div class="section-title">Color</div>
+    <select class="select"><option>베이지 (선택됨)</option><option>차콜</option><option>그레이</option></select>
+  </div>
+  <div class="bottombar">
+    <button class="heart-btn" aria-label="Favorite"><i data-lucide="heart"></i></button>
+    <button class="cta">Add to Cart</button>
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons({attrs:{'stroke-width':2}});</script>
+</body></html>

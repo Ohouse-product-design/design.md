@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>WITHOUT design system — 상품 상세</title>
+<style>
+  /* === Generic AI defaults — no design system === */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+  }
+  .frame {
+    max-width: 375px;
+    margin: 24px auto;
+    background: #ffffff;
+    min-height: 90vh;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 80px;
+    border-radius: 8px;
+  }
+  /* Top bar */
+  .topbar {
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .icon-btn {
+    padding: 8px;
+    border-radius: 6px;
+    border: none; background: transparent;
+    color: #374151;
+    cursor: pointer;
+  }
+  .icon-btn svg { width: 20px; height: 20px; }
+  /* Gallery */
+  .gallery {
+    aspect-ratio: 1/1;
+    background: #e5e7eb;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery::after {
+    content: '1/8';
+    position: absolute; bottom: 12px; right: 12px;
+    background: rgba(0,0,0,0.6); color: #ffffff;
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 12px; font-weight: 500;
+  }
+  .sofa {
+    width: 70%; height: 50%;
+    background: #9ca3af;
+    border-radius: 8px;
+  }
+  /* Body */
+  .body { padding: 16px; }
+  .brand-row { margin-bottom: 8px; }
+  .brand-name {
+    font-size: 14px; font-weight: 400;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .title {
+    font-size: 20px; font-weight: 700;
+    line-height: 1.4;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+  .reviews {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 16px;
+  }
+  .star { color: #f59e0b; }
+  .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .discount {
+    font-size: 18px; font-weight: 700;
+    color: #ef4444;
+  }
+  .price {
+    font-size: 22px; font-weight: 700;
+    color: #111827;
+  }
+  .original {
+    font-size: 14px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    margin-bottom: 24px;
+  }
+  /* Section */
+  .section-title {
+    font-size: 16px; font-weight: 600;
+    color: #111827;
+    margin-bottom: 12px; margin-top: 24px;
+  }
+  /* Option chips → 일반 select 박스 형태 */
+  .select {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #ffffff;
+    color: #111827;
+    margin-bottom: 16px;
+  }
+  /* Description */
+  .desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    margin-bottom: 24px;
+  }
+  /* Delivery */
+  .delivery-row {
+    display: flex; gap: 8px;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 24px;
+  }
+  .delivery-row strong { color: #111827; font-weight: 600; }
+  .delivery-row span { color: #6b7280; margin-left: 8px; }
+  /* Reviews section */
+  .review-card {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 16px; margin-top: 16px;
+  }
+  .review-author {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 8px;
+  }
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #d1d5db;
+  }
+  .author-name { font-size: 14px; font-weight: 600; color: #111827; }
+  .review-meta { font-size: 12px; color: #9ca3af; }
+  .review-text { font-size: 14px; line-height: 1.6; color: #374151; }
+  /* Bottom CTA */
+  .bottombar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: #ffffff;
+    padding: 12px 16px;
+    display: flex; gap: 12px;
+    border-top: 1px solid #e5e7eb;
+  }
+  .heart-btn {
+    width: 44px; height: 44px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #6b7280;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .heart-btn svg { width: 20px; height: 20px; }
+  .cta {
+    flex: 1;
+    height: 44px;
+    background: #3b82f6;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+  }
+  .cta:hover { background: #2563eb; }
+  /* Banner */
+  .banner {
+    max-width: 375px; margin: 0 auto 12px;
+    padding: 12px 16px;
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 6px;
+    font-family: -apple-system, sans-serif;
+  }
+  .banner b { color: #fbbf24; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <b>WITHOUT design system</b> — system font · CTA blue-500 #3b82f6 · radius 6 · 일반 shadow · 표준 letter-spacing
+</div>
+<div class="frame">
+  <div class="topbar">
+    <button class="icon-btn" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div style="display:flex;gap:4px;">
+      <button class="icon-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l3 6h6l3-6M3 6h18l-2 13H5L3 6z"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Share">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="sofa"></div>
+  </div>
+
+  <div class="body">
+    <div class="brand-row"><span class="brand-name">자취살림</span></div>
+    <h1 class="title">모듈 패브릭 4인 소파 (3컬러 · 무료배송)</h1>
+    <div class="reviews">
+      <span class="star">★★★★★</span> 4.8 (1,243 reviews)
+    </div>
+    <div class="price-row">
+      <span class="discount">-32%</span>
+      <span class="price">₩1,290,000</span>
+    </div>
+    <div class="original">₩1,890,000</div>
+
+    <div class="section-title">Color</div>
+    <select class="select">
+      <option>베이지 (선택됨)</option>
+      <option>차콜</option>
+      <option>그레이</option>
+    </select>
+
+    <div class="section-title">Description</div>
+    <p class="desc">
+      모듈식 구조로 거실 크기에 맞게 자유롭게 배치할 수 있는 4인용 패브릭 소파.
+      쿠션 안쪽은 고탄성 우레탄, 커버는 분리 세탁 가능.
+    </p>
+
+    <div class="delivery-row">
+      <strong>Free shipping</strong>
+      <span>도착 4/29 (모레)</span>
+    </div>
+
+    <div class="section-title">Reviews</div>
+    <div class="review-card">
+      <div class="review-author">
+        <div class="avatar"></div>
+        <div>
+          <div class="author-name">새벽감성</div>
+          <div class="review-meta">2026.04.22 · 베이지</div>
+        </div>
+      </div>
+      <div class="review-text">
+        조립 30분 안에 끝났고 패브릭 결이 사진보다 더 따뜻합니다.
+        가족 다섯 명이 앉아도 푹 꺼지지 않아요.
+      </div>
+    </div>
+  </div>
+
+  <div class="bottombar">
+    <button class="heart-btn" aria-label="Favorite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    </button>
+    <button class="cta">Add to Cart</button>
+  </div>
+</div>
+</body>
+</html>
