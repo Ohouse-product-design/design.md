@@ -44,13 +44,64 @@
 <div class="wrap-narrow">
   <span class="page-eyebrow">CHANGELOG</span>
   <h1 class="page-h1">버전 이력</h1>
-  <p class="page-lead">OHOUSE-DESIGN.md의 모든 버전과 주요 변경사항. 현재 버전은 <b>v0.3.0</b>이며, 전사 공유 시작 단계입니다.</p>
+  <p class="page-lead">OHOUSE-DESIGN.md의 모든 버전과 주요 변경사항. 현재 버전은 <b>v0.4.1</b>이며, 전사 공유 시작 단계입니다. 단일 진실 원본 원칙 — 버전 스냅샷 파일을 만들지 않고 <code>HISTORY.md</code> + git tag로 관리.</p>
 
   <div class="versions">
-    <!-- v0.3.0 -->
+    <!-- v0.4.1 -->
     <div class="ver current">
       <div class="ver-head">
-        <div class="ver-tag"><span class="num">v0.3.0</span><span class="pill">CURRENT</span></div>
+        <div class="ver-tag"><span class="num">v0.4.1</span><span class="pill">CURRENT</span></div>
+        <div class="ver-date">2026-04-29 · 본체 ~44KB + ICONS.md ~214KB</div>
+      </div>
+      <div class="ver-summary">
+        <b>아이콘 sprite 분리</b> — 본문에 있던 ~214KB sprite 데이터를 <code>ICONS.md</code>로 외부화. 본체는 슬림하게(~44KB), AI 에이전트 컨텍스트 입력 시 두 파일을 함께 전달.
+      </div>
+      <div class="ver-changes">
+        <h4>Added</h4>
+        <ul>
+          <li><b>ICONS.md</b> 신규 — 245개 아이콘 sprite + 사용법 + 페어 룰 (~214KB)</li>
+          <li>다운로드 영역에 ICONS.md 별도 버튼 추가</li>
+        </ul>
+        <h4>Changed</h4>
+        <ul class="fix">
+          <li class="fix">OHOUSE-DESIGN.md §13 본문 → ICONS.md 사용법 안내로 축약</li>
+          <li class="fix">§7.11 인라인 Sprite 항목 → ICONS.md 참조로 업데이트</li>
+          <li class="fix">파일 크기: 단일 ~255KB → 본체 ~44KB + ICONS.md ~214KB (분리 관리)</li>
+          <li class="fix">zip 압축본에 OHOUSE-DESIGN.md / HISTORY.md / ICONS.md 3개 모두 포함</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v0.4.0 -->
+    <div class="ver">
+      <div class="ver-head">
+        <div class="ver-tag"><span class="num">v0.4.0</span></div>
+        <div class="ver-date">2026-04-29 · ~255KB</div>
+      </div>
+      <div class="ver-summary">
+        <b>245 아이콘 인라인 임베드</b> — 본 파일에 실제 SVG path 데이터 통째로 박아 외부 fetch / npm install 없이 사용 가능. 파일 관리 방식도 단일화 (스냅샷 폐기, HISTORY.md로 분리).
+      </div>
+      <div class="ver-changes">
+        <h4>Added</h4>
+        <ul>
+          <li><b>§13 Icon Sprite Library 부록</b> — 245개 OHOUSE 아이콘의 실제 SVG path를 <code>regular</code> weight로 인라인 (좌표 1자리 정밀도, ~211KB)</li>
+          <li><b>§7.11 인라인 Sprite 사용법</b> — <code>&lt;use href="#i-&lt;name&gt;"/&gt;</code> 패턴</li>
+          <li><b>HISTORY.md</b> 신규 — 버전 이력 별도 관리</li>
+          <li>다운로드 버튼 .zip 옵션 추가 (브라우저 SafeBrowsing 경고 회피)</li>
+        </ul>
+        <h4>Changed</h4>
+        <ul class="fix">
+          <li class="fix">파일 크기: ~30KB → ~255KB (아이콘 sprite 인라인)</li>
+          <li class="fix">§12 변경 이력 → HISTORY.md 외부화 (본 파일은 항상 단일 최신본)</li>
+          <li class="fix">버전 스냅샷 파일(<code>OHOUSE-DESIGN-v0.x.0.md</code>) 폐기 — git log/tag로 과거 조회</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v0.3.0 -->
+    <div class="ver">
+      <div class="ver-head">
+        <div class="ver-tag"><span class="num">v0.3.0</span></div>
         <div class="ver-date">2026-04-28 · ~42KB</div>
       </div>
       <div class="ver-summary">

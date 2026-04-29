@@ -41,15 +41,15 @@
 
 <div class="wrap">
   <span class="page-eyebrow">COMPONENTS</span>
-  <h1 class="page-h1">컴포넌트 41종</h1>
-  <p class="page-lead">ODS 컴포넌트 32종 + 합성 패턴 컴포넌트 8종 + 트랙(비ODS) 1종. 모든 컴포넌트는 <b>포커스 링 절대 제거 금지</b>, <b>모바일 터치 타깃 44×44pt 이상</b>.</p>
+  <h1 class="page-h1">컴포넌트 43종</h1>
+  <p class="page-lead">ODS 컴포넌트 34종 + 합성 패턴 컴포넌트 8종 + 트랙(비ODS) 1종. 모든 컴포넌트는 <b>포커스 링 절대 제거 금지</b>, <b>모바일 터치 타깃 44×44pt 이상</b>.</p>
 
   <div class="intro-box">
     <strong>ODS Sourcing Rule</strong> — Figma 컴포넌트 사용 시: ① ODS에 있나? → ODS import. ② ODS에 없으면 BDS 마이그? → <code>@bds-component</code>. ③ 트랙 고유 변형? → 트랙 분리 + <code>@non-ods</code>. ④ 새 패턴이면 <code>patterns/</code> 등록.
   </div>
 
   <div class="sect">
-    <div class="sect-head"><h2>ODS 컴포넌트</h2><span class="count">32 components</span></div>
+    <div class="sect-head"><h2>ODS 컴포넌트</h2><span class="count">34 components</span></div>
     <div class="cmp-grid">
       <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Avatar</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">사용자를 대표하는 이미지. 시각적 식별이 필요할 때 사용. 이미지 없으면 placeholder 아이콘 표시.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">18 · 24 · 30 · 40 · 80</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">border · borderRadius · placeholderIcon.fill</span></div></div></div>
       <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">BottomSheet</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">화면 하단에서 올라오는 시트. 페이지 이동 없이 주요 정보 전달 또는 사용자 선택 유도. Radix Dialog 기반 compound component.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">backdrop · surface · handle</span></div></div></div>
@@ -83,6 +83,8 @@
       <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">TextButton</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">텍스트 라벨 중심의 경량 액션 버튼. 본문 내 인라인 액션, 카드 하단 '더보기', 폼 내 '초기화' 등 weak emphasis에 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">variants</span><span class="v">primary · neutral-500 · neutral-600</span></div><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">14 · 16</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">variantToTheme · disabled · sizeToFont</span></div></div></div>
       <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Thumbnail</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">고정 비율 단일 이미지 썸네일. ResizeImage(오하우스 CDN 리사이즈) 래핑 + dim 오버레이 + accessory 슬롯 (ScrapButton 등).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">borderRadius · dimOverlay · zIndex</span></div></div></div>
       <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Tooltip</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">트리거 요소에 대한 짧은 보조 설명을 띄우는 비모달 오버레이. 키보드 포커스/마우스 호버로 보이고 Esc로 닫힌다. Radix Popover 기반 compound.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · label · arrow</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Card</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">범용 카드 컨테이너 (compound). Card.Product/Card.Image/Card.Title/Card.Price 등 슬롯 기반 조합. ProductCard·콘텐츠 카드 등 다양한 카드 패턴의 베이스.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">subcomp</span><span class="v">Card.Product · Card.Image · Card.Title · Card.Price · Card.Review · Card.Benefit</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">borderRadius · padding · gap</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">ContentTooltip</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">콘텐츠 영역에 인라인으로 표시되는 툴팁. 일반 Tooltip보다 더 풍부한 콘텐츠(제목·설명·이미지)를 담을 수 있음. close 버튼 옵션.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · arrow · close</span></div><div class="cmp-meta-row"><span class="k">related</span><span class="v">Tooltip (단순 라벨용)</span></div></div></div>
     </div>
   </div>
 
