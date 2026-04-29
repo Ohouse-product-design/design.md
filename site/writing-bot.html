@@ -67,8 +67,17 @@
 .constraint .k { font-size:11px; color:var(--fg-muted); margin-bottom:4px; font-weight:500; letter-spacing:0.2px; text-transform:uppercase; }
 .constraint .v { font-size:13px; color:var(--fg); font-weight:500; line-height:1.5; }
 
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:24px; align-items:center; }
+.hero-actions .btn-primary { display:inline-flex; align-items:center; gap:8px; padding:12px 20px; background:var(--fg); color:#fff; border-radius:10px; font-size:14px; font-weight:600; transition:background .15s, transform .15s; }
+.hero-actions .btn-primary:hover { background:#262626; transform:translateY(-1px); }
+.hero-actions .btn-primary svg { width:16px; height:16px; fill:currentColor; }
+.hero-actions .btn-secondary { display:inline-flex; align-items:center; gap:6px; padding:12px 16px; color:var(--fg); border:1px solid var(--border-strong); border-radius:10px; font-size:13px; font-weight:600; background:var(--bg); transition:background .15s; }
+.hero-actions .btn-secondary:hover { background:var(--bg-tint); }
+.hero-actions .meta { font-size:12px; color:var(--fg-muted); margin-left:4px; }
+
 @media (max-width:680px) {
   .hero-card { width:100%; }
+  .hero-actions .meta { width:100%; margin:0; }
 }
 </style></head>
 <body>
@@ -94,6 +103,14 @@
     <div class="hero-text">
       <h1 class="page-h1">오늘의집 UX Writing을<br>자동화하는 라이팅봇</h1>
       <p class="page-lead"><b>오늘의집 UX Writing 가이드를 학습한 Claude Code Skill이에요.</b> 앱푸시·배너·UI 문구·기획전·layer PDP 등 라이팅 요청을 키워드로 자동 라우팅하고, 톤앤매너·글자수·금지표현 같은 규칙을 자동으로 검증해 일관된 카피를 만들어줘요.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="writing-bot.zip" download>
+          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>
+          writing-bot.zip 다운로드
+        </a>
+        <a class="btn-secondary" href="#install">설치 가이드 ↓</a>
+        <span class="meta">~9KB · SKILL.md + evals/</span>
+      </div>
     </div>
     <div class="hero-card">
       <div class="hero-card-title">Quick start</div>
@@ -230,7 +247,7 @@
   </div>
 
   <!-- 05 Download + Install -->
-  <div class="sect">
+  <div class="sect" id="install">
     <div class="sect-head"><h2>05 · 다운로드 + 설치</h2></div>
     <p class="desc">압축 파일을 받아 Claude Code 스킬 디렉토리에 풀면 바로 사용할 수 있어요. 별도 설치 명령이나 의존성은 없습니다.</p>
 
