@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>비교 — 다크 모드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Pretendard,sans-serif; letter-spacing:-0.3px; background:#0f1115; color:#e5e7eb; padding:24px; min-height:100vh; }
+.header { max-width:1200px; margin:0 auto 24px; }
+.back { display:inline-block; color:#9ca3af; font-size:13px; text-decoration:none; margin-bottom:16px; }
+h1 { font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.sub { font-size:14px; color:#9ca3af; margin-bottom:16px; }
+.meta { display:inline-flex; gap:12px; padding:8px 12px; background:#1f2937; border-radius:8px; font-size:12px; color:#d1d5db; }
+.meta b { color:#fbbf24; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.col { background:#1f2937; border-radius:12px; overflow:hidden; border:1px solid #374151; }
+.col-head { padding:16px 20px; border-bottom:1px solid #374151; background:#111827; }
+.col-head h2 { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+.col-head p { font-size:12px; color:#9ca3af; }
+.pill { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:500; }
+.pill.with { background:#00a1ff; color:#fff; } .pill.without { background:#6b7280; color:#fff; }
+iframe { width:100%; height:800px; border:none; display:block; background:#000; }
+.diff { max-width:1200px; margin:32px auto 0; background:#1f2937; border-radius:12px; padding:24px; border:1px solid #374151; }
+.diff h3 { font-size:16px; font-weight:600; margin-bottom:16px; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid #374151; }
+th { color:#9ca3af; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+td.cat { color:#9ca3af; font-weight:500; }
+td code { background:#111827; padding:2px 6px; border-radius:4px; font-size:12px; color:#fbbf24; }
+.with-cell { color:#7dd3fc; } .without-cell { color:#fca5a5; }
+</style></head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">← 시나리오 목록</a>
+  <h1>시나리오 4 — 다크 모드 (자동 토큰 매핑)</h1>
+  <p class="sub">"다크에서 그림자 사용 안 함" 원칙. Light 토큰이 자동 다크로 매핑되는가.</p>
+  <div class="meta"><b>다크 토큰 자동 매핑 + 그림자 X 룰</b> · 2026-04-27</div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="col-head"><h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.2</span></h2><p>다크 토큰 자동 매핑 · shadow 제거 → border로 elevation</p></div>
+    <iframe src="04-dark-mode-with.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head"><h2>WITHOUT design system <span class="pill without">baseline</span></h2><p>일반 다크 (gray-800) · shadow 잔존 · brand 깨짐</p></div>
+    <iframe src="04-dark-mode-without.html"></iframe>
+  </div>
+</div>
+<div class="diff">
+  <h3>핵심 차이 — 다크 모드 처리</h3>
+  <table>
+    <thead><tr><th>항목</th><th>WITH</th><th>WITHOUT</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">기본 배경</td><td class="with-cell"><code>#0a0a0a</code> (gray-950, near-black)</td><td class="without-cell"><code>#1f2937</code> (gray-800, 너무 밝음)</td></tr>
+      <tr><td class="cat">기본 텍스트</td><td class="with-cell"><code>#f5f5f5</code> (가독성 OK)</td><td class="without-cell"><code>#f9fafb</code> (유사하나 brand 일관 X)</td></tr>
+      <tr><td class="cat">브랜드 색</td><td class="with-cell"><code>#00a1ff</code> 라이트와 동일 유지</td><td class="without-cell"><code>#3b82f6</code> Tailwind blue 그대로</td></tr>
+      <tr><td class="cat">Elevation 표현</td><td class="with-cell"><b>shadow 제거</b>, border 1px solid (Figma 정책 준수)</td><td class="without-cell">shadow 그대로 (다크에서 어색, 잘 안 보임)</td></tr>
+      <tr><td class="cat">accent-red</td><td class="with-cell"><code>#fd3d4a</code> 라이트와 동일 (시인성 OK)</td><td class="without-cell"><code>#f87171</code> red-300 (브랜드 X)</td></tr>
+      <tr><td class="cat">divider</td><td class="with-cell"><code>backgroundWeak</code> #141414 (한 단계 어두운 띠)</td><td class="without-cell">없음/약함</td></tr>
+      <tr><td class="cat">자동성</td><td class="with-cell">Light hex만 입력 → 다크 hex 자동 매핑</td><td class="without-cell">다크용 색 별도 지정 필요 (수동 분기)</td></tr>
+      <tr><td class="cat">갤러리 비율</td><td class="with-cell">3:4 (콘텐츠 카드 원칙 유지)</td><td class="without-cell">1:1 (제너릭)</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

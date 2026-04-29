@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>Components — OHOUSE-DESIGN.md</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.cmp-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px; }
+.cmp-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:box-shadow .2s, transform .2s; display:flex; flex-direction:column; }
+.cmp-card:hover { box-shadow:var(--shadow-md); transform:translateY(-1px); }
+.cmp-card.non-ods { border-color:#a855f7; }
+.cmp-head { padding:14px 18px; border-bottom:1px solid var(--border); background:var(--bg-soft); display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.cmp-name { font-size:14px; font-weight:600; color:var(--fg); font-family:'SF Mono','Monaco',ui-monospace,monospace; letter-spacing:-0.2px; }
+.cmp-tag { font-size:10px; padding:2px 7px; border-radius:9999px; font-weight:600; letter-spacing:0.3px; text-transform:uppercase; }
+.cmp-tag.ods { background:var(--brand-blue); color:#fff; }
+.cmp-tag.synth { background:var(--bg-tint); color:var(--fg-muted); border:1px solid var(--border); }
+.cmp-tag.non { background:#a855f7; color:#fff; }
+.cmp-desc { padding:14px 18px; font-size:12.5px; color:var(--fg-muted); line-height:1.6; flex:1; }
+.cmp-meta { padding:12px 18px; border-top:1px solid var(--border); background:var(--bg-soft); }
+.cmp-meta-row { font-size:11px; color:var(--fg-muted); line-height:1.6; padding:3px 0; display:flex; gap:8px; }
+.cmp-meta-row .k { color:var(--fg-subtle); min-width:64px; font-weight:500; }
+.cmp-meta-row .v { color:var(--fg); font-family:'SF Mono','Monaco',ui-monospace,monospace; font-size:11px; flex:1; word-break:break-word; }
+.cmp-meta-row .v code { font-size:10.5px; padding:1px 4px; }
+.intro-box { padding:18px 22px; background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius-lg); margin-bottom:24px; font-size:13px; line-height:1.6; color:var(--fg); }
+.intro-box strong { font-weight:600; }
+.intro-box code { font-size:11.5px; }
+</style></head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand"><img class="brand-mark" src="ohouse-3d.png" alt="OHOUSE"><span class="brand-name"><code>OHOUSE-DESIGN.md</code></span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">시나리오</a>
+      <a href="components.html" class="nav-link active">ODS</a>
+      <a href="https://github.com/bucketplace/design-assets" class="nav-link" target="_blank">아이콘</a>
+      <a href="../OHOUSE-DESIGN.md" download class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <span class="page-eyebrow">COMPONENTS</span>
+  <h1 class="page-h1">컴포넌트 41종</h1>
+  <p class="page-lead">ODS 컴포넌트 32종 + 합성 패턴 컴포넌트 8종 + 트랙(비ODS) 1종. 모든 컴포넌트는 <b>포커스 링 절대 제거 금지</b>, <b>모바일 터치 타깃 44×44pt 이상</b>.</p>
+
+  <div class="intro-box">
+    <strong>ODS Sourcing Rule</strong> — Figma 컴포넌트 사용 시: ① ODS에 있나? → ODS import. ② ODS에 없으면 BDS 마이그? → <code>@bds-component</code>. ③ 트랙 고유 변형? → 트랙 분리 + <code>@non-ods</code>. ④ 새 패턴이면 <code>patterns/</code> 등록.
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>ODS 컴포넌트</h2><span class="count">32 components</span></div>
+    <div class="cmp-grid">
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Avatar</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">사용자를 대표하는 이미지. 시각적 식별이 필요할 때 사용. 이미지 없으면 placeholder 아이콘 표시.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">18 · 24 · 30 · 40 · 80</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">border · borderRadius · placeholderIcon.fill</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">BottomSheet</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">화면 하단에서 올라오는 시트. 페이지 이동 없이 주요 정보 전달 또는 사용자 선택 유도. Radix Dialog 기반 compound component.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">backdrop · surface · handle</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">BoxButton</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">슬롯 기반 박스 형태 버튼. Label/Icon/커스텀 요소를 자유롭게 조합. 페이지 이동은 Link 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">variants</span><span class="v">normal · subtle · solid · outlined · brand-solid · brand-outlined</span></div><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">extra-large · large · medium · small · extra-small</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">variantToSemantic · disabled</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Calendar</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">날짜 선택 및 범위 선택을 지원하는 캘린더 컴파운드 컴포넌트. Root/Header/Title/PrevButton/NextButton/WeekDays/Body/Day/HoverDay 서브컴포넌트로 구성. `@h6s/calendar` 엔진 + Radix Primitive 기반.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">day · range · weekday</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">CautionBox</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">경고 또는 안내 메시지를 강조해 인라인으로 고정 표시하는 박스. 아이콘(Exclamation Triangle Filled) + 제목(선택) + 설명(필수) + 버튼(선택)으로 구성. 즉시 사라지는 알림(Snackbar)이나 흐름을 막는 모달(Dialog)과 달리 화면 내에 계속 붙어 있는 주의 메시지.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · icon · title</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Checkbox</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">Radix UI Checkbox 기반의 Compound 컴포넌트. 단일 체크 또는 CheckboxGroup으로 묶어 다중 선택. indeterminate 상태(부분 선택)를 지원.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">indicator · icon · label</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Chip</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">필터·선택·태그 표시용 작은 버튼형 컴포넌트. 슬롯 기반 compound (Slot/Label/Icon).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">borderRadius · borderWidth · typography</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">CircleBadge</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">알림·메시지·상품 등의 '개수'를 원형(pill) 뱃지로 표시. 99 초과 시 '99+'로 자동 축약. 인접한 아이콘/항목이 몇 개 상태에 있는지 정량 전달.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">16 · 20</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">background · color · borderRadius</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Dialog</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">모달 다이얼로그. Radix Dialog 기반 compound (Root/Portal/Overlay/Content/Header/Title/Body/Description/Footer/Close).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">Content.bg · Content.borderRadius · Content.paddingTop</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Divider</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">콘텐츠 영역을 구분하는 수평 구분선. height=1(항목 간) 또는 12(섹션 간) 두 단계로만 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">heightToBackground · layout</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">DotBadge</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">4×4 픽셀 점 하나로 '새 콘텐츠 있음' 또는 '업데이트 있음'을 최소 표기하는 상태(status) 인디케이터 뱃지. 숫자·텍스트 없이 존재 자체로 알림.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">background · width · height</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Dropdown</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">폼에서 한 개의 값을 선택할 때 쓰는 컨트롤. apps-web ODS는 네이티브 `<select>` 요소를 감싼 compound component — OS/브라우저가 옵션 리스트 UI를 그리고 키보드·a11y·모바일 휠픽커를 자동 제공한다.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">control.background · control.border · control.color</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Empty</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">데이터가 없거나 조건에 맞는 결과가 없을 때 사용자에게 상황을 안내하는 빈 상태(empty state) 컴포넌트. Title + Description + Action 슬롯을 조합해 6 variant 구성.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · title · description</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">FloatingBottomSheet</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">화면 하단에 떠 있는(floating) 시트. Dim 없이 기존 컨텐츠 위에 얹혀 snapPoints 사이를 드래그로 이동. BottomSheet과 같은 Radix Dialog compound 구조를 공유하되 modal이 아닌 floating 모드 (최상위 snap에서만 Overlay를 시각적으로 덮는 패턴).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">surface · handle · title.color</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">GridThumbnail</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">TBD — thumbnail/GridThumbnail 기반</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">spec</span><span class="v">component.json 참조</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">IconButton</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">아이콘 단독 버튼 — 툴바, 카드 내 반응(좋아요, 댓글, 스크랩), 보조 액션에 사용. value 숫자와 조합해 카운트형(좋아요 수, 댓글 수)으로도 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">defaultColor · activeColor · borderBox</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">IndicatorDots</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">캐러셀·페이지네이션의 현재 위치를 점(dot) 형태로 표시하는 인디케이터. 어두운 배경 위 오버레이용. 최대 5개 dot를 시각화하고 그 이상은 작은 점으로 축소.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">dot · size</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">IndicatorNumber</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">캐러셀의 현재/전체 페이지를 '{current}/{max}' 숫자 형식으로 표시하는 인디케이터. 어두운 반투명 배경의 pill. 페이지 수가 많아 dot가 비실용적일 때 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">root · label · icon</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Input</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">사용자에게 짧은 텍스트나 숫자 등의 정보를 한 줄 입력받는 단일 라인 입력 필드. Title/Placeholder/Hint/우측 아이콘/텍스트 버튼/글자 수 카운터를 조합하여 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">32 · 40</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · title · input</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">PillBadge</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">탭·네비게이션 항목에서 NEW/HOT/SALE 같은 짧은 상태 텍스트를 알약(pill) 형태로 강조하는 장식 뱃지.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">16 · 20</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">background · color · borderRadius</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">ProductCard</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">상품을 카드 형태로 노출하는 compound 컴포넌트. Image/Title/Price/Review/DeliveryInfo/DeliveryOption/Benefit/Scrap 슬롯을 조합해서 리스트·그리드·검색 결과 등에 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">slotToSemantic · soldOutOpacity</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">RadioGroup</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">상호배타적 옵션 중 하나를 선택하는 라디오 버튼 그룹. Radix UI 기반 compound 컴포넌트. RadioGroup(그룹) + Radio(개별 아이템) + Indicator/IndicatorIcon(시각) + Label(텍스트) 슬롯 조합.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">indicator · indicatorIcon · label</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">ScrapButton</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">콘텐츠를 스크랩(찜)하는 토글 아이콘 버튼. 24x24 고정 크기. normal/media 2 variant × selected/disabled 상태 조합 (총 8 variant).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">variants</span><span class="v">normal · media</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">variantToSemantic</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">SearchField</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">아이콘 슬롯 + 입력 필드 + Clear(X) 버튼으로 구성된 컴파운드 검색 필드. role=search wrapper + role=searchbox input.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · input · icon</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Section</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">헤더(제목 · 설명 · 액션)와 본문 영역으로 구성된 컨텐츠 구획 컨테이너. `<section>` + `<header>` 시맨틱.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">Root · Header · HeaderTitle</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Snackbar</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">화면 하단에 일시적으로 표시되는 짧은 메시지. 자동 닫힘(기본 3s) + 선택적 단일 액션 버튼. `useSnackbar()` 훅으로 호출.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · suffixButton · zIndex</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">SquareBadge</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">TBD — badges/SquareBadge 기반</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">spec</span><span class="v">component.json 참조</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Switch</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">즉각 반영되는 on/off 이진 토글. 설정값이나 상태를 켜고 끌 때 사용. Radix Switch 기반.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">medium · small</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">track · thumb · focus</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Tab</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">섹션·뷰 전환용 탭. Compound 패턴 (Tab.Root/List/Item + ItemText/ItemCount/ItemDotBadge). Radix UI Tabs 기반.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">List · Item · ItemText</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">TextButton</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">텍스트 라벨 중심의 경량 액션 버튼. 본문 내 인라인 액션, 카드 하단 '더보기', 폼 내 '초기화' 등 weak emphasis에 사용.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">variants</span><span class="v">primary · neutral-500 · neutral-600</span></div><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">14 · 16</span></div><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">variantToTheme · disabled · sizeToFont</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Thumbnail</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">고정 비율 단일 이미지 썸네일. ResizeImage(오하우스 CDN 리사이즈) 래핑 + dim 오버레이 + accessory 슬롯 (ScrapButton 등).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">borderRadius · dimOverlay · zIndex</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Tooltip</span><span class="cmp-tag ods">ODS</span></div><div class="cmp-desc">트리거 요소에 대한 짧은 보조 설명을 띄우는 비모달 오버레이. 키보드 포커스/마우스 호버로 보이고 Esc로 닫힌다. Radix Popover 기반 compound.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tokens</span><span class="v">container · label · arrow</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>합성 패턴 컴포넌트</h2><span class="count">8 patterns</span></div>
+    <p class="desc">시나리오 자족 재현을 위해 ODS 토큰을 조합한 표준 패턴. 트랙별 구현 시 동일한 토큰 조합 사용 권장.</p>
+    <div class="cmp-grid">
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">ProductCard</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">상품 그리드 단위. 카드 보더 없음 — 여백으로 구분 (콘텐츠 우선 원칙). 사진 위 floating heart fav.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">image</span><span class="v">1:1 (피드) / 3:4 (상세)</span></div><div class="cmp-meta-row"><span class="k">price</span><span class="v"><code>{accent-red}</code> 32% + 가격 fg</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">BottomNav</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">하단 4탭. height 56, border-top 1px. 활성 = filled icon + fg 검정 (brand 블루 X — ohouse 관습).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">tabs</span><span class="v">홈 · 검색 · 집들이 · 마이</span></div><div class="cmp-meta-row"><span class="k">label</span><span class="v">Detail10_Medium</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">ChipScroll</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">가로 스크롤 카테고리. flex + overflow-x:auto + scrollbar 숨김. selected = bg fg.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">height</span><span class="v">32, padding 0 14</span></div><div class="cmp-meta-row"><span class="k">selected</span><span class="v">bg <code>foreground</code></span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Avatar</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">원형 아바타. radius-full. 이미지 없으면 그라디언트 배경 + 이니셜.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">sizes</span><span class="v">24 · 32 · 40 · 64</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Hero + Body</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">콘텐츠 상세 표준 레이아웃. Hero 3:4 full-bleed + Top bar floating + Body padding 20 16 24.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">hero</span><span class="v">aspect-ratio 3/4</span></div><div class="cmp-meta-row"><span class="k">topbar</span><span class="v">absolute + 그라디언트</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Author Row</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">콘텐츠 작성자 정보 row. 왼쪽 정렬 (인스타식 가운데 정렬 X). Avatar + 이름·메타 + 팔로우.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">name</span><span class="v">Body14_Semibold</span></div><div class="cmp-meta-row"><span class="k">follow</span><span class="v">box-button-outlined S 32</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Stats Row</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">좋아요·스크랩·댓글 카운터. border-top/bottom backgroundWeak. 활성 bookmark-filled + brand.</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">gap</span><span class="v">24, padding 16 0</span></div><div class="cmp-meta-row"><span class="k">count</span><span class="v">"1.2K", "8.9K" 한국식</span></div></div></div>
+      <div class="cmp-card"><div class="cmp-head"><span class="cmp-name">Section Header</span><span class="cmp-tag synth">합성</span></div><div class="cmp-desc">섹션 시작 헤더. 좌측 타이틀 + 우측 "더보기 →" (선택).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">title</span><span class="v">Heading18_Semibold / Heading20_Bold</span></div><div class="cmp-meta-row"><span class="k">more</span><span class="v">Detail13 fg-weak + chevron-right</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>트랙 컴포넌트 (비ODS)</h2><span class="count">1 component</span></div>
+    <p class="desc">ODS Chip이 커버 못 하는 변형. 트랙 컴포넌트로 분리 + <code>@non-ods:</code> 마커. ODS 정식 편입 시 마커 제거.</p>
+    <div class="cmp-grid">
+      <div class="cmp-card non-ods"><div class="cmp-head"><span class="cmp-name">Topic / Filter Chip</span><span class="cmp-tag non">@non-ods</span></div><div class="cmp-desc"><b>Topic Chip</b>: 콘텐츠 태그용 (평형/스타일/거주민). <b>Filter Chip</b>: 정렬·필터 토글 (funnel + 라벨 + chevron-down).</div><div class="cmp-meta"><div class="cmp-meta-row"><span class="k">topic</span><span class="v">bg-weak, h 24~28</span></div><div class="cmp-meta-row"><span class="k">filter sel</span><span class="v">bg-emphasis-weak + fg-emphasis</span></div><div class="cmp-meta-row"><span class="k">marker</span><span class="v"><code>@non-ods:topic-chip</code></span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <strong>OHOUSE-DESIGN.md §8</strong> · 전체 spec은 본 파일 §8 (Component Stylings) + 시나리오별 적용 가이드 (A~G) 참조.
+</div>
+</body></html>

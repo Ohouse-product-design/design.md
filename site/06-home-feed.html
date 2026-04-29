@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>비교 — 홈 피드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Pretendard,sans-serif; letter-spacing:-0.3px; background:#0f1115; color:#e5e7eb; padding:24px; min-height:100vh; }
+.header { max-width:1200px; margin:0 auto 24px; }
+.back { display:inline-block; color:#9ca3af; font-size:13px; text-decoration:none; margin-bottom:16px; }
+h1 { font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.sub { font-size:14px; color:#9ca3af; margin-bottom:16px; }
+.meta { display:inline-flex; gap:12px; padding:8px 12px; background:#1f2937; border-radius:8px; font-size:12px; color:#d1d5db; }
+.meta b { color:#fbbf24; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+@media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+.col { background:#1f2937; border-radius:12px; overflow:hidden; border:1px solid #374151; }
+.col-head { padding:16px 20px; border-bottom:1px solid #374151; background:#111827; }
+.col-head h2 { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+.col-head p { font-size:12px; color:#9ca3af; }
+.pill { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:9999px; font-size:11px; font-weight:500; }
+.pill.with { background:#00a1ff; color:#fff; } .pill.without { background:#6b7280; color:#fff; }
+iframe { width:100%; height:800px; border:none; display:block; background:#f3f4f6; }
+.diff { max-width:1200px; margin:32px auto 0; background:#1f2937; border-radius:12px; padding:24px; border:1px solid #374151; }
+.diff h3 { font-size:16px; font-weight:600; margin-bottom:16px; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid #374151; }
+th { color:#9ca3af; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+td.cat { color:#9ca3af; font-weight:500; }
+td code { background:#111827; padding:2px 6px; border-radius:4px; font-size:12px; color:#fbbf24; }
+.with-cell { color:#7dd3fc; } .without-cell { color:#fca5a5; }
+</style></head>
+<body>
+<div class="header">
+  <a class="back" href="index.html">← 시나리오 목록</a>
+  <h1>시나리오 6 — 홈 피드 (Home)</h1>
+  <p class="sub">메인 진입 화면. 카테고리 chips · ProductCard 그리드 · BottomNav 4탭. 콘텐츠가 주인공이 되는 비율과 톤.</p>
+  <div class="meta"><b>Home Feed 패턴</b> · 2026-04-27</div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="col-head"><h2>WITH OHOUSE-DESIGN.md <span class="pill with">v0.3</span></h2><p>로고 brand · chip selected = fg(black) · 4-탭 BottomNav · 한국어 카테고리</p></div>
+    <iframe src="06-home-feed-with.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-head"><h2>WITHOUT design system <span class="pill without">baseline</span></h2><p>"Today's House" 영문 brand · nav-tab underline · 카드 보더 · Material 톤</p></div>
+    <iframe src="06-home-feed-without.html"></iframe>
+  </div>
+</div>
+<div class="diff">
+  <h3>핵심 차이</h3>
+  <table>
+    <thead><tr><th>항목</th><th>WITH</th><th>WITHOUT</th></tr></thead>
+    <tbody>
+      <tr><td class="cat">로고</td><td class="with-cell">"오늘의집" 한글 + brand #00a1ff (브랜드 정체성)</td><td class="without-cell">"Today's House" 영문 + 일반 blue-500</td></tr>
+      <tr><td class="cat">아이콘</td><td class="with-cell">ohouse cart·bell·magnifying-glass (실제 ODS)</td><td class="without-cell">손그린 SVG (제너릭)</td></tr>
+      <tr><td class="cat">카테고리 UI</td><td class="with-cell">Chip (selected = fg 검정 / 비선택 = bg-weak)</td><td class="without-cell">nav-tab underline (Material)</td></tr>
+      <tr><td class="cat">카테고리 라벨</td><td class="with-cell">홈/가구/패브릭/조명/데코 (한국어)</td><td class="without-cell">Home/Furniture/Fabric (영문)</td></tr>
+      <tr><td class="cat">ProductCard 보더</td><td class="with-cell">없음 — 여백으로 구분 (콘텐츠 우선 원칙)</td><td class="without-cell">1px 보더 + radius 8 (카드형)</td></tr>
+      <tr><td class="cat">ProductCard 비율</td><td class="with-cell">1:1 (한국 커머스 관습)</td><td class="without-cell">1:1 (동일하나 보더로 갇힌 느낌)</td></tr>
+      <tr><td class="cat">FAV 버튼</td><td class="with-cell">사진 위 우하단 floating heart (반투명 흰 원)</td><td class="without-cell">없음</td></tr>
+      <tr><td class="cat">할인 표기</td><td class="with-cell">"32%" + 가격 (한국 관습)</td><td class="without-cell">"-32%" 마이너스 부호 (서구 관습)</td></tr>
+      <tr><td class="cat">통화</td><td class="with-cell">"1,290,000원"</td><td class="without-cell">"₩1,290,000"</td></tr>
+      <tr><td class="cat">BottomNav</td><td class="with-cell">house / magnifying-glass / photo / person (4탭, ohouse 아이콘)</td><td class="without-cell">Home/Search/Photos/Profile (4탭, 영문)</td></tr>
+      <tr><td class="cat">활성 탭</td><td class="with-cell">filled icon + fg 검정 (절제)</td><td class="without-cell">outline + blue 색 (브랜드 X)</td></tr>
+      <tr><td class="cat">장바구니 배지</td><td class="with-cell">accent-red 미니 카운트 (뱃지 14px)</td><td class="without-cell">없음</td></tr>
+    </tbody>
+  </table>
+</div>
+</body></html>

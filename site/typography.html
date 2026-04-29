@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>Typography — OHOUSE-DESIGN.md</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.typo-list { display:flex; flex-direction:column; gap:14px; }
+.typo-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:box-shadow .2s; }
+.typo-card:hover { box-shadow:var(--shadow-md); }
+.typo-preview { padding:24px 28px; border-bottom:1px solid var(--border); color:var(--fg); letter-spacing:-0.3px; }
+.typo-preview.heading-32 { font-size:32px; line-height:42px; font-weight:700; }
+.typo-preview.heading-24 { font-size:24px; line-height:32px; font-weight:700; }
+.typo-preview.heading-20 { font-size:20px; line-height:28px; font-weight:700; }
+.typo-preview.heading-18 { font-size:18px; line-height:24px; font-weight:600; }
+.typo-preview.heading-17 { font-size:17px; line-height:22px; font-weight:500; }
+.typo-preview.body-16-r { font-size:16px; line-height:24px; font-weight:400; }
+.typo-preview.body-16-m { font-size:16px; line-height:24px; font-weight:500; }
+.typo-preview.body-15 { font-size:15px; line-height:24px; font-weight:400; }
+.typo-preview.body-14 { font-size:14px; line-height:20px; font-weight:400; }
+.typo-preview.detail-13 { font-size:13px; line-height:18px; font-weight:400; }
+.typo-preview.detail-12-m { font-size:12px; line-height:16px; font-weight:500; }
+.typo-preview.detail-12 { font-size:12px; line-height:16px; font-weight:400; }
+.typo-preview.detail-11 { font-size:11px; line-height:14px; font-weight:500; }
+.typo-preview.detail-10 { font-size:10px; line-height:14px; font-weight:400; }
+.typo-meta { padding:14px 28px; display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+.typo-name { font-size:13px; font-weight:600; color:var(--fg); font-family:'SF Mono','Monaco',ui-monospace,monospace; min-width:200px; }
+.typo-spec { display:flex; gap:16px; font-size:12px; color:var(--fg-muted); flex-wrap:wrap; }
+.typo-spec span code { font-size:11px; }
+.typo-use { flex:1; font-size:12px; color:var(--fg-muted); text-align:right; }
+@media (max-width:680px) { .typo-use { text-align:left; flex:none; width:100%; } }
+.font-info { background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius-lg); padding:20px 24px; margin-bottom:32px; }
+.font-info h3 { font-size:14px; font-weight:600; margin-bottom:10px; }
+.font-info p { font-size:13px; color:var(--fg-muted); line-height:1.6; }
+.font-info code { font-size:12px; }
+</style></head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand"><img class="brand-mark" src="ohouse-3d.png" alt="OHOUSE"><span class="brand-name"><code>OHOUSE-DESIGN.md</code></span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">시나리오</a>
+      <a href="components.html" class="nav-link">ODS</a>
+      <a href="https://github.com/bucketplace/design-assets" class="nav-link" target="_blank">아이콘</a>
+      <a href="../OHOUSE-DESIGN.md" download class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <span class="page-eyebrow">TYPOGRAPHY</span>
+  <h1 class="page-h1">타이포그래피 14 스케일</h1>
+  <p class="page-lead"><b>Pretendard</b> 한 폰트, <b>letter-spacing −0.3px</b> 전역 고정. 한글 가독성 우선 — Heading / Body / Detail 3계열로 위계를 표현합니다. 강조는 <b>weight</b>로 (Regular → Medium → Semibold → Bold).</p>
+
+  <div class="font-info">
+    <h3>폰트 패밀리</h3>
+    <p><code>font-family: Pretendard, 'Pretendard Variable', 'Noto Sans KR', 'Apple SD Gothic Neo', '맑은 고딕', sans-serif;</code><br>
+    <code>letter-spacing: -0.3px</code> 전역 적용. weight: 400 Regular / 500 Medium / 600 Semibold / 700 Bold.</p>
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>Heading (제목)</h2><span class="count">5 scales</span></div>
+    <div class="typo-list">
+      <div class="typo-card"><div class="typo-preview heading-32">집이라는 공간에서 누구나 영감을 얻는다</div><div class="typo-meta"><span class="typo-name">Heading32_Bold</span><div class="typo-spec"><span><code>32 / 42</code> px</span><span><code>700</code></span></div><div class="typo-use">랜딩 히어로, 최대 강조</div></div></div>
+      <div class="typo-card"><div class="typo-preview heading-24">31평을 1.5룸처럼, 화이트 미니멀로 꾸민 신혼집</div><div class="typo-meta"><span class="typo-name">Heading24_Bold</span><div class="typo-spec"><span><code>24 / 32</code> px</span><span><code>700</code></span></div><div class="typo-use">페이지 타이틀</div></div></div>
+      <div class="typo-card"><div class="typo-preview heading-20">오늘의 추천</div><div class="typo-meta"><span class="typo-name">Heading20_Bold</span><div class="typo-spec"><span><code>20 / 28</code> px</span><span><code>700</code></span></div><div class="typo-use">섹션 타이틀</div></div></div>
+      <div class="typo-card"><div class="typo-preview heading-18">장바구니가 비어있어요</div><div class="typo-meta"><span class="typo-name">Heading18_Semibold</span><div class="typo-spec"><span><code>18 / 24</code> px</span><span><code>600</code></span></div><div class="typo-use">서브 타이틀, 카드 헤더</div></div></div>
+      <div class="typo-card"><div class="typo-preview heading-17">모듈 패브릭 4인 소파</div><div class="typo-meta"><span class="typo-name">Heading17_Medium</span><div class="typo-spec"><span><code>17 / 22</code> px</span><span><code>500</code></span></div><div class="typo-use">리스트 아이템 헤더</div></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>Body (본문)</h2><span class="count">4 scales</span></div>
+    <div class="typo-list">
+      <div class="typo-card"><div class="typo-preview body-16-r">이사 온 지 6개월. 처음엔 비어 보일까 걱정했지만, 색을 화이트로 통일하니 오히려 공간이 넓어 보였어요. 가구는 적게, 대신 좋은 것 하나씩.</div><div class="typo-meta"><span class="typo-name">Body16L24_Regular</span><div class="typo-spec"><span><code>16 / 24</code> px</span><span><code>400</code></span></div><div class="typo-use">기본 본문</div></div></div>
+      <div class="typo-card"><div class="typo-preview body-16-m">장바구니 담기</div><div class="typo-meta"><span class="typo-name">Body16L24_Medium</span><div class="typo-spec"><span><code>16 / 24</code> px</span><span><code>500</code></span></div><div class="typo-use">CTA 라벨, 강조 본문</div></div></div>
+      <div class="typo-card"><div class="typo-preview body-15">모듈식 구조로 거실 크기에 맞게 자유롭게 배치할 수 있는 4인용 패브릭 소파.</div><div class="typo-meta"><span class="typo-name">Body15L24_Regular</span><div class="typo-spec"><span><code>15 / 24</code> px</span><span><code>400</code></span></div><div class="typo-use">보조 본문 (상세 설명)</div></div></div>
+      <div class="typo-card"><div class="typo-preview body-14">조립 30분 안에 끝났고 패브릭 결이 사진보다 더 따뜻합니다.</div><div class="typo-meta"><span class="typo-name">Body14L20_Regular</span><div class="typo-spec"><span><code>14 / 20</code> px</span><span><code>400</code></span></div><div class="typo-use">작은 본문 (리뷰, 안내)</div></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <div class="sect-head"><h2>Detail (캡션·라벨·메타)</h2><span class="count">5 scales</span></div>
+    <div class="typo-list">
+      <div class="typo-card"><div class="typo-preview detail-13">★ 4.8 · 리뷰 1,243건</div><div class="typo-meta"><span class="typo-name">Detail13L18_Regular</span><div class="typo-spec"><span><code>13 / 18</code> px</span><span><code>400</code></span></div><div class="typo-use">캡션 (별점, 메타)</div></div></div>
+      <div class="typo-card"><div class="typo-preview detail-12-m">이메일</div><div class="typo-meta"><span class="typo-name">Detail12L16_Medium</span><div class="typo-spec"><span><code>12 / 16</code> px</span><span><code>500</code></span></div><div class="typo-use">Input 라벨, 강조 캡션</div></div></div>
+      <div class="typo-card"><div class="typo-preview detail-12">2026.04.22 · 베이지</div><div class="typo-meta"><span class="typo-name">Detail12L16_Regular</span><div class="typo-spec"><span><code>12 / 16</code> px</span><span><code>400</code></span></div><div class="typo-use">날짜, 옵션 메타</div></div></div>
+      <div class="typo-card"><div class="typo-preview detail-11">베이지</div><div class="typo-meta"><span class="typo-name">Detail11L14_Medium</span><div class="typo-spec"><span><code>11 / 14</code> px</span><span><code>500</code></span></div><div class="typo-use">태그, Chip 라벨</div></div></div>
+      <div class="typo-card"><div class="typo-preview detail-10">1 / 8</div><div class="typo-meta"><span class="typo-name">Detail10L14_Regular</span><div class="typo-spec"><span><code>10 / 14</code> px</span><span><code>400</code></span></div><div class="typo-use">최소 메타 (인덱스, 페이지)</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <strong>OHOUSE-DESIGN.md §3</strong> · 전체 spec은 본 파일 §3 (Typography Rules) 참조.
+</div>
+</body></html>
