@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>Writing-bot — OHOUSE-DESIGN.md</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="shared.css">
+<style>
+.hero-row { display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap; margin-bottom:40px; }
+.hero-text { flex:1; min-width:320px; }
+.hero-card { width:340px; padding:22px 24px; background:#0a0a0a; color:#fff; border-radius:var(--radius-lg); display:flex; flex-direction:column; gap:14px; }
+.hero-card-title { font-size:13px; font-weight:600; color:#a3a3a3; letter-spacing:0.3px; text-transform:uppercase; }
+.hero-card-cmd { font-family:'SF Mono','Monaco',ui-monospace,monospace; font-size:13px; line-height:1.6; color:#f5f5f5; background:#171717; padding:12px 14px; border-radius:8px; border:1px solid #262626; word-break:break-all; }
+.hero-card-cmd .cm { color:#737373; }
+.hero-card-cmd .br { color:#00a1ff; }
+.hero-card-meta { font-size:11.5px; color:#a3a3a3; line-height:1.5; }
+
+.modes { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; }
+.mode-card { padding:18px 20px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); transition:box-shadow .2s, border-color .2s; }
+.mode-card:hover { box-shadow:var(--shadow-md); border-color:var(--border-strong); }
+.mode-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.4px; padding:2px 7px; border-radius:9999px; background:var(--bg-tint); color:var(--fg-muted); margin-bottom:10px; text-transform:uppercase; }
+.mode-card h4 { font-size:15px; font-weight:600; color:var(--fg); margin-bottom:6px; letter-spacing:-0.2px; }
+.mode-card p { font-size:12.5px; color:var(--fg-muted); line-height:1.6; margin-bottom:8px; }
+.mode-card .keys { font-size:11px; color:var(--fg-subtle); font-family:'SF Mono','Monaco',ui-monospace,monospace; line-height:1.6; }
+
+.example { padding:18px 22px; background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius-md); margin-bottom:14px; }
+.example .ex-prompt { display:flex; gap:8px; align-items:flex-start; margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.example .ex-prompt::before { content:'💬'; font-size:14px; flex-shrink:0; }
+.example .ex-prompt code { font-size:12.5px; line-height:1.6; background:transparent; border:none; padding:0; color:var(--fg); font-weight:500; }
+.example .ex-out { font-size:13px; color:var(--fg); line-height:1.7; }
+.example .ex-out b { font-weight:600; }
+.example .ex-out .hint { display:block; font-size:11.5px; color:var(--fg-muted); margin-top:6px; padding-top:6px; border-top:1px dashed var(--border); }
+.example .ex-out ul { padding:0; margin:8px 0 4px; list-style:none; }
+.example .ex-out ul li { padding:5px 0 5px 12px; position:relative; font-size:12.5px; color:var(--fg); }
+.example .ex-out ul li::before { content:'·'; position:absolute; left:0; color:var(--fg-subtle); font-weight:700; }
+
+.steps { display:flex; flex-direction:column; gap:12px; }
+.step { display:flex; gap:18px; padding:18px 22px; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); }
+.step-num { width:32px; height:32px; flex-shrink:0; background:var(--fg); color:#fff; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; }
+.step-body { flex:1; min-width:0; }
+.step-body h4 { font-size:14.5px; font-weight:600; color:var(--fg); margin-bottom:6px; letter-spacing:-0.2px; }
+.step-body p { font-size:13px; color:var(--fg-muted); margin-bottom:8px; line-height:1.6; }
+.step-body p:last-child { margin-bottom:0; }
+.step-body .cmd { display:block; font-family:'SF Mono','Monaco',ui-monospace,monospace; font-size:12px; line-height:1.7; color:#f5f5f5; background:#0a0a0a; padding:12px 14px; border-radius:8px; margin:8px 0; overflow-x:auto; white-space:pre; }
+.step-body .cmd .cm { color:#737373; }
+.step-body .cmd .br { color:#00a1ff; }
+
+.dl-row { display:flex; align-items:center; gap:14px; padding:20px 24px; background:linear-gradient(135deg,#0a0a0a 0%,#1f1f1f 100%); color:#fff; border-radius:var(--radius-lg); margin-bottom:20px; flex-wrap:wrap; }
+.dl-row .dl-info { flex:1; min-width:240px; }
+.dl-row .dl-info h3 { font-size:16px; font-weight:700; color:#fff; margin-bottom:4px; letter-spacing:-0.3px; }
+.dl-row .dl-info p { font-size:12.5px; color:#a3a3a3; margin:0; line-height:1.5; }
+.dl-row .dl-btns { display:flex; gap:8px; flex-wrap:wrap; }
+.dl-row .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 16px; background:#fff; color:var(--fg); border-radius:8px; font-size:13px; font-weight:600; transition:transform .15s, background .15s; cursor:pointer; }
+.dl-row .btn:hover { background:var(--bg-tint); transform:translateY(-1px); }
+.dl-row .btn.outline { background:transparent; color:#fff; border:1px solid #404040; }
+.dl-row .btn.outline:hover { background:#262626; }
+.dl-row .btn svg { width:14px; height:14px; fill:currentColor; }
+
+.routing-table { width:100%; border-collapse:separate; border-spacing:0; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; font-size:13px; }
+.routing-table thead th { padding:12px 16px; text-align:left; background:var(--bg-soft); color:var(--fg); font-weight:600; border-bottom:1px solid var(--border); font-size:12px; letter-spacing:0.2px; text-transform:uppercase; color:var(--fg-muted); }
+.routing-table tbody td { padding:12px 16px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.6; }
+.routing-table tbody tr:last-child td { border-bottom:none; }
+.routing-table tbody td:first-child { font-weight:600; color:var(--fg); width:170px; }
+.routing-table tbody td code { font-size:11.5px; }
+.routing-table .keys { color:var(--fg-muted); font-size:12px; }
+
+.constraints { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top:12px; }
+.constraint { padding:12px 14px; background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius-sm); }
+.constraint .k { font-size:11px; color:var(--fg-muted); margin-bottom:4px; font-weight:500; letter-spacing:0.2px; text-transform:uppercase; }
+.constraint .v { font-size:13px; color:var(--fg); font-weight:500; line-height:1.5; }
+
+@media (max-width:680px) {
+  .hero-card { width:100%; }
+}
+</style></head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand"><img class="brand-mark" src="ohouse-3d.png" alt="OHOUSE"><span class="brand-name"><code>OHOUSE-DESIGN.md</code></span></a>
+    <div class="nav-links">
+      <a href="about.html" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">시나리오</a>
+      <a href="components.html" class="nav-link">ODS</a>
+      <a href="https://github.com/bucketplace/design-assets" class="nav-link" target="_blank">아이콘</a>
+      <a href="writing-bot.html" class="nav-link active">Writing-bot</a>
+      <a href="../OHOUSE-DESIGN.md" download class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap-narrow">
+
+  <span class="page-eyebrow">WRITING-BOT · CLAUDE CODE SKILL</span>
+  <div class="hero-row">
+    <div class="hero-text">
+      <h1 class="page-h1">오늘의집 UX Writing을<br>자동화하는 라이팅봇</h1>
+      <p class="page-lead"><b>오늘의집 UX Writing 가이드를 학습한 Claude Code Skill이에요.</b> 앱푸시·배너·UI 문구·기획전·layer PDP 등 라이팅 요청을 키워드로 자동 라우팅하고, 톤앤매너·글자수·금지표현 같은 규칙을 자동으로 검증해 일관된 카피를 만들어줘요.</p>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Quick start</div>
+      <div class="hero-card-cmd"><span class="cm"># Claude Code 작업 디렉토리에서</span><br>$ unzip writing-bot.zip <span class="br">-d</span> ~/.claude/skills/writing-bot<br><br><span class="cm"># 이후 Claude Code에서</span><br>&gt; 앱푸시 써줘. 봄맞이 패브릭 할인,<br>&nbsp;&nbsp;타깃 2030 여성</div>
+      <div class="hero-card-meta">SKILL.md (~15KB) + evals/ (~3KB) · 압축 해제 후 Claude Code가 자동 인식</div>
+    </div>
+  </div>
+
+  <!-- 01 What it does -->
+  <div class="sect">
+    <div class="sect-head"><h2>01 · 무엇을 하나요?</h2><span class="count">5 modes</span></div>
+    <p class="desc">사용자 요청에 포함된 키워드를 보고 5가지 전용 작성 규칙 중 하나를 자동 적용합니다. 모든 답변에는 적용한 가이드와 이유가 함께 표시되고, 응답 전 톤앤매너·금지표현·글자수 체크리스트가 내부적으로 자동 검증돼요.</p>
+    <div class="modes">
+      <div class="mode-card">
+        <span class="mode-tag">PUSH</span>
+        <h4>앱푸시</h4>
+        <p>제목 21자 / 본문 32자 이내, 본문은 (광고)로 시작. 자극적 표현·당신·오늘의집 직접 언급 금지.</p>
+        <div class="keys">앱푸시 · 푸시 · CRM</div>
+      </div>
+      <div class="mode-card">
+        <span class="mode-tag">BANNER</span>
+        <h4>배너 카피</h4>
+        <p>추천 1 + 대안 7 = 8개 표로 제시 + 작성 의도. 쇼핑홈 IIF / 공통홈피드 / Binary 등 구좌별 글자수 가이드.</p>
+        <div class="keys">배너 · 홈피드 · IIF</div>
+      </div>
+      <div class="mode-card">
+        <span class="mode-tag">UI</span>
+        <h4>UI 문구</h4>
+        <p>버튼·Empty·Snackbar·Tooltip·Error·Confirm. 메시지 유형별 어조(합쇼/해요/단호) 자동 적용. 최소 3가지 버전 제안.</p>
+        <div class="keys">버튼 · 모달 · 스낵바 · 툴팁 · UI · Empty</div>
+      </div>
+      <div class="mode-card">
+        <span class="mode-tag">EXHIBITION</span>
+        <h4>기획전</h4>
+        <p>브랜드위크 / 브랜드캐스트 / Binary / 오하우스 에디션 별 구조와 글자수 가이드. 페르소나 3종(지나·세아·현정) 톤 선택 가능.</p>
+        <div class="keys">기획전 · 브랜드위크 · 브랜드캐스트 · Ohouse Edition</div>
+      </div>
+      <div class="mode-card">
+        <span class="mode-tag">LAYER PDP</span>
+        <h4>layer 상세</h4>
+        <p>스펙이 아닌 사용 장면부터 시작. 한 문장 15~40자, 해요체. "최고·완벽한·궁극의" 같은 과장 표현 자동 차단.</p>
+        <div class="keys">layer · 레이어 · PDP · 상세페이지</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Examples -->
+  <div class="sect">
+    <div class="sect-head"><h2>02 · 사용 예시</h2></div>
+    <p class="desc">Claude Code 프롬프트에 자연어로 요청하면 위 5가지 모드가 자동 선택됩니다. 키워드가 동시에 잡히면 layer &gt; 앱푸시 &gt; 기획전 &gt; UI &gt; 배너 순서로 우선 적용해요.</p>
+
+    <div class="example">
+      <div class="ex-prompt"><code>앱푸시 써줘. 봄맞이 패브릭 할인, 타깃 2030 여성</code></div>
+      <div class="ex-out">
+        <b>제목 21자 · 본문 32자 (광고) 시작 규칙으로 3개 이상 제안</b>
+        <ul>
+          <li>제목 "🌸 패브릭 봄맞이 시즌" / 본문 "(광고) {{nickname}}님, 봄 색감 가득한 신상 만나보세요"</li>
+          <li>제목 "이번 봄, 거실이 달라져요" / 본문 "(광고) 패브릭 신상 최대 40% 할인 중이에요"</li>
+          <li>제목 "패브릭 한 장으로 분위기 전환" / 본문 "(광고) 오늘 하루만 인기 패턴 모음전이에요"</li>
+        </ul>
+        <span class="hint">"역대급/대박/실화" 같은 자극적 표현, "당신" 호칭, "오늘의집" 직접 언급은 자동 차단</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="ex-prompt"><code>배너 카피 써줘. 구좌 쇼핑홈 IIF, 브랜드 한샘</code></div>
+      <div class="ex-out">
+        <b>1줄 10자 내외 카피 8개를 표로 + 작성 의도 한 줄 설명</b>
+        <ul>
+          <li>[추천] "오늘부터 한 끗 다른 거실"</li>
+          <li>"공간을 다시 쓰는 법"</li>
+          <li>"이 봄 가장 손이 가는 가구"</li>
+        </ul>
+        <span class="hint">브랜드명·기획전명 직접 언급 금지, 마침표 금지, 느낌표 최대 1회 자동 검증</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="ex-prompt"><code>장바구니 Empty 안내 문구 써줘</code></div>
+      <div class="ex-out">
+        <b>안내 메시지(해요체) + 다음 행동 유도 + 3가지 톤 버전</b>
+        <ul>
+          <li>"아직 담아둔 상품이 없어요. 마음에 드는 상품을 골라보세요" — 부드럽고 친근한 톤</li>
+          <li>"장바구니가 비어있어요. 인기 상품을 둘러볼까요?" — 액션 유도형</li>
+          <li>"장바구니에 담긴 상품이 없어요" — 간결 안내형</li>
+        </ul>
+        <span class="hint">부정적 단어("아무것도 없습니다"), 이중부정 자동 회피</span>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="ex-prompt"><code>체크포인트 다듬어줘. '고밀도 구조 설계를 적용했습니다'</code></div>
+      <div class="ex-out">
+        <b>layer 톤 — 사용 장면 우선, 전문 용어를 경험으로 풀어 표현</b>
+        <ul>
+          <li>수정 후: "오래 사용해도 안정적인 구조예요"</li>
+          <li>이유: 전문 용어("고밀도 구조 설계")를 사용 경험("오래 사용해도 안정적인")으로 변환. 합쇼체 → 해요체</li>
+        </ul>
+        <span class="hint">"최고·완벽한·혁신적·압도적·궁극의·프리미엄" 자동 검출 → 대안 표현 제안</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Routing -->
+  <div class="sect">
+    <div class="sect-head"><h2>03 · 키워드 라우팅</h2></div>
+    <p class="desc">요청에 포함된 키워드로 적용 규칙을 자동 결정합니다. 키워드가 없으면 공통 writing_rules + tone_of_voice 기준이 적용돼요.</p>
+    <table class="routing-table">
+      <thead><tr><th>적용 규칙</th><th>트리거 키워드</th></tr></thead>
+      <tbody>
+        <tr><td>push_notification</td><td class="keys">앱푸시 · 푸시 · CRM 메시지</td></tr>
+        <tr><td>banner_copy</td><td class="keys">배너 · 홈피드 · IIF</td></tr>
+        <tr><td>ui_writing</td><td class="keys">버튼 · 버튼명 · 툴팁 · 바텀시트 · 모달 · 스낵바 · UI · Empty</td></tr>
+        <tr><td>exhibition</td><td class="keys">기획전 · 브랜드위크 · 브랜드캐스트 · 바이너리 · Ohouse Edition</td></tr>
+        <tr><td>layer_pdp</td><td class="keys">layer · 레이어 · PDP · 상세페이지</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 04 Common rules -->
+  <div class="sect">
+    <div class="sect-head"><h2>04 · 모든 모드 공통 규칙</h2></div>
+    <p class="desc">5가지 모드와 무관하게 항상 적용되는 글로벌 규칙입니다. 응답 전 내부 체크리스트로 자동 검증돼요.</p>
+    <div class="constraints">
+      <div class="constraint"><div class="k">호칭</div><div class="v">'당신' 사용 금지</div></div>
+      <div class="constraint"><div class="k">밈·자극 표현</div><div class="v">"역대급, 헉, 실화, 대박" 등 금지</div></div>
+      <div class="constraint"><div class="k">용어집</div><div class="v">집들이·나만의 패키지·스크랩 등 변형 금지</div></div>
+      <div class="constraint"><div class="k">기본 어조</div><div class="v">해요체, 공식 안내는 합쇼체 혼용</div></div>
+      <div class="constraint"><div class="k">날짜 표기</div><div class="v">04.19 / 2024.12.06 / 04.19 (수)</div></div>
+      <div class="constraint"><div class="k">금액 표기</div><div class="v">9,900원 / 1만원 / 9,900원부터</div></div>
+      <div class="constraint"><div class="k">숫자 줄임</div><div class="v">3,526 → 3.5K · 7,000,000 → 7M</div></div>
+      <div class="constraint"><div class="k">한 문장 한 메시지</div><div class="v">군더더기·중복 단어 자동 정리</div></div>
+    </div>
+  </div>
+
+  <!-- 05 Download + Install -->
+  <div class="sect">
+    <div class="sect-head"><h2>05 · 다운로드 + 설치</h2></div>
+    <p class="desc">압축 파일을 받아 Claude Code 스킬 디렉토리에 풀면 바로 사용할 수 있어요. 별도 설치 명령이나 의존성은 없습니다.</p>
+
+    <div class="dl-row">
+      <div class="dl-info">
+        <h3>writing-bot.zip</h3>
+        <p>SKILL.md (~15KB) + evals/evals.json + evals/trigger-eval.json · 총 ~9KB</p>
+      </div>
+      <div class="dl-btns">
+        <a class="btn" href="writing-bot.zip" download>
+          <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>
+          .zip 다운로드
+        </a>
+        <a class="btn outline" href="https://docs.claude.com/en/docs/claude-code/skills" target="_blank">Skill 문서 →</a>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>writing-bot.zip 다운로드</h4>
+          <p>위 버튼으로 압축 파일을 받습니다. 다운로드 폴더에서 작업해도 되고, 바로 홈 디렉토리로 이동시켜도 돼요.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Claude Code 스킬 디렉토리에 압축 해제</h4>
+          <p>개인 전역 스킬은 <code>~/.claude/skills/</code>, 프로젝트 한정은 <code>&lt;프로젝트&gt;/.claude/skills/</code> 아래에 두세요.</p>
+          <code class="cmd"><span class="cm"># 전역 (모든 프로젝트에서 사용)</span>
+mkdir -p ~/.claude/skills
+unzip writing-bot.zip <span class="br">-d</span> ~/.claude/skills/writing-bot
+
+<span class="cm"># 프로젝트 한정</span>
+mkdir -p .claude/skills
+unzip writing-bot.zip <span class="br">-d</span> .claude/skills/writing-bot</code>
+          <p>압축 해제 후 폴더 구조는 다음과 같아야 해요.</p>
+          <code class="cmd">~/.claude/skills/writing-bot/
+├── SKILL.md
+└── evals/
+    ├── evals.json
+    └── trigger-eval.json</code>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Claude Code 재시작 + 스킬 인식 확인</h4>
+          <p>Claude Code를 새 세션으로 시작하면 SKILL.md의 frontmatter에 정의된 description을 자동 인식합니다. 인식 여부는 다음으로 확인하세요.</p>
+          <code class="cmd"><span class="cm"># Claude Code 안에서</span>
+&gt; /skills</code>
+          <p>목록에 <code>writing-bot</code>이 나오면 설치 완료. 키워드 매칭만으로 자동 호출되니 별도 명령은 필요 없어요.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>자연어로 요청</h4>
+          <p>아래처럼 한국어로 라이팅 요청을 하면 키워드가 자동 매칭되어 해당 모드가 적용됩니다.</p>
+          <code class="cmd">&gt; 앱푸시 써줘. 봄맞이 패브릭 할인, 타깃 2030 여성
+&gt; 배너 카피 써줘. 구좌 쇼핑홈 IIF, 브랜드 한샘
+&gt; 장바구니 Empty 안내 문구 써줘
+&gt; 브랜드위크 INTRO 써줘. 브랜드 덴비
+&gt; 체크포인트 다듬어줘. '고밀도 구조 설계를 적용했습니다'</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 Update -->
+  <div class="sect">
+    <div class="sect-head"><h2>06 · 업데이트 + 피드백</h2></div>
+    <p class="desc">SKILL.md 단일 파일이라 업데이트는 새 zip을 받아 같은 위치에 덮어쓰면 됩니다. 가이드 누락·오작동·신규 모드 요청은 Slack으로 보내주세요.</p>
+    <div class="constraints">
+      <div class="constraint"><div class="k">업데이트</div><div class="v">새 zip 다운로드 → 같은 위치에 덮어쓰기 → Claude Code 재시작</div></div>
+      <div class="constraint"><div class="k">평가셋</div><div class="v">evals/ 폴더의 evals.json으로 회귀 테스트 가능</div></div>
+      <div class="constraint"><div class="k">피드백</div><div class="v">Slack <code>#des_design_system_qna</code></div></div>
+      <div class="constraint"><div class="k">버전 정책</div><div class="v">SKILL.md 본문 직접 수정 (별도 버전 파일 X)</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <strong>Writing-bot</strong> · 오늘의집 UX Writing 가이드 기반 Claude Code Skill<br>
+  설치 위치: <code>~/.claude/skills/writing-bot/</code> 또는 <code>&lt;프로젝트&gt;/.claude/skills/writing-bot/</code> · 피드백: Slack <code>#des_design_system_qna</code>
+</div>
+
+</body></html>
