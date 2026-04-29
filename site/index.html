@@ -153,7 +153,7 @@ a { color:inherit; text-decoration:none; }
       <a href="index.html" class="nav-link active">시나리오</a>
       <a href="components.html" class="nav-link">ODS</a>
       <a href="https://github.com/bucketplace/design-assets" class="nav-link" target="_blank">아이콘</a>
-      <a href="../OHOUSE-DESIGN.md" download class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
+      <a href="../OHOUSE-DESIGN.md" data-md-download="OHOUSE-DESIGN.md" class="nav-cta"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>다운로드</a>
     </div>
   </div>
 </nav>
@@ -161,26 +161,27 @@ a { color:inherit; text-decoration:none; }
 <div class="hero-section">
   <div class="hero">
     <div class="hero-content">
-      <span class="hero-eyebrow"><span class="dot"></span>v0.3.0 · 2026-04-28</span>
+      <span class="hero-eyebrow"><span class="dot"></span>v0.4.0 · 2026-04-29</span>
       <h1>AI가 만들어도<br><span class="accent">오늘의집답게.</span></h1>
       <p class="lead"><b>OHOUSE-DESIGN.md</b> 한 파일이면 됩니다. 오늘의집의 컬러·타이포·컴포넌트·아이콘·패턴을 단일 마크다운에 담은 자족 명세 — Cursor / Claude Code / Stitch / v0 어디든 컨텍스트로 입력하면 <b>드롭한 그 순간부터 오늘의집 톤으로 화면을 만듭니다.</b></p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="../OHOUSE-DESIGN-v0.3.0.md" download>
+        <a class="btn btn-primary" href="../OHOUSE-DESIGN.md" data-md-download="OHOUSE-DESIGN.md">
           <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>
-          OHOUSE-DESIGN.md v0.3.0 다운로드
+          OHOUSE-DESIGN.md 다운로드
         </a>
-        <a class="btn btn-secondary" href="../OHOUSE-DESIGN.md" download>latest</a>
-        <span class="dl-meta">~42KB · 단일 파일 · <code>npx @google/design.md lint</code> 호환</span>
+        <a class="btn btn-secondary" href="../OHOUSE-DESIGN.md.zip" download title="압축 파일로 받기 (브라우저 경고 없음)">.zip</a>
+        <a class="btn btn-secondary" href="../HISTORY.md" data-md-download="HISTORY.md">history</a>
+        <span class="dl-meta">v0.4.0 · ~255KB · 245 아이콘 인라인 · <code>npx @google/design.md lint</code> 호환</span>
       </div>
     </div>
   </div>
 
   <div class="stats" style="max-width:1280px;margin:0 auto;position:relative;z-index:2;">
-    <a class="stat" href="changelog.html"><div class="stat-k">버전 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">v0.3.0 <span class="badge">NEW</span></div></a>
+    <a class="stat" href="changelog.html"><div class="stat-k">버전 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">v0.4.0 <span class="badge">NEW</span></div></a>
     <a class="stat" href="#scenarios"><div class="stat-k">시나리오 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">7개</div></a>
     <a class="stat" href="colors.html"><div class="stat-k">컬러 토큰 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">33<span class="sub">L+D</span></div></a>
     <a class="stat" href="typography.html"><div class="stat-k">타이포 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">14개</div></a>
-    <a class="stat" href="components.html"><div class="stat-k">컴포넌트 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">41개</div></a>
+    <a class="stat" href="components.html"><div class="stat-k">컴포넌트 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">43개</div></a>
     <a class="stat" href="icons.html"><div class="stat-k">아이콘 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">245<span class="sub">×4w</span></div></a>
   </div>
 </div>
@@ -405,8 +406,15 @@ window.addEventListener('hashchange', () => {
   if (SCENARIOS[id]) selectScenario(id);
 });
 
-const initial = (location.hash || '#01').slice(1);
-selectScenario(SCENARIOS[initial] ? initial : '01');
+function bootSelectScenario() {
+  const initial = (location.hash || '#01').slice(1);
+  selectScenario(SCENARIOS[initial] ? initial : '01');
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootSelectScenario);
+} else {
+  bootSelectScenario();
+}
 </script>
 
 <!-- Scenario templates (inlined from 14 files) -->
@@ -1957,4 +1965,34 @@ selectScenario(SCENARIOS[initial] ? initial : '01');
 </body></html>
 
 </template>
+
+<script>
+// .md 다운로드를 Blob+text/markdown MIME으로 처리해 Chrome SafeBrowsing 경고 회피.
+// data-md-download 속성을 가진 링크에 인터셉트.
+document.addEventListener('click', async (e) => {
+  const a = e.target.closest('a[data-md-download]');
+  if (!a) return;
+  e.preventDefault();
+  const url = a.getAttribute('href');
+  const filename = a.getAttribute('data-md-download') || 'OHOUSE-DESIGN.md';
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('fetch failed: ' + res.status);
+    const text = await res.text();
+    const blob = new Blob([text], { type: 'text/markdown;charset=utf-8' });
+    const blobUrl = URL.createObjectURL(blob);
+    const tmp = document.createElement('a');
+    tmp.href = blobUrl;
+    tmp.download = filename;
+    document.body.appendChild(tmp);
+    tmp.click();
+    document.body.removeChild(tmp);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+  } catch (err) {
+    // fallback: 원본 링크로 그대로 이동 (브라우저 기본 다운로드)
+    console.warn('Blob download failed, falling back to direct link', err);
+    window.location.href = url;
+  }
+});
+</script>
 </body></html>
