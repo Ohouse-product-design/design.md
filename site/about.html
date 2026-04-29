@@ -155,16 +155,16 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
 
 <div class="wrap">
 
-  <span class="hero-eyebrow">ABOUT</span>
+  <span class="hero-eyebrow">ABOUT · v0.4.1</span>
   <h1>OHOUSE-DESIGN.md는<br>무엇이고, 어떻게 쓰나요?</h1>
-  <p class="hero-lead"><b>오늘의집 디자인 시스템을 단일 마크다운 파일에 담아, AI 코딩 에이전트가 일관된 오늘의집 UI를 생성할 수 있게 만든 자족(self-contained) 명세입니다.</b> 이 페이지는 처음 보는 분이 5분 안에 무엇이고, 어떻게 쓰며, 무엇을 못하는지 파악할 수 있도록 정리했어요.</p>
+  <p class="hero-lead"><b>오늘의집 디자인 시스템을 두 개의 마크다운 파일(<code>OHOUSE-DESIGN.md</code> + <code>ICONS.md</code>)에 담아, AI 코딩 에이전트가 일관된 오늘의집 UI를 생성할 수 있게 만든 자족(self-contained) 명세입니다.</b> 본체는 컬러·타이포·컴포넌트·패턴 스펙(~44KB), 동반 파일은 245개 아이콘 sprite(~214KB). 이 페이지는 처음 보는 분이 5분 안에 무엇이고, 어떻게 쓰며, 무엇을 못하는지 파악할 수 있도록 정리했어요.</p>
 
   <!-- Why -->
   <section>
     <h2><span class="num">01</span>왜 만들었나요?</h2>
     <p class="lead">AI 코딩 도구가 빠르게 일상이 되고 있는데, 디자인 시스템 컨텍스트 없이는 generic Material / Tailwind UI를 출력합니다.</p>
     <p>Cursor, Claude Code, Stitch, v0 같은 AI 도구가 화면을 자동 생성하지만, "오늘의집스러운 톤"을 모릅니다. 사내 디자인 시스템(<code>apps-web ODS</code>)·Figma는 외부 도구가 직접 접근하기 어렵고, 매번 토큰 값을 일일이 알려주는 건 비효율적이에요.</p>
-    <p><b>한 마크다운 파일로 추리면</b> 어디든 드롭해서 컨텍스트로 쓸 수 있고, LLM이 마크다운을 가장 잘 읽기 때문에 결과 일관성이 훨씬 높아집니다. Google Stitch / VoltAgent의 <code>awesome-design-md</code> 컨셉을 오늘의집 스펙에 맞춰 구현한 결과물입니다.</p>
+    <p><b>마크다운 파일로 추리면</b> 어디든 드롭해서 컨텍스트로 쓸 수 있고, LLM이 마크다운을 가장 잘 읽기 때문에 결과 일관성이 훨씬 높아집니다.</p>
   </section>
 
   <!-- Can do -->
@@ -172,11 +172,11 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
     <h2><span class="num">02</span>할 수 있는 것</h2>
     <p class="lead">7개 핵심 시나리오를 자족 재현 가능하도록 컬러·타이포·컴포넌트·아이콘·패턴을 전부 인라인으로 담았습니다.</p>
     <ul class="can-list">
-      <li><b>AI 도구 컨텍스트 입력</b> — Cursor·Claude Code·Stitch·v0 등 어떤 도구든 프로젝트 루트에 두고 <code>@OHOUSE-DESIGN.md</code> 참조하면 일관된 오늘의집 UI 생성</li>
+      <li><b>AI 도구 컨텍스트 입력</b> — Cursor·Claude Code·Stitch·v0 등 어떤 도구든 프로젝트 루트에 <code>OHOUSE-DESIGN.md</code> + <code>ICONS.md</code> 두 파일을 두고 참조하면 일관된 오늘의집 UI 생성</li>
       <li><b>컬러 토큰 33개 (Light + Dark)</b> — 시멘틱 토큰 인라인. 다크 모드 자동 매핑. 하드코드 hex 없이 동작</li>
       <li><b>타이포그래피 14개</b> — Pretendard, letter-spacing −0.3px, Heading/Body/Detail 스케일</li>
       <li><b>컴포넌트 43개</b> — ODS 34(Avatar, BoxButton, BottomSheet, Calendar, Card, Checkbox, Chip, ContentTooltip, Dialog, Dropdown, Empty, IconButton, Input, RadioGroup, ScrapButton, Section, Snackbar, Switch, Tab, Tooltip 등) + 합성 패턴 8 + 트랙 1</li>
-      <li><b>아이콘 245종 안내</b> — <code>bucketplace/design-assets</code> 카테고리 12종 분류, 사용법, weight 가이드, outlined↔filled 페어 룰</li>
+      <li><b>아이콘 245개 인라인 sprite</b> — <code>ICONS.md</code>에 실제 SVG path 데이터를 통째로 임베드(regular weight, 좌표 1자리 정밀도). 외부 fetch / npm install 없이 <code>&lt;use href="#i-&lt;name&gt;"/&gt;</code>로 즉시 사용. 카테고리 12종 분류, weight 가이드, outlined↔filled 페어 룰 포함</li>
       <li><b>화면 패턴 가이드</b> — 상품 상세 / Empty / Error / Form / Feed / Content 6 패턴별 조립 레시피</li>
       <li><b>Google design.md 호환</b> — <code>npx @google/design.md lint</code> 머신 검증, Tailwind / DTCG export 가능</li>
       <li><b>비ODS 마커 컨벤션</b> — Figma 보라/회오리 마커 ↔ <code>@non-ods:</code> 코드 마커 매핑</li>
@@ -235,21 +235,21 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
         <div class="step-num">1</div>
         <div class="step-body">
           <h4>다운로드</h4>
-          <p>상단 다운로드 버튼으로 <code>OHOUSE-DESIGN.md</code> 또는 버전 고정본 <code>OHOUSE-DESIGN-v0.3.0.md</code>를 받습니다.</p>
+          <p>상단 다운로드 버튼 또는 GitHub repo 압축본으로 <code>OHOUSE-DESIGN.md</code>(본체, ~44KB) + <code>ICONS.md</code>(아이콘 sprite, ~214KB) 두 파일을 받습니다. 버전 스냅샷 파일은 폐기 — 본 파일이 항상 단일 최신본이며, 과거 버전이 필요하면 <code>git log</code> 또는 GitHub commit/tag로 조회.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h4>프로젝트 루트에 둔다</h4>
-          <p>Cursor / Claude Code 작업 디렉토리, Stitch 프로젝트, v0 컨텍스트 슬롯 등 AI 도구가 읽을 수 있는 곳에 파일을 둡니다.</p>
+          <p>Cursor / Claude Code 작업 디렉토리, Stitch 프로젝트, v0 컨텍스트 슬롯 등 AI 도구가 읽을 수 있는 곳에 두 파일을 함께 둡니다.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
           <h4>프롬프트 시 참조</h4>
-          <p>예시: <code>"@OHOUSE-DESIGN.md를 따라서 모듈 패브릭 4인 소파 상품 상세 페이지를 만들어줘. 모바일 우선, brand-solid CTA 1개, 라이트·다크 양쪽 토큰 적용."</code></p>
+          <p>예시: <code>"@OHOUSE-DESIGN.md와 @ICONS.md를 따라서 모듈 패브릭 4인 소파 상품 상세 페이지를 만들어줘. 모바일 우선, brand-solid CTA 1개, 라이트·다크 양쪽 토큰 적용. 아이콘은 ICONS.md sprite의 <code>&lt;use href="#i-…"/&gt;</code> 패턴 사용."</code></p>
         </div>
       </div>
       <div class="step">
@@ -289,8 +289,9 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
   <section>
     <h2><span class="num">06</span>현재 상태와 한계</h2>
     <div class="status-box">
-      <div class="status-row"><span class="k">버전</span><span class="v"><code>v0.3.0</code> (alpha)</span></div>
+      <div class="status-row"><span class="k">버전</span><span class="v"><code>v0.4.1</code> (alpha) · 2026-04-29</span></div>
       <div class="status-row"><span class="k">상태</span><span class="v">전사 공유 시작 단계</span></div>
+      <div class="status-row"><span class="k">파일 구성</span><span class="v"><code>OHOUSE-DESIGN.md</code> 본체 ~44KB + <code>ICONS.md</code> sprite ~214KB</span></div>
       <div class="status-row"><span class="k">기준 플랫폼</span><span class="v">Web (<code>apps-web ODS</code>)</span></div>
       <div class="status-row"><span class="k">⛔ Critical 토큰</span><span class="v">4건 Light 마이그 대기 (red 램프 이전)</span></div>
       <div class="status-row"><span class="k">Shapes (border-radius)</span><span class="v">디자인팀 컨펌 대기 (TBD)</span></div>
@@ -312,21 +313,13 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
         <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/></svg></div>
         <div class="resource-body"><h4>Storybook 카탈로그</h4><p>아이콘·컴포넌트 시각 브라우징 (사내)</p></div>
       </a>
-      <a class="resource" href="https://contents.ohou.se/projects" target="_blank">
-        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.236L19.5 8 12 11.764 4.5 8 12 4.236z"/></svg></div>
-        <div class="resource-body"><h4>오늘의집 프로젝트 (집들이)</h4><p>실제 콘텐츠 톤 참고용 (시나리오 07)</p></div>
-      </a>
-      <a class="resource" href="https://github.com/VoltAgent/awesome-design-md" target="_blank">
-        <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/></svg></div>
-        <div class="resource-body"><h4>awesome-design-md</h4><p>본 명세의 포맷 레퍼런스 (라인님 공유)</p></div>
-      </a>
       <a class="resource" href="https://github.com/google-labs-code/design.md" target="_blank">
         <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M9 19.79c-3.39-.49-6-3.4-6-6.92 0-.55.07-1.08.18-1.6L7 14.99V16c0 1.1.9 2 2 2v1.79zM18.92 19c-.5.51-1.18.81-1.92.81V18l-3-3v-1c0-.55-.45-1-1-1H8v-3h2c.55 0 1-.45 1-1V7h3v-.83C16.85 7.41 19 10.46 19 14c0 1.86-.59 3.59-1.59 4.99-.16.34-.34.66-.49 1.01z"/></svg></div>
         <div class="resource-body"><h4>Google design.md</h4><p>YAML 호환 스펙 (lint·export 도구)</p></div>
       </a>
       <a class="resource" href="https://ohou-se.slack.com" target="_blank">
         <div class="resource-icon"><svg viewBox="0 0 24 24"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg></div>
-        <div class="resource-body"><h4>#des_pd</h4><p>피드백·이슈 채널 (사내)</p></div>
+        <div class="resource-body"><h4>#des_design_system_qna</h4><p>피드백·이슈 채널 (사내)</p></div>
       </a>
     </div>
   </section>
@@ -338,18 +331,23 @@ section ul li::before { content:''; position:absolute; left:8px; top:18px; width
       <p>다운로드 후 AI 도구에 컨텍스트로 입력하면 바로 작동합니다.</p>
     </div>
     <div class="btns">
-      <a class="btn" href="../OHOUSE-DESIGN-v0.3.0.md" download>
+      <a class="btn" href="../OHOUSE-DESIGN.md" download>
         <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>
-        v0.3.0 다운로드
+        OHOUSE-DESIGN.md
       </a>
-      <a class="btn outline" href="index.html">시나리오 비교 보기 →</a>
+      <a class="btn" href="../ICONS.md" download>
+        <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM12 4l-5 5h3v6h4v-6h3l-5-5z"/></svg>
+        ICONS.md
+      </a>
+      <a class="btn outline" href="changelog.html">변경 이력 →</a>
+      <a class="btn outline" href="index.html">시나리오 비교 →</a>
     </div>
   </div>
 </div>
 
 <div class="foot">
   <strong>OHOUSE-DESIGN.md</strong> · 오늘의집 프로덕트 디자인팀<br>
-  피드백: Slack <code>#des_pd</code>
+  피드백: Slack <code>#des_design_system_qna</code>
 </div>
 
 </body></html>

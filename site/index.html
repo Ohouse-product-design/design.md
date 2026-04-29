@@ -176,7 +176,7 @@ a { color:inherit; text-decoration:none; }
 
   <div class="stats" style="max-width:1280px;margin:0 auto;position:relative;z-index:2;">
     <a class="stat" href="changelog.html"><div class="stat-k">버전 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">v0.4.1 <span class="badge">NEW</span></div></a>
-    <a class="stat" href="#scenarios"><div class="stat-k">시나리오 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">7개</div></a>
+    <a class="stat" href="#scenarios"><div class="stat-k">시나리오 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">8개</div></a>
     <a class="stat" href="colors.html"><div class="stat-k">컬러 토큰 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">33<span class="sub">L+D</span></div></a>
     <a class="stat" href="typography.html"><div class="stat-k">타이포 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">14개</div></a>
     <a class="stat" href="components.html"><div class="stat-k">컴포넌트 <svg class="stat-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div><div class="stat-v">43개</div></a>
@@ -188,7 +188,7 @@ a { color:inherit; text-decoration:none; }
   <div class="section-head">
     <div>
       <h2>시나리오 비교</h2>
-      <p><strong style="color:var(--fg);">⚠️ 실제 오늘의집 운영 화면이 아닙니다.</strong> AI 코딩 에이전트에 <code>OHOUSE-DESIGN.md</code>를 컨텍스트로 입력했을 때 <strong style="color:var(--fg);">예상되는 결과물</strong>을 수동 시뮬레이션한 화면입니다. 7개 시나리오를 탭으로 전환해 적용/미적용 차이를 확인하세요.</p>
+      <p><strong style="color:var(--fg);">⚠️ 실제 오늘의집 운영 화면이 아닙니다.</strong> AI 코딩 에이전트에 <code>OHOUSE-DESIGN.md</code>를 컨텍스트로 입력했을 때 <strong style="color:var(--fg);">예상되는 결과물</strong>을 수동 시뮬레이션한 화면입니다. 8개 시나리오를 탭으로 전환해 적용/미적용 차이를 확인하세요.</p>
     </div>
   </div>
 
@@ -196,10 +196,11 @@ a { color:inherit; text-decoration:none; }
     <button class="tab active" data-id="01" role="tab"><span class="tab-num">01</span>상품 상세</button>
     <button class="tab" data-id="02" role="tab"><span class="tab-num">02</span>빈 장바구니</button>
     <button class="tab" data-id="03" role="tab"><span class="tab-num">03</span>결제 실패</button>
-    <button class="tab" data-id="04" role="tab"><span class="tab-num">04</span>다크 모드</button>
+    <button class="tab" data-id="04" role="tab"><span class="tab-num">04</span>검색 결과</button>
     <button class="tab" data-id="05" role="tab"><span class="tab-num">05</span>회원가입 폼</button>
     <button class="tab" data-id="06" role="tab"><span class="tab-num">06</span>홈 피드</button>
     <button class="tab" data-id="07" role="tab"><span class="tab-num">07</span>콘텐츠 상세</button>
+    <button class="tab" data-id="08" role="tab"><span class="tab-num">08</span>카테고리</button>
   </div>
 
   <div class="panel" role="tabpanel">
@@ -239,7 +240,7 @@ a { color:inherit; text-decoration:none; }
 <div class="foot">
   <div class="foot-block">
     <strong>OHOUSE-DESIGN.md</strong> · 오늘의집 프로덕트 디자인팀<br>
-    피드백: Slack <code>#des_pd</code>
+    피드백: Slack <code>#des_design_system_qna</code>
   </div>
   <div class="foot-block">
     본 페이지는 수동 시뮬레이션입니다.<br>
@@ -250,7 +251,7 @@ a { color:inherit; text-decoration:none; }
 <script>
 const SCENARIOS = {
   '01': {
-    eyebrow: '01 / 07 · COMMERCE DETAIL',
+    eyebrow: '01 / 08 · COMMERCE DETAIL',
     title: '상품 상세 페이지',
     sub: 'Pretendard · brand-solid CTA · 3:4 갤러리 · 한국 커머스 관습. 가장 토큰을 많이 쓰는 시나리오.',
     tags: ['color','typography','component','icon'],
@@ -272,7 +273,7 @@ const SCENARIOS = {
     ],
   },
   '02': {
-    eyebrow: '02 / 07 · EMPTY STATE',
+    eyebrow: '02 / 08 · EMPTY STATE',
     title: '빈 장바구니',
     sub: '"에러·빈 상태 = 퍼스트 시민" 원칙. 일러스트 + 다음 액션 1개로 행동을 유도하는가.',
     tags: ['empty','brand-solid CTA','illustration'],
@@ -287,7 +288,7 @@ const SCENARIOS = {
     ],
   },
   '03': {
-    eyebrow: '03 / 07 · ERROR STATE',
+    eyebrow: '03 / 08 · ERROR STATE',
     title: '결제 실패 화면',
     sub: '"색은 브랜드/상태에만, 위계는 사이즈·위치·여백" 원칙. fg-critical 남용 vs 절제.',
     tags: ['critical','action hierarchy'],
@@ -302,22 +303,23 @@ const SCENARIOS = {
     ],
   },
   '04': {
-    eyebrow: '04 / 07 · DARK MODE',
-    title: '다크 모드 (자동 매핑)',
-    sub: '"다크에서 그림자 X" 정책. Light 토큰이 자동으로 다크에 매핑되는가, brand 일관성 유지하는가.',
-    tags: ['dark','no-shadow','token mapping'],
+    eyebrow: '04 / 08 · SEARCH RESULTS',
+    title: '검색 결과',
+    sub: '검색 input + 최근/추천 chip + 결과 그리드. 검색바 톤·정렬 chip·결과 카운터 한국 커머스 관습 적용 여부.',
+    tags: ['search','chip','product grid'],
     diff: [
-      ['기본 배경', '<code>#0a0a0a</code> gray-950', '<code>#1f2937</code> gray-800 (너무 밝음)'],
-      ['기본 텍스트', '<code>#f5f5f5</code> 가독성 OK', '<code>#f9fafb</code> brand 일관 X'],
-      ['브랜드 색', '<code>#00a1ff</code> 라이트와 동일', '<code>#3b82f6</code> Tailwind blue 그대로'],
-      ['Elevation', '<b>shadow 제거</b>, border 1px (Figma 정책)', 'shadow 그대로 (다크에서 어색)'],
-      ['accent-red', '<code>#fd3d4a</code> 라이트와 동일', '<code>#f87171</code> red-300 (브랜드 X)'],
-      ['divider', '<code>backgroundWeak</code> 한 단계 어두운 띠', '없음/약함'],
-      ['자동성', 'Light hex만 입력 → 다크 자동 매핑', '다크용 색 별도 지정 (수동 분기)'],
+      ['검색 input', 'radius-full + ohouse magnifying-glass 아이콘 + 한글 placeholder', 'radius-md + lucide search + 영문 placeholder'],
+      ['최근 검색어', 'Chip filled + x-circle 아이콘 (ohouse)', 'tag-pill outline + lucide x'],
+      ['결과 카운터', '"\'소파\' 검색 결과 12,348건"', '"12,348 results for \'sofa\'"'],
+      ['정렬 chip', 'Chip selected = fg #141414 (절제)', 'underline tab + blue (Material)'],
+      ['ProductCard', '3:4 + 보더 없음 + brand fav heart', '1:1 + 1px 보더 + 없음'],
+      ['검색어 강조', '본문 내 검색어 → <code>foreground-brand</code> 색', 'red-500 highlight (잘못된 의미)'],
+      ['추천 검색어', '"이런 건 어때요?" 한글 + chip', '"Suggestions" 영문 + tag'],
+      ['빈 결과 톤', 'Empty 일러스트 + "다른 키워드를 시도해보세요"', 'No results. Try different keywords.'],
     ],
   },
   '05': {
-    eyebrow: '05 / 07 · FORM',
+    eyebrow: '05 / 08 · FORM',
     title: '회원가입 폼 (에러 포함)',
     sub: 'Input의 default · focus · error · disabled 상태가 토큰화돼 있는가. 한국 폼 관습(radius-sm 4) 적용.',
     tags: ['input','error state','checkbox'],
@@ -333,7 +335,7 @@ const SCENARIOS = {
     ],
   },
   '06': {
-    eyebrow: '06 / 07 · HOME FEED',
+    eyebrow: '06 / 08 · HOME FEED',
     title: '홈 피드',
     sub: '메인 진입 화면. 카테고리 chip + ProductCard 그리드 + BottomNav 4탭. 한국어 카테고리·통화·할인 표기.',
     tags: ['feed','product card','bottom nav'],
@@ -351,7 +353,7 @@ const SCENARIOS = {
     ],
   },
   '07': {
-    eyebrow: '07 / 07 · CONTENT DETAIL',
+    eyebrow: '07 / 08 · CONTENT DETAIL',
     title: '콘텐츠 상세 (집들이)',
     sub: '<a href="https://contents.ohou.se/projects" target="_blank">contents.ohou.se</a> 톤. Hero 사진 + 평형/스타일 메타 + Body16L28 한글 본문 + 좋아요·스크랩.',
     tags: ['content','hero image','korean tone'],
@@ -367,9 +369,26 @@ const SCENARIOS = {
       ['평형 표기', '"31평" (한국 관습)', '"31 Pyeong" (영문 전사)'],
     ],
   },
+  '08': {
+    eyebrow: '08 / 08 · CATEGORY',
+    title: '카테고리 페이지',
+    sub: '카테고리 chip scroll + 정렬·필터 chip + ProductCard 그리드. 한국어 카테고리 라벨·할인·통화 표기 일관 여부.',
+    tags: ['category','chip scroll','filter'],
+    diff: [
+      ['상위 카테고리', 'sticky chip scroll (selected = fg검정)', 'tab underline (Material)'],
+      ['카테고리 라벨', '가구 / 패브릭 / 조명 / 데코 (한국어)', 'Furniture / Fabric / Lighting (영문)'],
+      ['하위 chip', 'Chip filled, 가로 스크롤', 'pill 보더, 줄바꿈'],
+      ['필터 진입', 'BottomSheet + ohouse filter 아이콘', '오른쪽 drawer + lucide filter'],
+      ['정렬', '"신상품 / 판매량 / 낮은가격순" 한글 chip', '"Newest / Popular / Low-High" dropdown'],
+      ['ProductCard', '3:4 보더없음 + 무료배송 텍스트', '1:1 보더 + Free shipping 영문'],
+      ['가격 표기', '"32% 1,290,000원"', '"-32% ₩1,290,000"'],
+      ['리뷰 표기', '"리뷰 1,243"', '"(1,243)"'],
+      ['카운트 헤더', '"전체 8,402개" 한글', '"8,402 items" 영문'],
+    ],
+  },
 };
 
-const PATHS = {'01':'product-detail','02':'empty-cart','03':'payment-error','04':'dark-mode','05':'signup-form','06':'home-feed','07':'content-detail'};
+const PATHS = {'01':'product-detail','02':'empty-cart','03':'payment-error','04':'search-results','05':'signup-form','06':'home-feed','07':'content-detail','08':'category'};
 
 const eyebrowEl = document.getElementById('panel-eyebrow');
 const titleEl = document.getElementById('panel-title');
@@ -1274,86 +1293,128 @@ if (document.readyState === 'loading') {
 </template>
 <template id="scn-04-with">
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><title>WITH (Dark) — 상품 상세</title>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITH — 검색 결과</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  /* OHOUSE-DESIGN.md Dark mode tokens */
   :root {
-    --bg:#0a0a0a; --bg-weak:#141414; --bg-inverse:#f5f5f5; --bg-brand:#00a1ff; --bg-brand-weak:#01243f;
-    --border:#383838; --border-brand:#00a1ff;
-    --fg:#f5f5f5; --fg-weak:#acacac; --fg-inverse:#0a0a0a; --fg-brand:#00a1ff;
+    --bg:#fff; --bg-weak:#f5f5f5; --bg-brand:#00a1ff; --bg-brand-weak:#f0f8fc;
+    --border:#e0e0e0; --border-strong:#141414; --border-brand:#00a1ff;
+    --fg:#141414; --fg-weak:#8c8c8c; --fg-inverse:#fff; --fg-brand:#00a1ff;
     --accent-red:#fd3d4a; --accent-yellow:#ffc300;
     --r-sm:4px; --r-md:8px; --r-full:9999px;
+    --shadow:0 2px 5px 0 #3F474D26;
   }
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
-  body { font-family:Pretendard,'Pretendard Variable',sans-serif; letter-spacing:-0.3px; background:#000; word-break:keep-all; color:var(--fg); }
-  .frame { max-width:375px; margin:24px auto; background:var(--bg); min-height:90vh; position:relative; padding-bottom:88px; overflow:hidden; border:1px solid var(--border); /* 다크에서 shadow 대신 border */ }
-  .topbar { height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 8px; }
-  .icon-btn { width:40px; height:40px; border:none; background:transparent; border-radius:var(--r-full); color:var(--fg); cursor:pointer; display:flex; align-items:center; justify-content:center; }
-  .icon-btn .icon { width:24px; height:24px; }
-  .icon { width:24px; height:24px; fill:currentColor; display:block; }
-  .gallery { aspect-ratio:3/4; background:linear-gradient(135deg,#3a342a,#2a2520); display:flex; align-items:center; justify-content:center; position:relative; }
-  .gallery::after { content:'1 / 8'; position:absolute; bottom:16px; right:16px; background:#00000099; color:#fff; padding:4px 8px; border-radius:var(--r-full); font-size:11px; line-height:14px; font-weight:500; }
-  .sofa { width:75%; height:55%; background:#7d6749; border-radius:12px 12px 24px 24px; }
-  .body { padding:16px; }
-  .brand-row { margin-bottom:8px; }
-  .brand-name { font-size:12px; line-height:16px; font-weight:500; color:var(--fg-weak); }
-  .brand-name::after { content:' >'; }
-  .title { font-size:18px; line-height:24px; font-weight:600; color:var(--fg); margin-bottom:12px; }
-  .reviews { display:flex; align-items:center; gap:4px; font-size:13px; line-height:18px; color:var(--fg-weak); margin-bottom:16px; }
-  .star { color:var(--accent-yellow); font-size:14px; }
-  .price-row { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
-  .discount { font-size:20px; line-height:28px; font-weight:700; color:var(--accent-red); }
-  .price { font-size:20px; line-height:28px; font-weight:700; color:var(--fg); }
-  .price-unit { font-size:14px; font-weight:500; }
-  .original { font-size:13px; line-height:18px; color:var(--fg-weak); text-decoration:line-through; margin-bottom:16px; }
-  .divider { height:8px; background:var(--bg-weak); margin:16px -16px; }
-  .section-title { font-size:16px; line-height:24px; font-weight:600; color:var(--fg); margin-bottom:12px; }
-  .chips { display:flex; gap:8px; }
-  .chip { height:32px; padding:0 12px; border:none; border-radius:var(--r-full); font-family:inherit; font-size:13px; line-height:18px; font-weight:500; letter-spacing:-0.3px; background:var(--bg-weak); color:var(--fg); cursor:pointer; }
-  .chip.selected { background:var(--bg-brand-weak); color:var(--fg-brand); box-shadow:inset 0 0 0 1px var(--border-brand); }
-  .bottombar { position:absolute; bottom:0; left:0; right:0; background:var(--bg); padding:12px 16px; display:flex; gap:8px; border-top:1px solid var(--border); }
-  .heart-btn { width:48px; height:48px; border:1px solid var(--border); border-radius:var(--r-md); background:var(--bg); color:var(--fg); display:flex; align-items:center; justify-content:center; cursor:pointer; }
-  .heart-btn .icon { width:24px; height:24px; }
-  .cta { flex:1; height:48px; background:var(--bg-brand); color:var(--fg-inverse); border:none; border-radius:var(--r-md); font-family:inherit; font-size:16px; font-weight:500; line-height:24px; letter-spacing:-0.3px; cursor:pointer; }
-  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#1a1a1a; color:#fff; font-size:12px; line-height:16px; border-radius:var(--r-md); border:1px solid #333; }
-  .banner b { color:var(--accent-yellow); }
+  body { font-family:Pretendard,'Pretendard Variable',sans-serif; letter-spacing:-0.3px; background:var(--bg-weak); word-break:keep-all; color:var(--fg); }
+  .frame { max-width:375px; margin:24px auto; background:var(--bg); min-height:90vh; position:relative; overflow:hidden; box-shadow:var(--shadow); }
+  .topbar { height:48px; display:flex; align-items:center; gap:6px; padding:6px 8px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); z-index:2; }
+  .icon-btn { width:36px; height:36px; border:none; background:transparent; border-radius:var(--r-full); color:var(--fg); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .icon { width:22px; height:22px; fill:currentColor; display:block; }
+  .search { flex:1; height:36px; background:var(--bg-weak); border-radius:var(--r-full); display:flex; align-items:center; padding:0 10px 0 12px; gap:8px; }
+  .search .icon { width:18px; height:18px; color:var(--fg); }
+  .search-text { flex:1; font-size:14px; line-height:20px; color:var(--fg); font-weight:500; }
+  .search-clear { width:18px; height:18px; color:var(--fg-weak); cursor:pointer; }
+  .recent { padding:12px 16px 8px; }
+  .recent-label { font-size:12px; line-height:16px; font-weight:500; color:var(--fg-weak); margin-bottom:8px; }
+  .chips { display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; }
+  .chip { height:32px; padding:0 12px; border:none; border-radius:var(--r-full); font-family:inherit; font-size:13px; line-height:18px; font-weight:500; letter-spacing:-0.3px; background:var(--bg-weak); color:var(--fg); cursor:pointer; flex-shrink:0; display:inline-flex; align-items:center; gap:4px; }
+  .chip .icon { width:14px; height:14px; color:var(--fg-weak); }
+  .chip.selected { background:var(--fg); color:var(--bg); }
+  .meta-bar { display:flex; align-items:center; justify-content:space-between; padding:14px 16px 8px; }
+  .meta-count { font-size:13px; line-height:18px; color:var(--fg); font-weight:500; }
+  .meta-count em { font-style:normal; color:var(--fg-brand); font-weight:600; }
+  .sort-chips { display:flex; gap:6px; padding:0 16px 12px; overflow-x:auto; }
+  .sort-chip { height:30px; padding:0 12px; border:1px solid var(--border); border-radius:var(--r-full); background:var(--bg); color:var(--fg); font-size:12px; line-height:16px; font-weight:500; font-family:inherit; cursor:pointer; flex-shrink:0; }
+  .sort-chip.selected { border-color:var(--fg); color:var(--fg); font-weight:600; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 8px; padding:0 16px 24px; }
+  .card { display:flex; flex-direction:column; }
+  .thumb { aspect-ratio:3/4; background:linear-gradient(135deg,#e8e1d4,#d4c8b3); border-radius:var(--r-md); position:relative; margin-bottom:8px; overflow:hidden; }
+  .thumb.b { background:linear-gradient(135deg,#d6dde0,#a9b3b8); }
+  .thumb.c { background:linear-gradient(135deg,#e2d3d0,#c1a8a3); }
+  .thumb.d { background:linear-gradient(135deg,#dee5d4,#b1c096); }
+  .fav { position:absolute; bottom:8px; right:8px; width:28px; height:28px; border-radius:var(--r-full); background:rgba(255,255,255,0.85); display:flex; align-items:center; justify-content:center; }
+  .fav .icon { width:16px; height:16px; color:var(--fg); }
+  .ad-tag { position:absolute; top:8px; left:8px; padding:2px 6px; background:rgba(20,20,20,0.6); color:#fff; font-size:10px; line-height:14px; border-radius:var(--r-sm); font-weight:500; }
+  .pname { font-size:13px; line-height:18px; color:var(--fg); margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .pname b { color:var(--fg-brand); font-weight:600; }
+  .price-row { display:flex; align-items:baseline; gap:6px; margin-bottom:2px; }
+  .discount { font-size:14px; font-weight:700; color:var(--accent-red); }
+  .price { font-size:14px; font-weight:700; color:var(--fg); }
+  .preview { font-size:11px; color:var(--fg-weak); margin-top:2px; }
+  .preview .star { color:var(--accent-yellow); }
+  .free-ship { display:inline-block; font-size:10px; line-height:14px; color:var(--fg-brand); font-weight:500; margin-top:2px; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#fff; color:var(--fg); font-size:12px; line-height:16px; border-radius:var(--r-md); border:1px solid var(--border); }
+  .banner b { color:var(--fg-brand); }
 </style></head>
 <body>
 <svg style="display:none" aria-hidden="true">
   <symbol id="i-chevron-left" viewBox="0 0 480 480"><path d="M312.221 63.1758C318.751 57.2229 328.871 57.6907 334.824 64.2207C340.777 70.751 340.309 80.8711 333.779 86.8242L165.75 240L333.779 393.176C340.309 399.129 340.777 409.249 334.824 415.779C328.871 422.309 318.751 422.777 312.221 416.824L131.221 251.824L130.913 251.536C127.779 248.524 126 244.359 126 240C126 235.5 127.895 231.207 131.221 228.176L312.221 63.1758Z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M204 28C301.202 28 380 106.798 380 204C380 247.087 364.51 286.557 338.81 317.143L444.628 422.961C450.876 429.21 450.876 439.34 444.628 445.588C438.379 451.836 428.249 451.836 422.001 445.588L316.183 339.77C285.598 365.47 246.127 380.96 203.04 380.96C105.838 380.96 28 302.122 28 205C28 107.798 106.798 28 204 28ZM204 60C124.471 60 60 124.471 60 204C60 283.529 124.471 348 204 348C283.529 348 348 283.529 348 204C348 124.471 283.529 60 204 60Z"/></symbol>
   <symbol id="i-cart" viewBox="0 0 480 480"><path d="M161 386C175.912 386 188 398.088 188 413C188 427.912 175.912 440 161 440C146.088 440 134 427.912 134 413C134 398.088 146.088 386 161 386Z"/><path d="M310 386C324.912 386 337 398.088 337 413C337 427.912 324.912 440 310 440C295.088 440 283 427.912 283 413C283 398.088 295.088 386 310 386Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M90.1904 44C105.959 44.0001 119.358 55.4939 121.79 71.0566L130.584 127.162H402C416.359 127.162 428 138.803 428 153.162V208.814C428 261.228 422.28 300.239 397.769 324.732C373.261 349.222 334.251 354.913 281.898 354.913H173.244C150.589 354.913 131.308 338.418 127.8 316.036L101.212 146.42C101.109 145.924 101.03 145.42 100.975 144.908L90.1758 76.0117L90.1748 76.0049L90.1738 76H40C31.1634 76 24 68.8366 24 60C24 51.1634 31.1634 44 40 44H90.1904ZM159.413 311.081C160.481 317.893 166.349 322.913 173.244 322.913H281.898C334.905 322.913 360.947 316.289 375.149 302.097C389.349 287.908 396 261.87 396 208.814V159.162H135.601L159.413 311.081Z"/></symbol>
-  <symbol id="i-share" viewBox="0 0 480 480"><path d="M403.2 240C412.037 240 419.2 247.163 419.2 256C419.2 313.551 412.202 355.888 385.304 382.562C358.447 409.194 315.977 416 258.475 416H220.725C163.223 415.999 120.753 409.194 93.8965 382.562C66.9979 355.888 60.0001 313.551 60 256C60.0002 247.163 67.1635 240 76 240C84.8365 240 91.9998 247.163 92 256C92.0001 313.65 99.7654 343.315 116.429 359.839C133.135 376.405 163.028 383.999 220.725 384H258.475C316.172 384 346.066 376.406 362.771 359.839C379.435 343.315 387.2 313.65 387.2 256C387.2 247.163 394.364 240 403.2 240Z"/><path d="M228.582 58.398C234.85 52.4396 244.762 52.5355 250.913 58.686L316.913 124.686C323.161 130.934 323.161 141.065 316.913 147.313C310.665 153.561 300.534 153.561 294.286 147.313L255.6 108.626V254C255.599 262.836 248.436 270 239.6 270C230.763 270 223.6 262.836 223.6 254V108.626L184.913 147.313C178.665 153.561 168.534 153.561 162.286 147.313C156.038 141.065 156.038 130.934 162.286 124.686L228.286 58.686L228.582 58.398Z"/></symbol>
-  <symbol id="i-heart" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M325.187 72.0088C388.138 72.7914 430.998 123.107 431 182.863V182.872C430.986 212.082 419.416 240.728 403.345 266.49C387.19 292.386 365.753 316.547 344.226 337.12C322.655 357.735 300.602 375.12 282.852 387.424C273.991 393.566 266.021 398.568 259.578 402.108C256.378 403.867 253.322 405.393 250.58 406.527C248.536 407.373 244.42 409 240 409C235.586 409 231.474 407.382 229.416 406.532C226.667 405.398 223.606 403.871 220.4 402.112C213.947 398.571 205.97 393.568 197.104 387.426C179.344 375.121 157.289 357.735 135.721 337.119C114.195 316.545 92.7642 292.383 76.6191 266.486C60.5572 240.723 49 212.075 49 182.864L49.0078 181.454C49.6833 121.849 93.0383 72 156.305 72L157.703 72.0107C187.049 72.4491 214.764 86.6197 234.599 105.432C237.111 107.814 242.889 107.814 245.401 105.432C265.551 86.3211 293.833 72.0002 323.695 72L325.187 72.0088ZM323.695 104C303.833 104 283.081 113.799 267.423 128.649C252.565 142.741 227.435 142.741 212.577 128.649C197.163 114.031 176.814 104.307 157.236 104.007L156.305 104C112.152 104 81.0018 138.307 81 182.864L81.0059 183.848C81.264 204.524 89.6337 226.875 103.774 249.557C118.057 272.466 137.514 294.568 157.831 313.987C178.104 333.365 198.845 349.702 215.328 361.122C223.584 366.842 230.591 371.203 235.795 374.059C237.472 374.979 238.868 375.691 239.988 376.222C241.105 375.691 242.497 374.982 244.168 374.063C249.367 371.207 256.37 366.844 264.622 361.124C281.099 349.703 301.839 333.365 322.116 313.986C342.437 294.566 361.902 272.463 376.194 249.553C390.568 226.512 398.988 203.813 399 182.864L398.994 181.822C398.515 138.12 367.99 104.532 324.729 104.006L323.695 104Z"/></symbol>
   <symbol id="i-x-circle" viewBox="0 0 480 480"><path d="M288.687 168.683C294.935 162.435 305.066 162.434 311.314 168.683C317.563 174.931 317.563 185.061 311.314 191.31L262.617 240.004L311.314 288.698C317.563 294.946 317.563 305.077 311.314 311.325C305.066 317.573 294.935 317.573 288.687 311.325L239.99 262.63L191.313 311.306C185.065 317.554 174.935 317.554 168.687 311.306C162.438 305.057 162.438 294.927 168.687 288.679L217.362 240.004L168.687 191.329C162.438 185.081 162.438 174.95 168.687 168.702C174.935 162.454 185.065 162.454 191.313 168.702L239.99 217.377L288.687 168.683Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M240 36C352.666 36 444 127.334 444 240C444 352.666 352.666 444 240 444C127.334 444 36 352.666 36 240C36 127.334 127.334 36 240 36ZM240 68C145.007 68 68 145.007 68 240C68 334.993 145.007 412 240 412C334.993 412 412 334.993 412 240C412 145.007 334.993 68 240 68Z"/></symbol>
-  <symbol id="i-x" viewBox="0 0 480 480"><path d="M88.687 88.687C94.935 82.439 105.066 82.439 111.314 88.687L240 217.373L368.687 88.687C374.935 82.439 385.066 82.439 391.314 88.687C397.562 94.935 397.562 105.066 391.314 111.314L262.628 240L391.314 368.687C397.562 374.935 397.562 385.066 391.314 391.314C385.066 397.562 374.935 397.562 368.687 391.314L240 262.628L111.314 391.314C105.066 397.562 94.935 397.562 88.687 391.314C82.439 385.066 82.439 374.935 88.687 368.687L217.373 240L88.687 111.314C82.439 105.066 82.439 94.935 88.687 88.687Z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 480 480"><path d="M398.651 120.354C404.88 114.087 415.01 114.055 421.278 120.284C427.545 126.512 427.577 136.643 421.349 142.911L205.97 359.644C202.973 362.66 198.898 364.359 194.646 364.366C190.394 364.372 186.314 362.686 183.307 359.679L58.6861 235.057C52.438 228.809 52.4379 218.678 58.6861 212.43C64.9344 206.182 75.0647 206.182 81.313 212.43L194.585 325.702L398.651 120.354Z"/></symbol>
-  <symbol id="i-exclamation-triangle" viewBox="0 0 480 480"><path d="M240 308C249.941 308 258 316.059 258 326C258 335.941 249.941 344 240 344C230.059 344 222 335.941 222 326C222 316.059 230.059 308 240 308Z"/><path d="M240 179C248.836 179 256 186.163 256 195V276C256 284.836 248.836 292 240 292C231.163 292 224 284.836 224 276V195C224 186.163 231.163 179 240 179Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M200.163 76.9999C217.868 46.3333 262.131 46.3334 279.837 76.9999L435.722 347C453.427 377.667 431.295 416 395.885 416H84.1152C48.7045 416 26.5731 377.666 44.2782 347L200.163 76.9999ZM252.124 92.9999C246.735 83.6667 233.265 83.6668 227.876 92.9999L71.9911 363C66.6028 372.333 73.3382 384 84.1152 384H395.885C406.662 384 413.397 372.333 408.009 363L252.124 92.9999Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M325.187 72.0088C388.138 72.7914 430.998 123.107 431 182.863V182.872C430.986 212.082 419.416 240.728 403.345 266.49C387.19 292.386 365.753 316.547 344.226 337.12C322.655 357.735 300.602 375.12 282.852 387.424C273.991 393.566 266.021 398.568 259.578 402.108C256.378 403.867 253.322 405.393 250.58 406.527C248.536 407.373 244.42 409 240 409C235.586 409 231.474 407.382 229.416 406.532C226.667 405.398 223.606 403.871 220.4 402.112C213.947 398.571 205.97 393.568 197.104 387.426C179.344 375.121 157.289 357.735 135.721 337.119C114.195 316.545 92.7642 292.383 76.6191 266.486C60.5572 240.723 49 212.075 49 182.864L49.0078 181.454C49.6833 121.849 93.0383 72 156.305 72L157.703 72.0107C187.049 72.4491 214.764 86.6197 234.599 105.432C237.111 107.814 242.889 107.814 245.401 105.432C265.551 86.3211 293.833 72.0002 323.695 72L325.187 72.0088ZM323.695 104C303.833 104 283.081 113.799 267.423 128.649C252.565 142.741 227.435 142.741 212.577 128.649C197.163 114.031 176.814 104.307 157.236 104.007L156.305 104C112.152 104 81.0018 138.307 81 182.864L81.0059 183.848C81.264 204.524 89.6337 226.875 103.774 249.557C118.057 272.466 137.514 294.568 157.831 313.987C178.104 333.365 198.845 349.702 215.328 361.122C223.584 366.842 230.591 371.203 235.795 374.059C237.472 374.979 238.868 375.691 239.988 376.222C241.105 375.691 242.497 374.982 244.168 374.063C249.367 371.207 256.37 366.844 264.622 361.124C281.099 349.703 301.839 333.365 322.116 313.986C342.437 294.566 361.902 272.463 376.194 249.553C390.568 226.512 398.988 203.813 399 182.864L398.994 181.822C398.515 138.12 367.99 104.532 324.729 104.006L323.695 104Z"/></symbol>
 </svg>
 
-<div class="banner"><b>WITH OHOUSE-DESIGN.md (Dark)</b> — Light 토큰의 자동 다크 매핑 · <b>shadow 제거</b> → border 1px로 elevation · brand #00a1ff 유지</div>
+<div class="banner"><b>WITH OHOUSE-DESIGN.md</b> — radius-full 검색바 · ohouse magnifying-glass · 검색어 강조 brand · "검색 결과 12,348건" 한글 · 3:4 ProductCard</div>
 <div class="frame">
   <div class="topbar">
     <button class="icon-btn" aria-label="뒤로 가기"><svg class="icon" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
-    <div style="display:flex;gap:0;">
-      <button class="icon-btn" aria-label="장바구니"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg></button>
-      <button class="icon-btn" aria-label="공유하기"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg></button>
+    <div class="search">
+      <svg class="icon" aria-hidden="true"><use href="#i-magnifying-glass"/></svg>
+      <span class="search-text">소파</span>
+      <svg class="icon search-clear" aria-hidden="true"><use href="#i-x-circle"/></svg>
+    </div>
+    <button class="icon-btn" aria-label="장바구니"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg></button>
+  </div>
+
+  <div class="recent">
+    <div class="recent-label">최근 검색어</div>
+    <div class="chips">
+      <button class="chip">소파 <svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg></button>
+      <button class="chip">패브릭 4인 <svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg></button>
+      <button class="chip">조명 <svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg></button>
+      <button class="chip">행거 <svg class="icon" aria-hidden="true"><use href="#i-x-circle"/></svg></button>
     </div>
   </div>
-  <div class="gallery"><div class="sofa"></div></div>
-  <div class="body">
-    <div class="brand-row"><span class="brand-name">자취살림</span></div>
-    <h1 class="title">모듈 패브릭 4인 소파 (3컬러 · 무료배송)</h1>
-    <div class="reviews"><span class="star">★★★★★</span> 4.8 · 리뷰 1,243건</div>
-    <div class="price-row"><span class="discount">32%</span><span class="price">1,290,000<span class="price-unit">원</span></span></div>
-    <div class="original">정가 1,890,000원</div>
-    <div class="divider"></div>
-    <div class="section-title">색상</div>
-    <div class="chips"><button class="chip selected">베이지</button><button class="chip">차콜</button><button class="chip">그레이</button></div>
+
+  <div class="meta-bar">
+    <div class="meta-count"><em>'소파'</em> 검색 결과 12,348건</div>
   </div>
-  <div class="bottombar">
-    <button class="heart-btn" aria-label="찜하기"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></button>
-    <button class="cta">장바구니 담기</button>
+  <div class="sort-chips">
+    <button class="sort-chip selected">추천순</button>
+    <button class="sort-chip">신상품</button>
+    <button class="sort-chip">판매량</button>
+    <button class="sort-chip">낮은가격</button>
+    <button class="sort-chip">리뷰많은순</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="thumb"><span class="ad-tag">AD</span><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">자취살림 모듈 패브릭 4인 <b>소파</b> (베이지)</div>
+      <div class="price-row"><span class="discount">32%</span><span class="price">1,290,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.8 · 리뷰 1,243</div>
+      <span class="free-ship">무료배송</span>
+    </div>
+    <div class="card">
+      <div class="thumb b"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">홈플래닛 리클라이너 <b>소파</b> 1인용</div>
+      <div class="price-row"><span class="discount">15%</span><span class="price">689,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.6 · 리뷰 482</div>
+    </div>
+    <div class="card">
+      <div class="thumb c"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">레이지보이 가죽 3인 <b>소파</b> 다크브라운</div>
+      <div class="price-row"><span class="discount">22%</span><span class="price">1,840,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.9 · 리뷰 327</div>
+      <span class="free-ship">무료배송</span>
+    </div>
+    <div class="card">
+      <div class="thumb d"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">노르딕 라운지 <b>소파</b> (그린 · 2인)</div>
+      <div class="price-row"><span class="discount">8%</span><span class="price">498,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.4 · 리뷰 89</div>
+    </div>
   </div>
 </div>
 </body></html>
@@ -1361,60 +1422,113 @@ if (document.readyState === 'loading') {
 </template>
 <template id="scn-04-without">
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><title>WITHOUT (Dark) — 상품 상세</title>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITHOUT — 검색 결과</title>
 <style>
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:-apple-system,BlinkMacSystemFont,sans-serif; background:#000; color:#f3f4f6; }
-  .frame { max-width:375px; margin:24px auto; background:#1f2937; min-height:90vh; position:relative; padding-bottom:80px; overflow:hidden; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.5); /* ⛔ 다크에서 shadow 잔존 */ }
-  .topbar { height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid #374151; }
-  .icon-btn { padding:8px; border:none; background:transparent; color:#d1d5db; cursor:pointer; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f3f4f6; color:#111827; }
+  .frame { max-width:375px; margin:24px auto; background:#fff; min-height:90vh; position:relative; overflow:hidden; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+  .topbar { height:56px; display:flex; align-items:center; gap:8px; padding:0 12px; border-bottom:1px solid #e5e7eb; }
+  .icon-btn { padding:6px; border:none; background:transparent; color:#374151; cursor:pointer; }
   .icon-btn [data-lucide] { width:20px; height:20px; }
-  .gallery { aspect-ratio:1/1; background:#374151; position:relative; display:flex; align-items:center; justify-content:center; }
-  .gallery::after { content:'1/8'; position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.6); color:#fff; padding:4px 10px; border-radius:4px; font-size:12px; }
-  .sofa { width:70%; height:50%; background:#6b7280; border-radius:8px; }
-  .body { padding:16px; }
-  .brand-row { margin-bottom:8px; }
-  .brand-name { font-size:14px; color:#9ca3af; text-transform:uppercase; letter-spacing:.5px; }
-  .title { font-size:20px; font-weight:700; line-height:1.4; color:#f9fafb; margin-bottom:12px; }
-  .reviews { display:flex; align-items:center; gap:6px; font-size:14px; color:#9ca3af; margin-bottom:16px; }
-  .star { color:#fbbf24; }
-  .price-row { display:flex; align-items:baseline; gap:8px; margin-bottom:4px; }
-  .discount { font-size:18px; font-weight:700; color:#f87171; }
-  .price { font-size:22px; font-weight:700; color:#f9fafb; }
-  .original { font-size:14px; color:#6b7280; text-decoration:line-through; margin-bottom:24px; }
-  .section-title { font-size:16px; font-weight:600; color:#f9fafb; margin-bottom:12px; margin-top:24px; }
-  .select { width:100%; height:44px; padding:0 12px; border:1px solid #4b5563; border-radius:6px; font-family:inherit; font-size:14px; background:#374151; color:#f9fafb; }
-  .bottombar { position:absolute; bottom:0; left:0; right:0; background:#1f2937; padding:12px 16px; display:flex; gap:12px; border-top:1px solid #374151; }
-  .heart-btn { width:44px; height:44px; border:1px solid #4b5563; border-radius:6px; background:#374151; color:#9ca3af; display:flex; align-items:center; justify-content:center; cursor:pointer; }
-  .heart-btn [data-lucide] { width:20px; height:20px; }
-  .cta { flex:1; height:44px; background:#3b82f6; color:#fff; border:none; border-radius:6px; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; }
-  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#111827; color:#fff; font-size:12px; border-radius:6px; }
-  .banner b { color:#fbbf24; }
-  .warn { color:#fca5a5; }
+  .search { flex:1; height:40px; border:1px solid #d1d5db; border-radius:6px; display:flex; align-items:center; padding:0 10px; gap:8px; }
+  .search [data-lucide] { width:16px; height:16px; color:#6b7280; }
+  .search-text { flex:1; font-size:14px; color:#111827; }
+  .recent { padding:12px 14px 8px; }
+  .recent-label { font-size:13px; font-weight:600; color:#374151; margin-bottom:8px; text-transform:uppercase; letter-spacing:.4px; }
+  .chips { display:flex; gap:6px; flex-wrap:wrap; }
+  .chip { padding:5px 10px; border:1px solid #d1d5db; border-radius:9999px; background:#fff; color:#374151; font-family:inherit; font-size:12px; cursor:pointer; display:inline-flex; align-items:center; gap:4px; }
+  .chip [data-lucide] { width:12px; height:12px; }
+  .meta-bar { padding:14px 14px 4px; display:flex; justify-content:space-between; align-items:center; }
+  .meta-count { font-size:13px; color:#6b7280; }
+  .sort-select { padding:6px 8px; border:1px solid #d1d5db; border-radius:4px; font-size:12px; background:#fff; color:#374151; font-family:inherit; }
+  .tabs { display:flex; border-bottom:1px solid #e5e7eb; padding:0 14px; }
+  .tab { padding:10px 14px; font-size:13px; color:#6b7280; cursor:pointer; border-bottom:2px solid transparent; font-family:inherit; background:transparent; border-left:none; border-right:none; border-top:none; }
+  .tab.active { color:#3b82f6; border-bottom-color:#3b82f6; font-weight:600; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 10px; padding:14px; }
+  .card { display:flex; flex-direction:column; border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
+  .thumb { aspect-ratio:1/1; background:#d1d5db; }
+  .thumb.b { background:#9ca3af; }
+  .thumb.c { background:#a8a29e; }
+  .thumb.d { background:#86efac; }
+  .info { padding:8px 10px; }
+  .pname { font-size:12px; line-height:1.4; color:#111827; margin-bottom:4px; min-height:34px; }
+  .pname b { background:#fee2e2; color:#dc2626; padding:0 2px; }
+  .price-row { display:flex; align-items:baseline; gap:4px; }
+  .discount { font-size:12px; font-weight:700; color:#ef4444; }
+  .price { font-size:13px; font-weight:600; color:#111827; }
+  .preview { font-size:11px; color:#9ca3af; margin-top:2px; }
+  .star { color:#f59e0b; }
+  .free-ship { font-size:10px; color:#6b7280; margin-top:2px; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#fff; color:#111827; font-size:12px; border-radius:6px; border:1px solid #e5e7eb; }
+  .banner b { color:#3b82f6; }
+  .warn { color:#dc2626; }
 </style></head>
 <body>
-<div class="banner"><b>WITHOUT design system (Dark)</b> — gray-800 bg · blue-500 그대로 · <span class="warn">shadow 잔존(다크에서 어색)</span> · 브랜드 일관성 X</div>
+<div class="banner"><b>WITHOUT design system</b> — radius-md 검색바 · lucide search · "results for" 영문 · <span class="warn">red highlight (잘못된 의미)</span> · 1:1 카드 + 보더</div>
 <div class="frame">
   <div class="topbar">
     <button class="icon-btn" aria-label="Back"><i data-lucide="chevron-left"></i></button>
-    <div style="display:flex;gap:4px;">
-      <button class="icon-btn" aria-label="Cart"><i data-lucide="shopping-bag"></i></button>
-      <button class="icon-btn" aria-label="Share"><i data-lucide="share-2"></i></button>
+    <div class="search">
+      <i data-lucide="search"></i>
+      <span class="search-text">sofa</span>
+      <i data-lucide="x"></i>
+    </div>
+    <button class="icon-btn" aria-label="Cart"><i data-lucide="shopping-bag"></i></button>
+  </div>
+  <div class="recent">
+    <div class="recent-label">Recent</div>
+    <div class="chips">
+      <button class="chip">sofa <i data-lucide="x"></i></button>
+      <button class="chip">fabric 4-seater <i data-lucide="x"></i></button>
+      <button class="chip">lamp <i data-lucide="x"></i></button>
+      <button class="chip">hanger <i data-lucide="x"></i></button>
     </div>
   </div>
-  <div class="gallery"><div class="sofa"></div></div>
-  <div class="body">
-    <div class="brand-row"><span class="brand-name">자취살림</span></div>
-    <h1 class="title">모듈 패브릭 4인 소파 (3컬러 · 무료배송)</h1>
-    <div class="reviews"><span class="star">★★★★★</span> 4.8 (1,243 reviews)</div>
-    <div class="price-row"><span class="discount">-32%</span><span class="price">₩1,290,000</span></div>
-    <div class="original">₩1,890,000</div>
-    <div class="section-title">Color</div>
-    <select class="select"><option>베이지 (선택됨)</option><option>차콜</option><option>그레이</option></select>
+  <div class="tabs">
+    <button class="tab active">All</button>
+    <button class="tab">Furniture</button>
+    <button class="tab">Lighting</button>
+    <button class="tab">Decor</button>
   </div>
-  <div class="bottombar">
-    <button class="heart-btn" aria-label="Favorite"><i data-lucide="heart"></i></button>
-    <button class="cta">Add to Cart</button>
+  <div class="meta-bar">
+    <div class="meta-count">12,348 results for "sofa"</div>
+    <select class="sort-select"><option>Sort: Recommended</option><option>Newest</option><option>Best Selling</option><option>Low to High</option></select>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="thumb"></div>
+      <div class="info">
+        <div class="pname">Modular Fabric 4-Seat <b>Sofa</b> (Beige)</div>
+        <div class="price-row"><span class="discount">-32%</span><span class="price">₩1,290,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.8 (1,243)</div>
+        <div class="free-ship">Free shipping</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb b"></div>
+      <div class="info">
+        <div class="pname">HomePlanet Recliner <b>Sofa</b> 1-seater</div>
+        <div class="price-row"><span class="discount">-15%</span><span class="price">₩689,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.6 (482)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb c"></div>
+      <div class="info">
+        <div class="pname">LaZBoy Leather 3-Seat <b>Sofa</b> Brown</div>
+        <div class="price-row"><span class="discount">-22%</span><span class="price">₩1,840,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.9 (327)</div>
+        <div class="free-ship">Free shipping</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb d"></div>
+      <div class="info">
+        <div class="pname">Nordic Lounge <b>Sofa</b> (Green · 2-seat)</div>
+        <div class="price-row"><span class="discount">-8%</span><span class="price">₩498,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.4 (89)</div>
+      </div>
+    </div>
   </div>
 </div>
 <script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.min.js"></script>
@@ -1960,6 +2074,276 @@ if (document.readyState === 'loading') {
     <button class="action-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
   </div>
 </div>
+</body></html>
+
+</template>
+
+<template id="scn-08-with">
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITH — 카테고리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg:#fff; --bg-weak:#f5f5f5; --bg-brand:#00a1ff; --bg-brand-weak:#f0f8fc;
+    --border:#e0e0e0; --border-strong:#141414;
+    --fg:#141414; --fg-weak:#8c8c8c; --fg-brand:#00a1ff;
+    --accent-red:#fd3d4a; --accent-yellow:#ffc300;
+    --r-sm:4px; --r-md:8px; --r-full:9999px;
+    --shadow:0 2px 5px 0 #3F474D26;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+  body { font-family:Pretendard,'Pretendard Variable',sans-serif; letter-spacing:-0.3px; background:var(--bg-weak); word-break:keep-all; color:var(--fg); }
+  .frame { max-width:375px; margin:24px auto; background:var(--bg); min-height:90vh; position:relative; overflow:hidden; box-shadow:var(--shadow); }
+  .topbar { height:48px; display:flex; align-items:center; padding:0 8px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); z-index:3; }
+  .icon-btn { width:40px; height:40px; border:none; background:transparent; border-radius:var(--r-full); color:var(--fg); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .icon { width:22px; height:22px; fill:currentColor; display:block; }
+  .topbar-title { flex:1; font-size:17px; line-height:22px; font-weight:600; color:var(--fg); text-align:center; padding-right:40px; }
+  .cat-scroll { display:flex; gap:0; overflow-x:auto; padding:0 8px; border-bottom:1px solid var(--border); position:sticky; top:48px; background:var(--bg); z-index:2; }
+  .cat-tab { padding:12px 12px; font-size:14px; line-height:20px; color:var(--fg-weak); font-weight:500; font-family:inherit; background:transparent; border:none; cursor:pointer; flex-shrink:0; position:relative; }
+  .cat-tab.active { color:var(--fg); font-weight:700; }
+  .cat-tab.active::after { content:''; position:absolute; left:12px; right:12px; bottom:0; height:2px; background:var(--fg); }
+  .sub-chips { display:flex; gap:6px; padding:10px 16px; overflow-x:auto; border-bottom:1px solid var(--border); }
+  .chip { height:30px; padding:0 12px; border:none; border-radius:var(--r-full); font-family:inherit; font-size:12px; line-height:16px; font-weight:500; letter-spacing:-0.3px; background:var(--bg-weak); color:var(--fg); cursor:pointer; flex-shrink:0; }
+  .chip.selected { background:var(--fg); color:var(--bg); }
+  .meta-bar { display:flex; align-items:center; justify-content:space-between; padding:12px 16px 8px; }
+  .meta-count { font-size:13px; line-height:18px; color:var(--fg); font-weight:500; }
+  .filter-row { display:flex; gap:6px; align-items:center; }
+  .filter-chip { height:28px; padding:0 10px; border:1px solid var(--border); border-radius:var(--r-full); background:var(--bg); color:var(--fg); font-size:12px; line-height:16px; font-weight:500; font-family:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:4px; }
+  .filter-chip.selected { border-color:var(--fg); font-weight:600; }
+  .filter-chip .icon { width:12px; height:12px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px 8px; padding:8px 16px 24px; }
+  .card { display:flex; flex-direction:column; }
+  .thumb { aspect-ratio:3/4; background:linear-gradient(135deg,#dfd6c5,#c6b596); border-radius:var(--r-md); position:relative; margin-bottom:8px; overflow:hidden; }
+  .thumb.b { background:linear-gradient(135deg,#cfd6da,#9ba6ad); }
+  .thumb.c { background:linear-gradient(135deg,#d8c8c5,#b89a93); }
+  .thumb.d { background:linear-gradient(135deg,#cdd9c4,#a3b58c); }
+  .thumb.e { background:linear-gradient(135deg,#e7d5d5,#c8a4a4); }
+  .thumb.f { background:linear-gradient(135deg,#d3c5d8,#a89bb1); }
+  .fav { position:absolute; bottom:8px; right:8px; width:28px; height:28px; border-radius:var(--r-full); background:rgba(255,255,255,0.85); display:flex; align-items:center; justify-content:center; }
+  .fav .icon { width:16px; height:16px; color:var(--fg); }
+  .pname { font-size:13px; line-height:18px; color:var(--fg); margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .price-row { display:flex; align-items:baseline; gap:6px; }
+  .discount { font-size:14px; font-weight:700; color:var(--accent-red); }
+  .price { font-size:14px; font-weight:700; color:var(--fg); }
+  .preview { font-size:11px; color:var(--fg-weak); margin-top:2px; }
+  .preview .star { color:var(--accent-yellow); }
+  .free-ship { display:inline-block; font-size:10px; line-height:14px; color:var(--fg-brand); font-weight:500; margin-top:2px; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#fff; color:var(--fg); font-size:12px; line-height:16px; border-radius:var(--r-md); border:1px solid var(--border); }
+  .banner b { color:var(--fg-brand); }
+</style></head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-chevron-left" viewBox="0 0 480 480"><path d="M312.221 63.1758C318.751 57.2229 328.871 57.6907 334.824 64.2207C340.777 70.751 340.309 80.8711 333.779 86.8242L165.75 240L333.779 393.176C340.309 399.129 340.777 409.249 334.824 415.779C328.871 422.309 318.751 422.777 312.221 416.824L131.221 251.824L130.913 251.536C127.779 248.524 126 244.359 126 240C126 235.5 127.895 231.207 131.221 228.176L312.221 63.1758Z"/></symbol>
+  <symbol id="i-magnifying-glass" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M204 28C301.202 28 380 106.798 380 204C380 247.087 364.51 286.557 338.81 317.143L444.628 422.961C450.876 429.21 450.876 439.34 444.628 445.588C438.379 451.836 428.249 451.836 422.001 445.588L316.183 339.77C285.598 365.47 246.127 380.96 203.04 380.96C105.838 380.96 28 302.122 28 205C28 107.798 106.798 28 204 28ZM204 60C124.471 60 60 124.471 60 204C60 283.529 124.471 348 204 348C283.529 348 348 283.529 348 204C348 124.471 283.529 60 204 60Z"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 480 480"><path d="M86.8242 165.75L240 333.779L393.176 165.75C399.129 159.221 409.249 158.753 415.779 164.706C422.309 170.659 422.777 180.779 416.824 187.309L251.824 368.309L251.536 368.617C248.524 371.751 244.359 373.529 240 373.529C235.641 373.529 231.476 371.751 228.464 368.617L228.176 368.309L63.1758 187.309C57.2229 180.779 57.6907 170.659 64.2207 164.706C70.751 158.753 80.8711 159.221 86.8242 165.75Z"/></symbol>
+  <symbol id="i-funnel" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M68 80C68 71.163 75.163 64 84 64H396C404.837 64 412 71.163 412 80V108.687C412 117.524 408.487 125.999 402.243 132.243L292 242.487V408C292 414.066 288.575 419.609 283.151 422.321C277.727 425.034 271.222 424.45 266.367 420.806L186.367 360.806C182.336 357.781 180 353.038 180 348V242.487L77.757 132.243C71.5132 125.999 68 117.524 68 108.687V80ZM100 96V108.687L208.243 216.929C211.243 219.929 213.029 224.038 213.029 228.323V340L260 375.219V228.323C260 224.038 261.757 219.929 264.757 216.929L380 108.687V96H100Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 480 480"><path fill-rule="evenodd" clip-rule="evenodd" d="M325.187 72.0088C388.138 72.7914 430.998 123.107 431 182.863V182.872C430.986 212.082 419.416 240.728 403.345 266.49C387.19 292.386 365.753 316.547 344.226 337.12C322.655 357.735 300.602 375.12 282.852 387.424C273.991 393.566 266.021 398.568 259.578 402.108C256.378 403.867 253.322 405.393 250.58 406.527C248.536 407.373 244.42 409 240 409C235.586 409 231.474 407.382 229.416 406.532C226.667 405.398 223.606 403.871 220.4 402.112C213.947 398.571 205.97 393.568 197.104 387.426C179.344 375.121 157.289 357.735 135.721 337.119C114.195 316.545 92.7642 292.383 76.6191 266.486C60.5572 240.723 49 212.075 49 182.864L49.0078 181.454C49.6833 121.849 93.0383 72 156.305 72L157.703 72.0107C187.049 72.4491 214.764 86.6197 234.599 105.432C237.111 107.814 242.889 107.814 245.401 105.432C265.551 86.3211 293.833 72.0002 323.695 72L325.187 72.0088ZM323.695 104C303.833 104 283.081 113.799 267.423 128.649C252.565 142.741 227.435 142.741 212.577 128.649C197.163 114.031 176.814 104.307 157.236 104.007L156.305 104C112.152 104 81.0018 138.307 81 182.864L81.0059 183.848C81.264 204.524 89.6337 226.875 103.774 249.557C118.057 272.466 137.514 294.568 157.831 313.987C178.104 333.365 198.845 349.702 215.328 361.122C223.584 366.842 230.591 371.203 235.795 374.059C237.472 374.979 238.868 375.691 239.988 376.222C241.105 375.691 242.497 374.982 244.168 374.063C249.367 371.207 256.37 366.844 264.622 361.124C281.099 349.703 301.839 333.365 322.116 313.986C342.437 294.566 361.902 272.463 376.194 249.553C390.568 226.512 398.988 203.813 399 182.864L398.994 181.822C398.515 138.12 367.99 104.532 324.729 104.006L323.695 104Z"/></symbol>
+</svg>
+<div class="banner"><b>WITH OHOUSE-DESIGN.md</b> — sticky chip scroll · 한국어 카테고리 · BottomSheet 필터 진입 · "전체 8,402개" · 3:4 ProductCard · 한국식 가격 표기</div>
+<div class="frame">
+  <div class="topbar">
+    <button class="icon-btn" aria-label="뒤로 가기"><svg class="icon" aria-hidden="true"><use href="#i-chevron-left"/></svg></button>
+    <div class="topbar-title">가구</div>
+    <button class="icon-btn" aria-label="검색"><svg class="icon" aria-hidden="true"><use href="#i-magnifying-glass"/></svg></button>
+  </div>
+  <div class="cat-scroll">
+    <button class="cat-tab active">소파</button>
+    <button class="cat-tab">의자</button>
+    <button class="cat-tab">테이블</button>
+    <button class="cat-tab">수납</button>
+    <button class="cat-tab">침대</button>
+    <button class="cat-tab">서랍장</button>
+    <button class="cat-tab">책상</button>
+  </div>
+  <div class="sub-chips">
+    <button class="chip selected">전체</button>
+    <button class="chip">패브릭 소파</button>
+    <button class="chip">가죽 소파</button>
+    <button class="chip">리클라이너</button>
+    <button class="chip">1인 소파</button>
+    <button class="chip">코너 소파</button>
+  </div>
+  <div class="meta-bar">
+    <div class="meta-count">전체 8,402개</div>
+    <div class="filter-row">
+      <button class="filter-chip selected">신상품 <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+      <button class="filter-chip"><svg class="icon" aria-hidden="true"><use href="#i-funnel"/></svg> 필터</button>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="thumb"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">자취살림 모듈 패브릭 4인 소파 (3컬러)</div>
+      <div class="price-row"><span class="discount">32%</span><span class="price">1,290,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.8 · 리뷰 1,243</div>
+      <span class="free-ship">무료배송</span>
+    </div>
+    <div class="card">
+      <div class="thumb b"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">코지홈 라운지 1인 소파 (그레이)</div>
+      <div class="price-row"><span class="discount">18%</span><span class="price">389,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.7 · 리뷰 612</div>
+    </div>
+    <div class="card">
+      <div class="thumb c"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">아멜리 가죽 3인 소파 카멜브라운</div>
+      <div class="price-row"><span class="discount">25%</span><span class="price">1,490,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.9 · 리뷰 284</div>
+      <span class="free-ship">무료배송</span>
+    </div>
+    <div class="card">
+      <div class="thumb d"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">노르딕 코너 패브릭 소파 (그린)</div>
+      <div class="price-row"><span class="discount">12%</span><span class="price">980,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.5 · 리뷰 158</div>
+    </div>
+    <div class="card">
+      <div class="thumb e"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">로지 1인 리클라이너 (핑크)</div>
+      <div class="price-row"><span class="discount">9%</span><span class="price">529,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.6 · 리뷰 92</div>
+    </div>
+    <div class="card">
+      <div class="thumb f"><div class="fav"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></div></div>
+      <div class="pname">럭셔리 모듈 4인 패브릭 소파 라벤더</div>
+      <div class="price-row"><span class="discount">35%</span><span class="price">1,690,000원</span></div>
+      <div class="preview"><span class="star">★</span> 4.8 · 리뷰 471</div>
+      <span class="free-ship">무료배송</span>
+    </div>
+  </div>
+</div>
+</body></html>
+
+</template>
+<template id="scn-08-without">
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><title>WITHOUT — 카테고리</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f3f4f6; color:#111827; }
+  .frame { max-width:375px; margin:24px auto; background:#fff; min-height:90vh; position:relative; overflow:hidden; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+  .topbar { height:56px; display:flex; align-items:center; padding:0 12px; border-bottom:1px solid #e5e7eb; gap:8px; }
+  .icon-btn { padding:6px; border:none; background:transparent; color:#374151; cursor:pointer; }
+  .icon-btn [data-lucide] { width:20px; height:20px; }
+  .topbar-title { flex:1; font-size:18px; font-weight:600; color:#111827; }
+  .tabs { display:flex; border-bottom:1px solid #e5e7eb; padding:0 12px; }
+  .tab { padding:12px 14px; font-size:14px; color:#6b7280; cursor:pointer; border-bottom:2px solid transparent; font-family:inherit; background:transparent; border-top:none; border-left:none; border-right:none; }
+  .tab.active { color:#3b82f6; border-bottom-color:#3b82f6; font-weight:600; }
+  .sub-chips { display:flex; gap:6px; padding:12px; flex-wrap:wrap; border-bottom:1px solid #e5e7eb; }
+  .chip { padding:6px 12px; border:1px solid #d1d5db; border-radius:9999px; background:#fff; color:#374151; font-family:inherit; font-size:12px; cursor:pointer; }
+  .chip.selected { background:#3b82f6; color:#fff; border-color:#3b82f6; }
+  .meta-bar { padding:12px; display:flex; justify-content:space-between; align-items:center; }
+  .meta-count { font-size:13px; color:#6b7280; }
+  .filter-row { display:flex; gap:6px; }
+  .sort-select { padding:6px 8px; border:1px solid #d1d5db; border-radius:4px; font-size:12px; background:#fff; color:#374151; font-family:inherit; }
+  .filter-btn { padding:6px 10px; border:1px solid #d1d5db; border-radius:4px; background:#fff; color:#374151; font-size:12px; font-family:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:4px; }
+  .filter-btn [data-lucide] { width:12px; height:12px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 10px; padding:8px 12px 24px; }
+  .card { display:flex; flex-direction:column; border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
+  .thumb { aspect-ratio:1/1; background:#d1d5db; }
+  .thumb.b { background:#9ca3af; }
+  .thumb.c { background:#a8a29e; }
+  .thumb.d { background:#86efac; }
+  .thumb.e { background:#fca5a5; }
+  .thumb.f { background:#c4b5fd; }
+  .info { padding:8px 10px; }
+  .pname { font-size:12px; line-height:1.4; color:#111827; margin-bottom:4px; min-height:34px; }
+  .price-row { display:flex; align-items:baseline; gap:4px; }
+  .discount { font-size:12px; font-weight:700; color:#ef4444; }
+  .price { font-size:13px; font-weight:600; color:#111827; }
+  .preview { font-size:11px; color:#9ca3af; margin-top:2px; }
+  .star { color:#f59e0b; }
+  .free-ship { font-size:10px; color:#6b7280; margin-top:2px; }
+  .banner { max-width:375px; margin:0 auto 12px; padding:12px 16px; background:#fff; color:#111827; font-size:12px; border-radius:6px; border:1px solid #e5e7eb; }
+  .banner b { color:#3b82f6; }
+  .warn { color:#dc2626; }
+</style></head>
+<body>
+<div class="banner"><b>WITHOUT design system</b> — Material tab underline · 영문 카테고리 라벨 · dropdown 정렬 · "8,402 items" · 1:1 카드 + 보더 · <span class="warn">선택 chip이 brand-solid 남용</span></div>
+<div class="frame">
+  <div class="topbar">
+    <button class="icon-btn" aria-label="Back"><i data-lucide="chevron-left"></i></button>
+    <div class="topbar-title">Furniture</div>
+    <button class="icon-btn" aria-label="Search"><i data-lucide="search"></i></button>
+  </div>
+  <div class="tabs">
+    <button class="tab active">Sofa</button>
+    <button class="tab">Chair</button>
+    <button class="tab">Table</button>
+    <button class="tab">Storage</button>
+    <button class="tab">Bed</button>
+  </div>
+  <div class="sub-chips">
+    <button class="chip selected">All</button>
+    <button class="chip">Fabric</button>
+    <button class="chip">Leather</button>
+    <button class="chip">Recliner</button>
+    <button class="chip">1-seater</button>
+    <button class="chip">Corner</button>
+  </div>
+  <div class="meta-bar">
+    <div class="meta-count">8,402 items</div>
+    <div class="filter-row">
+      <select class="sort-select"><option>Newest</option><option>Best Selling</option><option>Low to High</option></select>
+      <button class="filter-btn"><i data-lucide="sliders-horizontal"></i> Filter</button>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="thumb"></div>
+      <div class="info">
+        <div class="pname">Modular Fabric 4-Seat Sofa (3 colors)</div>
+        <div class="price-row"><span class="discount">-32%</span><span class="price">₩1,290,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.8 (1,243)</div>
+        <div class="free-ship">Free shipping</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb b"></div>
+      <div class="info">
+        <div class="pname">CozyHome Lounge 1-seater Sofa (Gray)</div>
+        <div class="price-row"><span class="discount">-18%</span><span class="price">₩389,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.7 (612)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb c"></div>
+      <div class="info">
+        <div class="pname">Ameli Leather 3-Seat Sofa Camel</div>
+        <div class="price-row"><span class="discount">-25%</span><span class="price">₩1,490,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.9 (284)</div>
+        <div class="free-ship">Free shipping</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb d"></div>
+      <div class="info">
+        <div class="pname">Nordic Corner Fabric Sofa (Green)</div>
+        <div class="price-row"><span class="discount">-12%</span><span class="price">₩980,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.5 (158)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb e"></div>
+      <div class="info">
+        <div class="pname">Rosie 1-Seater Recliner (Pink)</div>
+        <div class="price-row"><span class="discount">-9%</span><span class="price">₩529,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.6 (92)</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb f"></div>
+      <div class="info">
+        <div class="pname">Luxury Modular 4-Seat Fabric Sofa Lavender</div>
+        <div class="price-row"><span class="discount">-35%</span><span class="price">₩1,690,000</span></div>
+        <div class="preview"><span class="star">★</span> 4.8 (471)</div>
+        <div class="free-ship">Free shipping</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@0.471.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons({attrs:{'stroke-width':2}});</script>
 </body></html>
 
 </template>
