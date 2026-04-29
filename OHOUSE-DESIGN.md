@@ -305,24 +305,49 @@ components:
 
 | 항목 | 값 |
 |---|---|
-| **버전** | **v0.4.1** |
+| **버전** | **v0.4.2** |
 | **릴리즈** | 2026-04-29 |
 | **기준** | apps-web ODS |
 | **Figma canonical** | `aTdWM1sgdScr68GZdQ2sWO` |
 | **아이콘 소스** | `bucketplace/design-assets` (245 icons × 4 weights) |
 | **검증 방법** | `npx @google/design.md lint OHOUSE-DESIGN.md` |
-| **파일 크기** | ~44KB (스펙 본체) + `ICONS.md` ~214KB (245 아이콘 sprite, 분리 관리) |
+| **파일 크기** | ~46KB (스펙 본체) + `ICONS.md` ~214KB (245 아이콘 sprite, 분리 관리) |
 
-#### 🆕 주요 업데이트 (v0.2.0 → v0.3.0)
+---
 
-- **§7 Icons 섹션 신규** — `bucketplace/design-assets` 245 아이콘 통합. 카테고리 12종, weight 4종, viewBox 480 spec, sprite 사용법, outlined↔filled 페어 룰
-- **§8 컴포넌트 보강** — ProductCard / BottomNav / ChipScroll / Section header / Avatar / Hero+Body / Author row / Stats row 추가 (현재 7개 시나리오 자족 재현 가능)
-- **§9 화면 패턴 가이드 신규** — Detail / Empty / Error / Form / Feed / Content 6 패턴별 레이아웃 + 토큰 적용 룰
-- **§11.3 마커 보강** — Figma 비ODS 마커(🟣 보라/🌀 회오리) ↔ `@non-ods:` 매핑 추가 (이선진/디어님 워크플로우 약점 ⑤ 대응)
-- **§8.0 ODS 분기 룰 신규** — ODS에 없으면 트랙 컴포넌트로 분리 (Plain Tab, Topic Chip, Filter Chip 등)
-- 자족성 검증: 7 시나리오(상품 상세 / 빈 장바구니 / 결제 실패 / 다크 / 폼 / 홈 피드 / 콘텐츠 상세) 모두 본 파일 단독으로 재현 가능
+## 🛑 STOP — AI 에이전트가 이 파일을 컨텍스트로 받았다면 가장 먼저 읽을 것
 
-이전 변경 내역은 §12 참조.
+> 이 박스는 §7.12와 §9 Don't 표의 핵심을 **선두에 못 박아둔 것**. 한 번이라도 어기면 결과물 폐기·재작업이다. 자세한 룰은 §7.12 참조.
+
+**아이콘은 절대 직접 그리지 않는다.** 어떤 SVG path도 손으로 작성·추정·기억으로 재구성 금지. 이모지(`🛋️💡🪴🏠`)로 카테고리·기능 아이콘 대체 금지.
+
+**무조건 이 순서로 처리한다:**
+
+1. 화면에 아이콘이 필요하면 먼저 동봉된 **`ICONS.md`** 파일을 연다 (245개 sprite가 거기 있다).
+2. 정적 HTML / single-file artifact → `ICONS.md`의 `## Sprite (붙여넣기용)` 블록에서 **필요한 `<symbol id="i-...">` 만 추출**해 `<body>` 직후에 인라인 (전체 245개를 통째로 박지 말고, 화면에서 실제 쓰는 것만 — 보통 15–40개).
+3. 본문에선 항상 다음 패턴:
+   ```html
+   <svg viewBox="0 0 480 480" fill="currentColor"><use href="#i-cart"/></svg>
+   ```
+4. React/Next.js 프로젝트 → `import { IconCart } from '@bucketplace/icons'` (§7.3-A).
+5. ICONS.md에 없는 아이콘이 필요하면? 유사 아이콘으로 대체하거나 placeholder + `@asset:icons/<name>` 마커. **추정 path 그려넣지 말 것.**
+6. 출력 끝에 사용한 아이콘 ID 주석을 남긴다:
+   ```html
+   <!-- icons used: i-cart, i-bell, i-house-filled, i-magnifying-glass, ... -->
+   ```
+
+iOS 상태바(WiFi/배터리)처럼 **OS chrome**은 디자인 시스템 범위 외 — sprite 적용 대상 아님. 단 콘텐츠 영역의 모든 기능 아이콘(검색·장바구니·하트·별·홈·집들이·마이·카테고리)은 sprite 필수.
+
+#### 🆕 v0.4.2 주요 업데이트 (2026-04-29)
+
+- **§ STOP 박스 신규 (이 위 박스)** — AI 에이전트 아이콘 룰을 본문 최상단에 못 박음
+- **§7.12 AI 에이전트 필수 룰 신규** — SVG path 손그림 / 이모지 아이콘 대체 명시 금지. 위반 시 결과물 폐기·재작업
+- **§7.9 금지 항목 보강** — "AI가 SVG path를 직접 그려넣는 행위" 추가
+- **§9 Do/Don't 표 13행 신규** — "ICONS.md sprite 사용 vs SVG 손그림·이모지 아이콘" 룰 명시
+- **§11.1 사용법 STEP 0 신규** — 모든 화면 작업 시작 전 ICONS.md 동봉 확인 의무화
+- 배경: 사내 공유용 zip 배포 직전 사용자 피드백 — "AI가 자꾸 path를 직접 그리거나 이모지로 카테고리 아이콘을 채운다"
+
+이전 변경 내역은 §12 / `HISTORY.md` 참조.
 
 ---
 
@@ -708,6 +733,26 @@ UI 디폴트는 **`regular`**. 한 화면 안에서 weight 혼용 금지(시각 
 - **monochrome 외 채색** (브랜드 컬러로 그라디언트 등) — 일관성 위반
 - **24×24 외 임의 사이즈** (15·17·21·26 등 홀수)
 - **`<i data-lucide="...">` Lucide 마커** production 코드
+- 🚫 **AI 에이전트가 SVG path를 직접 손으로 그려넣는 행위** — production이든 프로토타입이든 절대 금지. 아래 §7.12 참조.
+
+### 7.12 🛑 AI 에이전트 필수 룰 (Hard Rule)
+
+> **이 파일을 컨텍스트로 받은 모든 AI 코딩 에이전트(Claude Code / Cursor / Stitch / v0 등)는 아래 룰을 반드시 따른다.**
+
+1. **HTML / TSX / JSX에 아이콘이 필요하면 `ICONS.md`를 먼저 연다.** 245개 sprite가 거기 있다.
+2. **정적 HTML / single-file artifact** → `ICONS.md`의 `## Sprite (붙여넣기용)` 블록을 `<body>` 직후에 통째로 붙여넣고, 본문에서는 항상 `<svg><use href="#i-<name>"/></svg>` 패턴으로 참조한다.
+3. **React 프로젝트** → `@bucketplace/icons` 패키지 import (§7.3-A).
+4. **`<path d="...">` 를 직접 작성하지 않는다.** 메모리·추측·LLM-generated SVG path는 비주얼 정체성 깨짐의 가장 흔한 원인. ICONS.md에 없는 아이콘이 필요하면:
+   - 먼저 §7.10 미러·`@bucketplace/icons` 카탈로그(Storybook)에서 유사 아이콘으로 대체 검토
+   - 그래도 필요하면 `@asset:icons/<name>` 마커만 남기고 임시로 텍스트/이모지로 placeholder 처리. **추정 path 그려넣기 X**
+5. **이모지로 아이콘 대체 X** (`🛋️` `💡` 등). 이모지는 OS·브라우저별 렌더가 달라 일관성 무너진다. quick category 같은 카테고리 그리드도 `i-floor-plank`(가구) `i-wallpaper`(패브릭) `i-lightbulb-on`(조명) `i-paint-palette`(데코) 등 ICONS.md sprite로 처리.
+6. **status bar / 시스템 UI 아이콘**(WiFi, 배터리)은 OS chrome이므로 디자인 시스템 범위 외 — 이모지·간단 SVG 허용. 단 콘텐츠 영역의 모든 기능 아이콘은 sprite 필수.
+7. 출력 마지막에 사용한 아이콘 ID를 주석으로 남길 것:
+   ```html
+   <!-- icons used: i-cart, i-bell, i-house-filled, i-magnifying-glass, i-photo, i-person, i-heart, i-heart-filled, i-star-filled, i-chevron-right, i-fire, i-sparkles, i-floor-plank, i-wallpaper, i-lightbulb-on, i-paint-palette, i-cube, i-gift, i-ticket -->
+   ```
+
+**위반 시 결과물 폐기·재작업 대상.** 이 룰은 v0.4.2 (2026-04-29) 신규 추가. 본문 최상단 🛑 STOP 박스와 §9 표 13행도 함께 참조.
 
 ### 7.10 Atlas 미러 (`_assets/icons/`)
 
@@ -941,6 +986,7 @@ TopBar floating 그라디언트 + Hero 3:4 + Body padding 20 16 + Author Row + T
 | 10 | 포커스 링 유지, alt 텍스트 필수, 텍스트 대비 WCAG AA(4.5:1) 이상 | 포커스 링 제거, alt 누락, 저대비 텍스트 |
 | 11 | 트랙 고유 패턴은 근거 기록 후 등록 | 일관성 깨고 트랙 고유 발명 |
 | 12 | 디자인 근거를 데이터(A/B, 퍼널)로 기록 | "느낌"으로만 판단 |
+| 13 🛑 | **`ICONS.md` sprite를 `<use href="#i-...">` 패턴으로** 사용 (§7.12 / 본문 최상단 STOP 박스) | **AI가 SVG `<path d=...>` 를 직접 그리거나 추정·기억으로 작성**, **이모지(🛋️💡🪴🏠)로 카테고리·기능 아이콘 대체** |
 
 ### 원칙 충돌 시 우선순위
 
@@ -969,9 +1015,11 @@ TopBar floating 그라디언트 + Hero 3:4 + Body padding 20 16 + Author Row + T
 
 ### 11.1 이 파일 사용법
 
-1. AI 코딩 에이전트(Cursor / Claude Code / Stitch / v0 등) 프로젝트 루트에 `OHOUSE-DESIGN.md` 저장
-2. 첫 프롬프트에 "이 파일의 디자인 시스템을 따라 [화면명] 구현해줘"
-3. 결과물에 마커가 자동 삽입되는지 확인 (10.3 참조)
+**STEP 0 (필수)**: 화면 작업 전, 본문 최상단 🛑 STOP 박스와 §7.12를 반드시 먼저 읽는다. 아이콘은 `ICONS.md` sprite + `<use href="#i-...">` 패턴 외 다른 방법 금지 (SVG path 손그림·이모지 대체 위반 시 결과물 폐기·재작업).
+
+1. AI 코딩 에이전트(Cursor / Claude Code / Stitch / v0 등) 프로젝트 루트에 **`OHOUSE-DESIGN.md` + `ICONS.md` 둘 다** 저장 (zip 안에 함께 동봉되어 있음)
+2. 첫 프롬프트에 "`@OHOUSE-DESIGN.md` `@ICONS.md` 를 따라 [화면명] 구현해줘. 아이콘은 ICONS.md sprite를 `<use>` 패턴으로 사용해줘."
+3. 결과물에 마커가 자동 삽입되는지 확인 (10.3 참조) + `<!-- icons used: ... -->` 주석 확인
 
 ### 11.2 예시 프롬프트
 

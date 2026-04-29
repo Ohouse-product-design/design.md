@@ -1,0 +1,26 @@
+{
+  "skill_name": "writing-bot",
+  "description_evals": [
+    {"query": "앱푸시 써줘. 봄맞이 패브릭 할인, 타깃 2030 여성", "should_trigger": true},
+    {"query": "배너 카피 써줘. 구좌 쇼핑홈 IIF, 브랜드 한샘", "should_trigger": true},
+    {"query": "브랜드위크 INTRO 써줘. 브랜드 덴비", "should_trigger": true},
+    {"query": "장바구니 Empty 안내 문구 써줘", "should_trigger": true},
+    {"query": "체크포인트 다듬어줘. '고밀도 구조 설계를 적용했습니다'", "should_trigger": true},
+    {"query": "초안 붙여넣고 다듬어줘: '새로운 시즌이 시작됩니다'", "should_trigger": true},
+    {"query": "CRM 메시지 문구 작성해줘. 겨울 침구 프로모션", "should_trigger": true},
+    {"query": "모달 확인 버튼 문구 써줘. 리뷰 삭제 시 안내", "should_trigger": true},
+    {"query": "바이너리 리포트 인트로 써줘", "should_trigger": true},
+    {"query": "홈피드 배너 카피 2줄 써줘. 브랜드 시디즈", "should_trigger": true},
+
+    {"query": "이 코드에서 버그 찾아줘", "should_trigger": false},
+    {"query": "React 컴포넌트 리팩토링 해줘", "should_trigger": false},
+    {"query": "API 엔드포인트 설계해줘", "should_trigger": false},
+    {"query": "git merge conflict 해결 도와줘", "should_trigger": false},
+    {"query": "Slack에서 메시지 보내줘", "should_trigger": false},
+    {"query": "n8n 워크플로우 만들어줘", "should_trigger": false},
+    {"query": "이 에러 로그 분석해줘", "should_trigger": false},
+    {"query": "파이썬으로 CSV 파싱하는 코드 짜줘", "should_trigger": false},
+    {"query": "Jira 티켓 만들어줘", "should_trigger": false},
+    {"query": "Docker 컨테이너 설정 도와줘", "should_trigger": false}
+  ]
+}
